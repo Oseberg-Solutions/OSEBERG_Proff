@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { SearchBox } from "@fluentui/react/lib/SearchBox";
+import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import "../css/searchcomponent.css";
+
+const searchBoxStyles: Partial<ISearchBoxStyles> = {
+  root: {
+    border: "none",
+  },
+};
 
 interface CompanyData {
   name: string;
@@ -58,6 +64,8 @@ const SearchComponent: React.FC = () => {
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string) => {
+    console.log("Hadnle Search...");
+    return;
     try {
       const response = await fetch(
         `https://company-lookup.azurewebsites.net//api/ProffCompanySearch?code=zZSTDpXMqXTVRPIb7XL1lqb-ssnihlDbujQMBpr3RA42AzFuE86izg==&query=${query}`
@@ -80,6 +88,7 @@ const SearchComponent: React.FC = () => {
   return (
     <div>
       <SearchBox
+        styles={searchBoxStyles}
         placeholder="Search..."
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
