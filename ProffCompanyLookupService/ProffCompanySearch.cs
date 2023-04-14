@@ -42,14 +42,7 @@ namespace ProffCompanyLookupService
             string proffApiKey = "PmWrTlGZhtzEh0xAWQP8cvFBX";
             string proffApiUrl = "https://api.proff.no/api/companies/register/NO";
 
-            if (ContainsOnlyDigits(query))
-            {
-                proffApiUrl = $"{proffApiUrl}/{query}";
-            }
-            else
-            {
-                proffApiUrl = $"{proffApiUrl}?Query={query}";
-            }
+            proffApiUrl = ContainsOnlyDigits(query) ? $"{proffApiUrl}/{query}" : $"{proffApiUrl}?Query={query}";
 
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", proffApiKey);
             HttpResponseMessage response = await httpClient.GetAsync(proffApiUrl);
