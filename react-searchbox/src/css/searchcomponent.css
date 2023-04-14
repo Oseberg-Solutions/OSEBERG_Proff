@@ -1,0 +1,32 @@
+.search-results {
+  flex-direction: column;
+  display: flex;
+  max-height: calc(5 * 105px); /* Adjust this value based on the height of your search-result-card */
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.search-result-card {
+  width: 100%;
+  padding: 15px;
+  margin: 2px;
+  border: 1px solid #8b8b8b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-result-card:hover {
+  background-color: #f3f3f3;
+}
+
+.search-result-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.search-result-id {
+  font-size: 0.8em;
+  color: #888;
+  margin-bottom: 10px;
+}
