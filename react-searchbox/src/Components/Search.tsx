@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
-import "../css/searchcomponent.css";
+import { CompanyData } from "../interfaces/CompanyData";
+import { testData } from "../testData";
 
-interface CompanyData {
-  name: string;
-  organisationNumber: string;
-  email: string | null;
-  homePage: string | null;
-  mobilePhone: string | null;
-  telephoneNumber: string | null;
-  addressLine: string | null;
-  boxAddressLine: string | null;
-  postPlace: string | null;
-  zipCode: string | null;
-}
+import "../css/searchcomponent.css";
+import {
+  AZURE_FUNCTION_API_KEY,
+  AZURE_FUNCTION_BASE_URL,
+} from "../config/config";
 
 function isAllDigits(str: string) {
   const regex = /^\s*\d+(\s*\d+)*\s*$/;
@@ -58,11 +52,20 @@ const SearchComponent: React.FC = () => {
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string) => {
-    console.log("handleSearch");
+    const queryLowerCase = query.toLowerCase();
+    const filteredData = testData.filter((item) => {
+      const nameMatches = item.name.toLowerCase().includes(queryLowerCase);
+      const orgNumberMatches = item.organisationNumber.includes(query);
+
+      return nameMatches || orgNumberMatches;
+    });
+
+    setData(filteredData);
+
     return;
     try {
       const response = await fetch(
-        `https://company-lookup.azurewebsites.net//api/ProffCompanySearch?code=zZSTDpXMqXTVRPIb7XL1lqb-ssnihlDbujQMBpr3RA42AzFuE86izg==&query=${query}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}`
       );
       if (response.ok) {
         const result = await response.json();
@@ -76,13 +79,15 @@ const SearchComponent: React.FC = () => {
   };
 
   const handleCardClick = (id: string) => {
-    alert(`Card with ID: ${id} clicked`);
+    console.debug(`Card with ID: ${id} clicked`);
   };
 
   return (
     <div>
       <SearchBox
         placeholder="Search..."
+        disableAnimation
+        showIcon
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
         }}
@@ -91,16 +96,14 @@ const SearchComponent: React.FC = () => {
         <div className="search-results">
           {data.map((item) => (
             <div
-              key={item.organisationNumber}
+              key={item.name + item.organisationNumber}
               className="search-result-card"
               onClick={() => handleCardClick(item.organisationNumber)}
             >
               <div className="search-result-title">{item.name}</div>
-              <div className="search-result-id">
-                Organisation Number: {item.organisationNumber}
-              </div>
+              <div className="search-result-id">{item.addressLine}</div>
               <div className="search-result-subtext">
-                {item.organisationNumber}
+                Org nr: {item.organisationNumber}
               </div>
             </div>
           ))}

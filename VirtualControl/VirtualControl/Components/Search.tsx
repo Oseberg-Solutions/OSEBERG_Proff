@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
+import { testData } from "../testData";
 import "../css/searchcomponent.css";
+import {
+  AZURE_FUNCTION_API_KEY,
+  AZURE_FUNCTION_BASE_URL,
+} from "../config/config";
 
 const searchBoxStyles: Partial<ISearchBoxStyles> = {
   root: {
@@ -64,11 +69,20 @@ const SearchComponent: React.FC = () => {
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string) => {
-    console.log("Hadnle Search...");
-    return;
+    const queryLowerCase = query.toLowerCase();
+    const filteredData = testData.filter((item) => {
+      const nameMatches = item.name.toLowerCase().includes(queryLowerCase);
+      const orgNumberMatches = item.organisationNumber.includes(query);
+
+      return nameMatches || orgNumberMatches;
+    });
+
+    setData(filteredData);
+
+    /*
     try {
       const response = await fetch(
-        `https://company-lookup.azurewebsites.net//api/ProffCompanySearch?code=zZSTDpXMqXTVRPIb7XL1lqb-ssnihlDbujQMBpr3RA42AzFuE86izg==&query=${query}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}`
       );
       if (response.ok) {
         const result = await response.json();
@@ -79,17 +93,18 @@ const SearchComponent: React.FC = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+    */
   };
-
   const handleCardClick = (id: string) => {
-    alert(`Card with ID: ${id} clicked`);
+    console.debug(`Card with ID: ${id} clicked`);
   };
 
   return (
     <div>
       <SearchBox
-        styles={searchBoxStyles}
         placeholder="Search..."
+        disableAnimation
+        showIcon
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
         }}
@@ -98,16 +113,14 @@ const SearchComponent: React.FC = () => {
         <div className="search-results">
           {data.map((item) => (
             <div
-              key={item.organisationNumber}
+              key={item.name + item.organisationNumber}
               className="search-result-card"
               onClick={() => handleCardClick(item.organisationNumber)}
             >
               <div className="search-result-title">{item.name}</div>
-              <div className="search-result-id">
-                Organisation Number: {item.organisationNumber}
-              </div>
+              <div className="search-result-id">{item.addressLine}</div>
               <div className="search-result-subtext">
-                {item.organisationNumber}
+                Org nr: {item.organisationNumber}
               </div>
             </div>
           ))}
