@@ -3,17 +3,18 @@
   display: flex;
   max-height: calc(5 * 105px); /* Adjust this value based on the height of your search-result-card */
   overflow-y: auto;
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 
 .search-result-card {
-  width: 100%;
+  width: 89%;
   padding: 15px;
   margin: 2px;
   border: 1px solid #8b8b8b;
   border-radius: 4px;
   cursor: pointer;
+  background-color: white;
 }
 
 .search-result-card:hover {

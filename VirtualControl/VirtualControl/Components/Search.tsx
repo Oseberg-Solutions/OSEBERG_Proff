@@ -104,6 +104,7 @@ const SearchComponent: React.FC = () => {
       <SearchBox
         placeholder="Search..."
         disableAnimation
+        autoComplete="false"
         showIcon
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
