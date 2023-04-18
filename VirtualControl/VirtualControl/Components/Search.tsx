@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import { testData } from "../testData";
+import { CompanyData } from "../interfaces/CompanyData";
 import "../css/searchcomponent.css";
 import {
   AZURE_FUNCTION_API_KEY,
@@ -13,17 +14,8 @@ const searchBoxStyles: Partial<ISearchBoxStyles> = {
   },
 };
 
-interface CompanyData {
-  name: string;
-  organisationNumber: string;
-  email: string | null;
-  homePage: string | null;
-  mobilePhone: string | null;
-  telephoneNumber: string | null;
-  addressLine: string | null;
-  boxAddressLine: string | null;
-  postPlace: string | null;
-  zipCode: string | null;
+interface SearchComponentProps {
+  onCardClick: (item: CompanyData) => void;
 }
 
 function isAllDigits(str: string) {
@@ -35,7 +27,7 @@ function removeWhitespaces(str: string) {
   return str.replace(/\s+/g, "");
 }
 
-const SearchComponent: React.FC = () => {
+const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
   const [searchValue, setSearchValue] = useState<string>("");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
@@ -95,8 +87,12 @@ const SearchComponent: React.FC = () => {
     }
     */
   };
-  const handleCardClick = (id: string) => {
-    console.debug(`Card with ID: ${id} clicked`);
+
+  const handleCardClick = (item: CompanyData) => {
+    if (item.name && item.organisationNumber) {
+      console.debug("HandleClicked", item);
+      onCardClick(item);
+    }
   };
 
   return (
@@ -104,7 +100,7 @@ const SearchComponent: React.FC = () => {
       <SearchBox
         placeholder="Search..."
         disableAnimation
-        autoComplete="false"
+        autoComplete="off"
         showIcon
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
@@ -116,7 +112,7 @@ const SearchComponent: React.FC = () => {
             <div
               key={item.name + item.organisationNumber}
               className="search-result-card"
-              onClick={() => handleCardClick(item.organisationNumber)}
+              onClick={() => handleCardClick(item)}
             >
               <div className="search-result-title">{item.name}</div>
               <div className="search-result-id">{item.addressLine}</div>
