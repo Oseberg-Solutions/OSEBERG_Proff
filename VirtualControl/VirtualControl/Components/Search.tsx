@@ -29,6 +29,7 @@ function removeWhitespaces(str: string) {
 
 const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
+  const [resultsVisible, setResultsVisible] = useState(true);
   const [searchValue, setSearchValue] = useState<string>("");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
   const [data, setData] = useState<CompanyData[]>([]);
@@ -92,21 +93,24 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     if (item.name && item.organisationNumber) {
       console.debug("HandleClicked", item);
       onCardClick(item);
+      setResultsVisible(false);
     }
   };
 
   return (
     <div>
       <SearchBox
-        placeholder="Search..."
+        id="searchBox"
+        placeholder="..."
         disableAnimation
         autoComplete="off"
         showIcon
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
+          setResultsVisible(true);
         }}
       />
-      {searchValue && (
+      {searchValue && resultsVisible && (
         <div className="search-results">
           {data.map((item) => (
             <div

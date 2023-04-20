@@ -5,16 +5,16 @@ import * as React from "react";
 
 export class VirtualControl implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     
-    private name: string | undefined;
-    private organisationNumber: string | undefined;
-    private email: string | undefined;
-    private homePage: string | undefined;
-    private mobilePhone: string | undefined;
-    private telephoneNumber: string | undefined;
-    private addressLine: string | undefined;
-    private boxAddressLine: string | undefined;
-    private postPlace: string | undefined;
-    private zipCode: string | undefined;
+    private _name: string | undefined;
+    private _organisationNumber: string | undefined;
+    private _email: string | undefined;
+    private _homePage: string | undefined;
+    private _mobilePhone: string | undefined;
+    private _telephoneNumber: string | undefined;
+    private _addressLine: string | undefined;
+    private _boxAddressLine: string | undefined;
+    private _postPlace: string | undefined;
+    private _zipCode: string | undefined;
 
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
 
@@ -42,17 +42,20 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     }
     
     public handleCardClick = (item: CompanyData): void => {
-        this.name = item.name;
-        this.organisationNumber = item.organisationNumber;
-        this.email = item.email || undefined;
-        this.homePage = item.homePage || undefined;
-        this.mobilePhone = item.mobilePhone || undefined;
-        this.telephoneNumber = item.telephoneNumber || undefined;
-        this.addressLine = item.addressLine || undefined;
-        this.boxAddressLine = item.boxAddressLine || undefined;
-        this.postPlace = item.postPlace || undefined;
-        this.zipCode = item.zipCode || undefined;
-      
+        
+        console.debug("index.ts: handleCardClick -> item.name", item.name);
+
+        this._name = item.name;
+        this._organisationNumber = item.organisationNumber;
+        this._email = item.email || undefined;
+        this._homePage = item.homePage || undefined;
+        this._mobilePhone = item.mobilePhone || undefined;
+        this._telephoneNumber = item.telephoneNumber || undefined;
+        this._addressLine = item.addressLine || undefined;
+        this._boxAddressLine = item.boxAddressLine || undefined;
+        this._postPlace = item.postPlace || undefined;
+        this._zipCode = item.zipCode || undefined;
+
         this.notifyOutputChanged();
     };
 
@@ -61,18 +64,23 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     }
 
     public getOutputs(): IOutputs {
-        return {
-            name: this.name,
-            email: this.email,
-            websiteurl: this.homePage,
-            mobilePhone: this.mobilePhone,
-            telephone1: this.telephoneNumber,
-            address1_line1: this.addressLine,
-            boxAddressLine: this.boxAddressLine,
-            address1_city: this.postPlace,
-            address1_postalcode: this.zipCode,
-            cr41c_orgnr: this.organisationNumber
+
+        const outputs: IOutputs = {
+            companyName: this._name,
+            email: this._email,
+            websiteurl: this._homePage,
+            mobilePhone: this._mobilePhone,
+            telephone1: this._telephoneNumber,
+            address1_line1: this._addressLine,
+            boxAddressLine: this._boxAddressLine,
+            address1_city: this._postPlace,
+            address1_postalcode: this._zipCode,
+            cr41c_orgnr: this._organisationNumber
         };
+
+        console.debug("getOutputs called:", outputs);
+
+        return outputs;
     }
 
     public destroy(): void {
