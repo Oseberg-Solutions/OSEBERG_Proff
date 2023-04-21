@@ -23,24 +23,26 @@ namespace ProffCompanyLookupService
         ILogger log)
     {
 
+      // We want to be able to read multiple paramters?
       string query = req.Query["query"];
+      string country = req.Query["country"];
 
-      if (string.IsNullOrEmpty(query))
+      if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
       {
         return new BadRequestObjectResult("Please provide a query parameter.");
       }
 
-      var extractedData = await GetCompanyDataAsync(query);
+      var extractedData = await GetCompanyDataAsync(query, country);
 
       return new OkObjectResult(extractedData);
     }
 
     /// @summary Calls the Proff API and returns a JArray of company data.
     /// @return A JArray of company data.</returns>
-    private static async Task<JArray> CallProffApiAsync(string query)
+    private static async Task<JArray> CallProffApiAsync(string query, string country)
     {
       string proffApiKey = "PmWrTlGZhtzEh0xAWQP8cvFBX";
-      string proffApiUrl = "https://api.proff.no/api/companies/register/NO";
+      string proffApiUrl = $"https://api.proff.no/api/companies/register/{country}";
 
       proffApiUrl = ContainsOnlyDigits(query) ? $"{proffApiUrl}/{query}" : $"{proffApiUrl}?Query={query}";
 
@@ -73,9 +75,9 @@ namespace ProffCompanyLookupService
 
     /// @summary Processes the company data from the Proff API and returns a list of CompanyData objects.
     /// @return A list of CompanyData objects.</returns>
-    private static async Task<List<CompanyData>> GetCompanyDataAsync(string query)
+    private static async Task<List<CompanyData>> GetCompanyDataAsync(string query, string country)
     {
-      JArray companies = await CallProffApiAsync(query);
+      JArray companies = await CallProffApiAsync(query, country);
 
       return companies.Select(company =>
       {

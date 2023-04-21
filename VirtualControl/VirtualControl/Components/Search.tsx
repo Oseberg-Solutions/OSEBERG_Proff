@@ -29,8 +29,9 @@ function removeWhitespaces(str: string) {
 
 const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
-  const [resultsVisible, setResultsVisible] = useState(true);
+  const [resultsVisible, setResultsVisible] = useState<Boolean>(true);
   const [searchValue, setSearchValue] = useState<string>("");
+  const [country, setCountryValue] = useState<string>("NO");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
   const [data, setData] = useState<CompanyData[]>([]);
 
@@ -75,7 +76,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     /*
     try {
       const response = await fetch(
-        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${query}`
       );
       if (response.ok) {
         const result = await response.json();
@@ -91,7 +92,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
   const handleCardClick = (item: CompanyData) => {
     if (item.name && item.organisationNumber) {
-      console.debug("HandleClicked", item);
       onCardClick(item);
       setResultsVisible(false);
     }
@@ -105,6 +105,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
         disableAnimation
         autoComplete="off"
         showIcon
+        value={searchValue}
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
           setResultsVisible(true);
