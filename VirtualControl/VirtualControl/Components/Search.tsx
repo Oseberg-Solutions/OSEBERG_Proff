@@ -1,22 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
+import {
+  IconButton,
+  IContextualMenuItem,
+  ContextualMenuItemType,
+  Dropdown,
+  IDropdownOption,
+} from "@fluentui/react";
 import { testData } from "../testData";
+import FlagOption from "./FlagOption";
 import { CompanyData } from "../interfaces/CompanyData";
 import "../css/searchcomponent.css";
+import NorwayFlag from "../Components/Flags/NorwayFlag";
+import SwedenFlag from "../Components/Flags/SwedenFlag";
+import DenmarkFlag from "../Components/Flags/DenmarkFlag";
+
 import {
   AZURE_FUNCTION_API_KEY,
   AZURE_FUNCTION_BASE_URL,
 } from "../config/config";
+
+interface SearchComponentProps {
+  onCardClick: (item: CompanyData) => void;
+}
+
+const countryOptions: IDropdownOption[] = [
+  { key: "NO", text: "NO" },
+  { key: "SE", text: "SE" },
+  { key: "DK", text: "DK" },
+];
 
 const searchBoxStyles: Partial<ISearchBoxStyles> = {
   root: {
     border: "none",
   },
 };
-
-interface SearchComponentProps {
-  onCardClick: (item: CompanyData) => void;
-}
 
 function isAllDigits(str: string) {
   const regex = /^\s*\d+(\s*\d+)*\s*$/;
@@ -31,9 +49,46 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
   const [resultsVisible, setResultsVisible] = useState<Boolean>(true);
   const [searchValue, setSearchValue] = useState<string>("");
-  const [country, setCountryValue] = useState<string>("NO");
+  const [country, setCountry] = useState<string>("NO");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
   const [data, setData] = useState<CompanyData[]>([]);
+  const filteredCountryOptions = countryOptions.filter(
+    (option) => option.key !== country
+  );
+
+  const handleCountryChange = (
+    _: React.FormEvent<HTMLDivElement>,
+    option?: IDropdownOption
+  ) => {
+    if (option) {
+      setCountry(option.key as string);
+    }
+  };
+
+  const renderFlag = (key: string) => {
+    switch (key) {
+      case "NO":
+        return <NorwayFlag />;
+      case "SE":
+        return <SwedenFlag />;
+      case "DK":
+        return <DenmarkFlag />;
+      default:
+        return null;
+    }
+  };
+
+  const renderPlaceholder = () => {
+    const selectedCountry = countryOptions.find(
+      (option) => option.key === country
+    );
+    return (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {renderFlag(country)}
+        <span style={{ marginLeft: 8 }}>{selectedCountry?.text}</span>
+      </div>
+    );
+  };
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -98,8 +153,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   };
 
   return (
-    <div>
+    <div className="searchbox-container">
       <SearchBox
+        styles={searchBoxStyles}
         id="searchBox"
         placeholder="..."
         disableAnimation
@@ -109,6 +165,21 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
         onChange={(_, newValue) => {
           setSearchValue(newValue || "");
           setResultsVisible(true);
+        }}
+      />
+      <Dropdown
+        options={filteredCountryOptions}
+        selectedKey={country}
+        onChange={handleCountryChange}
+        onRenderPlaceholder={renderPlaceholder}
+        onRenderOption={(props) => {
+          const option = props as IDropdownOption;
+          return (
+            <FlagOption
+              flag={renderFlag(option.key as string)}
+              text={option.text}
+            />
+          );
         }}
       />
       {searchValue && resultsVisible && (

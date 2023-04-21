@@ -4,7 +4,7 @@ import { CompanyData } from './interfaces/CompanyData'
 import * as React from "react";
 
 export class VirtualControl implements ComponentFramework.ReactControl<IInputs, IOutputs> {
-    
+
     private _name: string | undefined;
     private _organisationNumber: string | undefined;
     private _email: string | undefined;
@@ -34,15 +34,15 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
 
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         const props = {
-          onCardClick: this.handleCardClick,
+            onCardClick: this.handleCardClick,
         };
         return React.createElement(
-          SearchComponent, props
+            SearchComponent, props
         );
     }
-    
+
     public handleCardClick = (item: CompanyData): void => {
-        
+
         console.debug("index.ts: handleCardClick -> item.name", item.name);
 
         this._name = item.name;

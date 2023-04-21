@@ -5,6 +5,7 @@
   overflow-y: auto;
   position: absolute;
   z-index: 1;
+  top: 9%;
 }
 
 .search-result-card {
@@ -30,4 +31,10 @@
   font-size: 0.8em;
   color: #888;
   margin-bottom: 10px;
+}
+
+.searchbox-container {
+  display: flex;
+  justify-content: center;
+
 }

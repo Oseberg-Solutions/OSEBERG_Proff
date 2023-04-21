@@ -1,7 +1,9 @@
 {
     "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
     "compilerOptions": {
-        "typeRoots": ["node_modules/@types"],
-        "esModuleInterop": true
-    }
-}
+      "typeRoots": ["node_modules/@types"],
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx", "typings.d.ts", "src/declarations.d.ts"]
+  }
+  
