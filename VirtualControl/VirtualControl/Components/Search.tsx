@@ -14,6 +14,7 @@ import "../css/searchcomponent.css";
 import NorwayFlag from "../Components/Flags/NorwayFlag";
 import SwedenFlag from "../Components/Flags/SwedenFlag";
 import DenmarkFlag from "../Components/Flags/DenmarkFlag";
+import ProffIcon from "../Components/ProffIcon";
 
 import {
   AZURE_FUNCTION_API_KEY,
@@ -33,6 +34,7 @@ const countryOptions: IDropdownOption[] = [
 const searchBoxStyles: Partial<ISearchBoxStyles> = {
   root: {
     border: "none",
+    backgroundColor: "#f5f5f5",
   },
 };
 
@@ -143,6 +145,14 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
       console.error("Error fetching data:", error);
     }
     */
+  };
+
+  const renderSuffix = () => {
+    return (
+      <div style={{ height: "16px", width: "16px" }}>
+        <ProffIcon />
+      </div>
+    );
   };
 
   const handleCardClick = (item: CompanyData) => {

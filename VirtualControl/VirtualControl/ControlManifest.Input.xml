@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="CompanyLookup" constructor="VirtualControl" version="0.0.2" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual" >
+  <control namespace="CompanyLookup" constructor="VirtualControl" version="0.0.3" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual" >
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="companyName" display-name-key="Company Name" description-key="Company Name" of-type="SingleLine.Text" usage="bound" required="false"/>

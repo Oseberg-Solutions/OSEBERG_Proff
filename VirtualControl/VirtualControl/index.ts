@@ -16,6 +16,7 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     private _postPlace: string | undefined;
     private _zipCode: string | undefined;
 
+    private context: ComponentFramework.Context<IInputs>;
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
 
     private notifyOutputChanged: () => void;
@@ -29,6 +30,7 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
         notifyOutputChanged: () => void,
         state: ComponentFramework.Dictionary
     ): void {
+        this.context = context;
         this.notifyOutputChanged = notifyOutputChanged;
     }
 
@@ -42,9 +44,6 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     }
 
     public handleCardClick = (item: CompanyData): void => {
-
-        console.debug("index.ts: handleCardClick -> item.name", item.name);
-
         this._name = item.name;
         this._organisationNumber = item.organisationNumber;
         this._email = item.email || undefined;
@@ -57,6 +56,10 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
         this._zipCode = item.zipCode || undefined;
 
         this.notifyOutputChanged();
+        /*
+        console.debug("UserID: ", this.context.userSettings.userId);
+        console.debug("Retrieve UserID Record: ", this.context.webAPI.retrieveRecord("contact", this.context.userSettings.userId));
+        console.debug("index.ts: handleCardClick -> item.name", item.name);*/
     };
 
     public handleSaveClick = (): void => {
