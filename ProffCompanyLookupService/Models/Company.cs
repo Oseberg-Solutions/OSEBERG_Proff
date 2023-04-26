@@ -9,6 +9,7 @@ namespace ProffCompanyLookupService.Models
     public class CompanyData
     {
         public string Name { get; set; }
+        public string CompanyTypeName { get; set; }
         public string OrganisationNumber { get; set; }
         public string Email { get; set; }
         public string HomePage { get; set; }
@@ -18,5 +19,9 @@ namespace ProffCompanyLookupService.Models
         public string BoxAddressLine { get; set; }
         public string PostPlace { get; set; }
         public string ZipCode { get; set; }
+
+        public string NumberOfEmployees { get; set; }
+        public string Nace { get; set; }
+
     }
 }

@@ -3,6 +3,7 @@
   <control namespace="CompanyLookup" constructor="VirtualControl" version="0.0.3" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual" >
     <external-service-usage enabled="false">
     </external-service-usage>
+    <property name="name" display-name-key="Name" description-key="Name" of-type="SingleLine.Text" usage="bound" required="false"/>
     <property name="companyName" display-name-key="Company Name" description-key="Company Name" of-type="SingleLine.Text" usage="bound" required="false"/>
     <property name="email" display-name-key="Email" description-key="Email" of-type="SingleLine.Text" usage="bound" required="false"/>
     <property name="websiteurl" display-name-key="Home Page" description-key="Home Page" of-type="SingleLine.Text" usage="bound" required="false"/>

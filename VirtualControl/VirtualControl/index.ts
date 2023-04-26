@@ -56,10 +56,6 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
         this._zipCode = item.zipCode || undefined;
 
         this.notifyOutputChanged();
-        /*
-        console.debug("UserID: ", this.context.userSettings.userId);
-        console.debug("Retrieve UserID Record: ", this.context.webAPI.retrieveRecord("contact", this.context.userSettings.userId));
-        console.debug("index.ts: handleCardClick -> item.name", item.name);*/
     };
 
     public handleSaveClick = (): void => {
@@ -69,6 +65,7 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     public getOutputs(): IOutputs {
 
         const outputs: IOutputs = {
+            name: this._name,
             companyName: this._name,
             email: this._email,
             websiteurl: this._homePage,

@@ -120,17 +120,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string) => {
-    const queryLowerCase = query.toLowerCase();
-    const filteredData = testData.filter((item) => {
-      const nameMatches = item.name.toLowerCase().includes(queryLowerCase);
-      const orgNumberMatches = item.organisationNumber.includes(query);
-
-      return nameMatches || orgNumberMatches;
-    });
-
-    setData(filteredData);
-
-    /*
     try {
       const response = await fetch(
         `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${query}`
@@ -144,7 +133,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-    */
   };
 
   const renderSuffix = () => {
