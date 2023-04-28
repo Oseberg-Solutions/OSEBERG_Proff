@@ -122,7 +122,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const handleSearch = async (query: string) => {
     try {
       const response = await fetch(
-        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${query}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}`
       );
       if (response.ok) {
         const result = await response.json();

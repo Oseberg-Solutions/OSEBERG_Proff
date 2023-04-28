@@ -24,7 +24,6 @@ namespace ProffCompanyLookupService
             ILogger log)
         {
 
-            // We want to be able to read multiple paramters?
             string query = req.Query["query"];
             string country = req.Query["country"];
 
@@ -33,9 +32,7 @@ namespace ProffCompanyLookupService
                 return new BadRequestObjectResult("Missing required parameters");
             }
 
-
             JArray companies = await FetchCompanyDataFromProffApiAsync(query, country);
-
             var extractedData = ConvertJArrayToCompanyDataListAsync(companies);
 
             return new OkObjectResult(extractedData);
