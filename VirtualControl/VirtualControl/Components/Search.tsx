@@ -69,14 +69,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
   const renderFlag = (key: string) => {
     switch (key) {
-      case "NO":
-        return <NorwayFlag />;
       case "SE":
         return <SwedenFlag />;
       case "DK":
         return <DenmarkFlag />;
       default:
-        return null;
+        return <NorwayFlag />; // NO
     }
   };
 

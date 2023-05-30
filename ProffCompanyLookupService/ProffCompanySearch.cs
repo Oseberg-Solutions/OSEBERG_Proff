@@ -24,6 +24,9 @@ namespace ProffCompanyLookupService
         ILogger log)
     {
 
+      string requestingDomain = req.Headers["Referer"].ToString();
+      log.LogInformation($"Requesting domain: {requestingDomain}");
+
       string query = req.Query["query"];
       string country = req.Query["country"];
 
