@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="CompanyLookup" constructor="VirtualControl" version="0.0.3" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual" >
+  <control namespace="CompanyLookup" constructor="VirtualControl" version="1.0.4" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
-    <property name="name" display-name-key="Name" description-key="Name" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="companyName" display-name-key="Company Name" description-key="Company Name" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="email" display-name-key="Email" description-key="Email" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="websiteurl" display-name-key="Home Page" description-key="Home Page" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="mobilePhone" display-name-key="Mobile Phone" description-key="Mobile Phone" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="telephone1" display-name-key="Telephone Number" description-key="Telephone Number" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="address1_line1" display-name-key="Address Line" description-key="Address Line" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="boxAddressLine" display-name-key="Box Address Line" description-key="Box Address Line" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="address1_city" display-name-key="Post Place" description-key="Post Place" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="address1_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false"/>
-    <property name="cr41c_orgnr" display-name-key="Org Nr" description-key="Org Nr" of-type="SingleLine.Text" usage="bound" required="false"/>
+    <property name="name" display-name-key="Name" description-key="Name" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="companyName" display-name-key="Company Name" description-key="Company Name" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="email" display-name-key="Email" description-key="Email" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="websiteurl" display-name-key="Home Page" description-key="Home Page" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="mobilePhone" display-name-key="Mobile Phone" description-key="Mobile Phone" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="telephone1" display-name-key="Telephone Number" description-key="Telephone Number" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="address1_line1" display-name-key="Address Line" description-key="Address Line" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="boxAddressLine" display-name-key="Box Address Line" description-key="Box Address Line" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="address1_city" display-name-key="Post Place" description-key="Post Place" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="address1_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="cr41c_orgnr" display-name-key="Org Nr" description-key="Org Nr" of-type="SingleLine.Text" usage="bound" required="false" />
     <resources>
-      <code path="index.ts" order="1"/>
+      <code path="index.ts" order="1" />
       <platform-library name="React" version="16.8.6" />
       <platform-library name="Fluent" version="8.29.0" />
     </resources>

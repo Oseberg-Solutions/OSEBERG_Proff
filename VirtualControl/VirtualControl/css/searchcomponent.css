@@ -8,6 +8,13 @@
   top: 9%;
 }
 
+.search-results-wrapper {
+  /* position: relative; */
+}
+.main-container {
+  width: 100%;
+}
+
 .search-result-card {
   width: 300px;
   padding: 15px;
@@ -34,7 +41,27 @@
 }
 
 .searchbox-container {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
 
+.inner-container {
+  position: absolute;
+  height: 100%;
+  width: 24%;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .inner-container {
+    width: 24%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .inner-container {
+    width: 50%;
+  }
 }

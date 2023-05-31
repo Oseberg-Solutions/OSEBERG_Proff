@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
-import {
-  IconButton,
-  IContextualMenuItem,
-  ContextualMenuItemType,
-  Dropdown,
-  IDropdownOption,
-} from "@fluentui/react";
-import { testData } from "../testData";
+import { Dropdown, IDropdownOption } from "@fluentui/react";
 import FlagOption from "./FlagOption";
 import { CompanyData } from "../interfaces/CompanyData";
 import "../css/searchcomponent.css";
@@ -15,7 +8,6 @@ import NorwayFlag from "../Components/Flags/NorwayFlag";
 import SwedenFlag from "../Components/Flags/SwedenFlag";
 import DenmarkFlag from "../Components/Flags/DenmarkFlag";
 import ProffIcon from "../Components/ProffIcon";
-
 import {
   AZURE_FUNCTION_API_KEY,
   AZURE_FUNCTION_BASE_URL,
@@ -149,52 +141,58 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   };
 
   return (
-    <div className="searchbox-container">
-      <SearchBox
-        styles={searchBoxStyles}
-        id="searchBox"
-        placeholder="..."
-        disableAnimation
-        autoComplete="off"
-        showIcon
-        value={searchValue}
-        onChange={(_, newValue) => {
-          setSearchValue(newValue || "");
-          setResultsVisible(true);
-        }}
-      />
-      <Dropdown
-        options={filteredCountryOptions}
-        selectedKey={country}
-        onChange={handleCountryChange}
-        onRenderPlaceholder={renderPlaceholder}
-        onRenderOption={(props) => {
-          const option = props as IDropdownOption;
-          return (
-            <FlagOption
-              flag={renderFlag(option.key as string)}
-              text={option.text}
-            />
-          );
-        }}
-      />
-      {searchValue && resultsVisible && (
-        <div className="search-results">
-          {data.map((item) => (
-            <div
-              key={item.name + item.organisationNumber}
-              className="search-result-card"
-              onClick={() => handleCardClick(item)}
-            >
-              <div className="search-result-title">{item.name}</div>
-              <div className="search-result-id">{item.addressLine}</div>
-              <div className="search-result-subtext">
-                Org nr: {item.organisationNumber}
-              </div>
-            </div>
-          ))}
+    <div className="main-container">
+      <div className="searchbox-container">
+        <SearchBox
+          styles={searchBoxStyles}
+          id="searchBox"
+          placeholder="..."
+          disableAnimation
+          autoComplete="off"
+          showIcon
+          value={searchValue}
+          onChange={(_, newValue) => {
+            setSearchValue(newValue || "");
+            setResultsVisible(true);
+          }}
+        />
+        <div className="inner-container">
+          <Dropdown
+            options={filteredCountryOptions}
+            selectedKey={country}
+            onChange={handleCountryChange}
+            onRenderPlaceholder={renderPlaceholder}
+            onRenderOption={(props) => {
+              const option = props as IDropdownOption;
+              return (
+                <FlagOption
+                  flag={renderFlag(option.key as string)}
+                  text={option.text}
+                />
+              );
+            }}
+          />
         </div>
-      )}
+      </div>
+      <div className="search-results-wrapper">
+        {searchValue && resultsVisible && (
+          <div className="search-results">
+            {data.map((item) => (
+              <div
+                key={item.name + item.organisationNumber}
+                className="search-result-card"
+                onClick={() => handleCardClick(item)}
+              >
+                <div className="search-result-title">{item.name}</div>
+                <div className="search-result-id">{item.addressLine}</div>
+                <div className="search-result-subtext">
+                  Org nr: {item.organisationNumber}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

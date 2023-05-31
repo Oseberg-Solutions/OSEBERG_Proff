@@ -23,13 +23,16 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
 
     private saveClicked: boolean = false;
 
-    constructor() { }
+    constructor() { 
+        console.log("In the constructor");
+    }
 
     public init(
         context: ComponentFramework.Context<IInputs>,
         notifyOutputChanged: () => void,
         state: ComponentFramework.Dictionary
     ): void {
+        console.log("Init...");
         this.context = context;
         this.notifyOutputChanged = notifyOutputChanged;
     }
