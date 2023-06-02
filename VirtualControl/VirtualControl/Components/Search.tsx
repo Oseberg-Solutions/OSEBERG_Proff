@@ -17,6 +17,8 @@ interface SearchComponentProps {
   onCardClick: (item: CompanyData) => void;
 }
 
+const allowCountryChoices = true;
+
 const countryOptions: IDropdownOption[] = [
   { key: "NO", text: "NO" },
   { key: "SE", text: "SE" },
@@ -30,6 +32,9 @@ const searchBoxStyles: Partial<ISearchBoxStyles> = {
   },
 };
 
+/*----------------------------------------------------------------------------*/
+/* METHODS */
+/*----------------------------------------------------------------------------*/
 function isAllDigits(str: string) {
   const regex = /^\s*\d+(\s*\d+)*\s*$/;
   return regex.test(str);
@@ -156,23 +161,25 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
             setResultsVisible(true);
           }}
         />
-        <div className="inner-container">
-          <Dropdown
-            options={filteredCountryOptions}
-            selectedKey={country}
-            onChange={handleCountryChange}
-            onRenderPlaceholder={renderPlaceholder}
-            onRenderOption={(props) => {
-              const option = props as IDropdownOption;
-              return (
-                <FlagOption
-                  flag={renderFlag(option.key as string)}
-                  text={option.text}
-                />
-              );
-            }}
-          />
-        </div>
+        {allowCountryChoices && (
+          <div className="inner-container">
+            <Dropdown
+              options={filteredCountryOptions}
+              selectedKey={country}
+              onChange={handleCountryChange}
+              onRenderPlaceholder={renderPlaceholder}
+              onRenderOption={(props) => {
+                const option = props as IDropdownOption;
+                return (
+                  <FlagOption
+                    flag={renderFlag(option.key as string)}
+                    text={option.text}
+                  />
+                );
+              }}
+            />
+          </div>
+        )}
       </div>
       <div className="search-results-wrapper">
         {searchValue && resultsVisible && (
