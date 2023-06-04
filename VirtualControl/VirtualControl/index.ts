@@ -24,7 +24,6 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     private saveClicked: boolean = false;
 
     constructor() { 
-        console.log("In the constructor");
     }
 
     public init(
@@ -32,7 +31,6 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
         notifyOutputChanged: () => void,
         state: ComponentFramework.Dictionary
     ): void {
-        console.log("Init...");
         this.context = context;
         this.notifyOutputChanged = notifyOutputChanged;
     }
@@ -80,8 +78,6 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
             address1_postalcode: this._zipCode,
             cr41c_orgnr: this._organisationNumber
         };
-
-        console.debug("getOutputs called:", outputs);
 
         return outputs;
     }
