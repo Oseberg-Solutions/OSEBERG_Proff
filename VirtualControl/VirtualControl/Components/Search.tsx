@@ -115,9 +115,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string) => {
+    const domain: string = window.location.hostname;
     try {
       const response = await fetch(
-        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}`
       );
       if (response.ok) {
         const result = await response.json();
