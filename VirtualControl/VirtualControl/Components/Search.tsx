@@ -116,6 +116,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
   const handleSearch = async (query: string) => {
     const domain: string = window.location.hostname;
+    console.log("Domain: ", domain);
     try {
       const response = await fetch(
         `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}`

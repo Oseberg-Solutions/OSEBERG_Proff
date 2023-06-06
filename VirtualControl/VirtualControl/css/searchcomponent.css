@@ -5,13 +5,13 @@
   overflow-y: auto;
   position: absolute;
   z-index: 1;
-  top: 9%;
+  top: 160px;
 }
 
 .search-results-wrapper {
   /* position: relative; */
 }
-.main-container {
+.main-container { 
   width: 100%;
 }
 

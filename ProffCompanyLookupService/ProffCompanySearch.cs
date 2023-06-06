@@ -17,6 +17,7 @@ namespace ProffCompanyLookupService
 {
   public static class ProffCompanySearch
   {
+
     private static readonly HttpClient httpClient = new HttpClient();
     private static string PROFF_BASE_URL = "https://api.proff.no/api";
     private static string storageAccountTableName = "ProffDomains";
@@ -30,37 +31,22 @@ namespace ProffCompanyLookupService
     {
       try
       {
+        string domain = string.IsNullOrEmpty(req.Query["domain"]) ? "Unknown" : req.Query["domain"];
+        string query = req.Query["query"];
+        string country = req.Query["country"];
 
-        string domain = req.Query["domain"];
-        log.LogInformation($"Domain: {domain}");
-        // Retrieve the requesting domain from the Forwarded header
-        LogRequestHeaders(req, log);
+        if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
+        {
+          return new BadRequestObjectResult("Missing required parameters");
+        }
 
-        /*
-              string domain = req.Query["domain"];
-              string query = req.Query["query"];
-              string country = req.Query["country"];
+        JArray companies = await FetchCompanyDataFromProffApiAsync(query, country);
+        var extractedData = ConvertJArrayToCompanyDataListAsync(companies);
 
-              if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
-              {
-                return new BadRequestObjectResult("Missing required parameters");
-              }
 
-              JArray companies = await FetchCompanyDataFromProffApiAsync(query, country);
-              var extractedData = ConvertJArrayToCompanyDataListAsync(companies);
+        await UpdateProffDomainsTable(domain);
 
-              return new OkObjectResult(extractedData);
-        */
-        /*
-            TODO: We must check if requestingDomain is legit, and maybe that it creates a new row 
-            in our azure Table. so we can easily find it and add amount_of_requests.
-        */
-
-        // log.LogInformation($"Requesting domain: {requestingDomain}");
-
-        await UpdateProffDomainsTable();
-
-        return new OkObjectResult("Smosh Smosh");
+        return new OkObjectResult(extractedData);
       }
       catch (Exception ex)
       {
@@ -69,19 +55,7 @@ namespace ProffCompanyLookupService
       }
     }
 
-    private static void LogRequestHeaders(HttpRequest req, ILogger log)
-    {
-      string requestingDomain = req.Headers["Referer"].ToString();
-      foreach (var header in req.Headers)
-      {
-        Console.WriteLine($"{header.Key}: {header.Value}");
-        log.LogInformation($"{header.Key}: {header.Value}");
-      }
-      Console.WriteLine($"Requesting domain: {requestingDomain}");
-      log.LogInformation($"Requesting domain: {requestingDomain}");
-    }
-
-    private static async Task UpdateProffDomainsTable()
+    private static async Task UpdateProffDomainsTable(string domain)
     {
       // Get a reference to the Azure Table storage
       CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
@@ -89,10 +63,10 @@ namespace ProffCompanyLookupService
       CloudTable table = tableClient.GetTableReference(storageAccountTableName);
 
       // Define the query to fetch rows based on the desired criteria
-      string rowKey = "localhost";
       TableQuery<DynamicTableEntity> tableQuery = new TableQuery<DynamicTableEntity>()
-          .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, rowKey))
+          .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, domain))
           .Take(1); // Fetch only one row
+
 
       // Execute the query and retrieve the matching entity
       TableQuerySegment<DynamicTableEntity> segment = await table.ExecuteQuerySegmentedAsync(tableQuery, null);
@@ -106,12 +80,28 @@ namespace ProffCompanyLookupService
         var amountOfRequests = entity.Properties["amount_of_request"].Int32Value ?? 0;
         amountOfRequests++;
         entity.Properties["amount_of_request"] = new EntityProperty(amountOfRequests);
+        entity.Properties["last_request"] = new EntityProperty(DateTime.UtcNow);
+        entity.Properties["Name"] = new EntityProperty(domain);
+
+
 
         // Save the updated entity back to the table
         TableOperation updateOperation = TableOperation.Replace(entity);
         await table.ExecuteAsync(updateOperation);
 
         Console.WriteLine("Amountofreqeusts: " + amountOfRequests);
+      }
+      else
+      {
+        // Create a new entity with the domain as RowKey
+        var newEntity = new DynamicTableEntity(domain, domain);
+        newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
+
+        // Insert the new entity into the table
+        TableOperation insertOperation = TableOperation.Insert(newEntity);
+        await table.ExecuteAsync(insertOperation);
+
+        Console.WriteLine("New row created for domain: " + domain);
       }
     }
 
