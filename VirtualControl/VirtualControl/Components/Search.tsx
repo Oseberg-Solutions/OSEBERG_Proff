@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import { Dropdown, IDropdownOption } from "@fluentui/react";
+import { Dialog, DialogType, DialogFooter } from "@fluentui/react/lib/Dialog";
+import { DefaultButton, PrimaryButton } from "@fluentui/react/lib/Button";
 import FlagOption from "./FlagOption";
 import { CompanyData } from "../interfaces/CompanyData";
 import "../css/searchcomponent.css";
@@ -46,11 +48,14 @@ function removeWhitespaces(str: string) {
 
 const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
+  const [selectedItem, setSelectedItem] = useState<CompanyData | null>(null);
   const [resultsVisible, setResultsVisible] = useState<Boolean>(true);
   const [searchValue, setSearchValue] = useState<string>("");
   const [country, setCountry] = useState<string>("NO");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
   const [data, setData] = useState<CompanyData[]>([]);
+  const [showConfirmationDialog, setShowConfirmationDialog] =
+    useState<boolean>(false);
   const filteredCountryOptions = countryOptions.filter(
     (option) => option.key !== country
   );
@@ -116,7 +121,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
   const handleSearch = async (query: string) => {
     const domain: string = window.location.hostname;
-    console.log("Domain: ", domain);
     try {
       const response = await fetch(
         `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}`
@@ -142,9 +146,21 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
   const handleCardClick = (item: CompanyData) => {
     if (item.name && item.organisationNumber) {
-      onCardClick(item);
+      setSelectedItem(item);
+      setShowConfirmationDialog(true);
+    }
+  };
+
+  const handleConfirm = () => {
+    setShowConfirmationDialog(false);
+    if (selectedItem && selectedItem.name && selectedItem.organisationNumber) {
+      onCardClick(selectedItem);
       setResultsVisible(false);
     }
+  };
+
+  const handleCancel = () => {
+    setShowConfirmationDialog(false);
   };
 
   return (
@@ -202,6 +218,28 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           </div>
         )}
       </div>
+      <Dialog
+        hidden={!showConfirmationDialog}
+        onDismiss={handleCancel}
+        dialogContentProps={{
+          type: DialogType.normal,
+          title: "Confirmation",
+          closeButtonAriaLabel: "Close",
+        }}
+        modalProps={{
+          isBlocking: true,
+        }}
+      >
+        <div>
+          PS! Dette valget vil overskrive ekisterende data ved lagring.
+          <br></br>
+          Ønsker du å fortsette?
+        </div>
+        <DialogFooter>
+          <PrimaryButton onClick={handleConfirm} text="Ok" />
+          <DefaultButton onClick={handleCancel} text="Cancel" />
+        </DialogFooter>
+      </Dialog>
     </div>
   );
 };

@@ -81,8 +81,6 @@ namespace ProffCompanyLookupService
         entity.Properties["last_request"] = new EntityProperty(DateTime.UtcNow);
         entity.Properties["Name"] = new EntityProperty(domain);
 
-
-
         // Save the updated entity back to the table
         TableOperation updateOperation = TableOperation.Replace(entity);
         await table.ExecuteAsync(updateOperation);
@@ -125,7 +123,7 @@ namespace ProffCompanyLookupService
       
       Orgnummer Call:
       [{"name":"OSEBERG SOLUTIONS AS","companyTypeName":"Aksjeselskap","organisationNumber":"981586581","email":"","homePage":"http://www.oseberg.no","mobilePhone":"",
-      "telephoneNumber":"48086000","addressLine":"Grev Wedels gate 12","boxAddressLine":"","postPlace":"Tønsberg","zipCode":"3111","numberOfEmployees":"66","nace":null}]
+      "telephoneNumber":"48086000","addressLine":"Grev Wedels gate 12","boxAddressLine":"","postPlace":"Tï¿½nsberg","zipCode":"3111","numberOfEmployees":"66","nace":null}]
       */
 
       /* @NOTE
