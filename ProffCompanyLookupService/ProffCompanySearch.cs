@@ -17,7 +17,6 @@ namespace ProffCompanyLookupService
 {
   public static class ProffCompanySearch
   {
-
     private static readonly HttpClient httpClient = new HttpClient();
     private static string PROFF_BASE_URL = "https://api.proff.no/api";
     private static string storageAccountTableName = "ProffDomains";
@@ -40,9 +39,8 @@ namespace ProffCompanyLookupService
           return new BadRequestObjectResult("Missing required parameters");
         }
 
-        JArray companies = await FetchCompanyDataFromProffApiAsync(query, country);
+        JArray companies = await FetchCompanyDataFromProffApiAsync(query, country, log);
         var extractedData = ConvertJArrayToCompanyDataListAsync(companies);
-
 
         await UpdateProffDomainsTable(domain);
 
@@ -107,7 +105,7 @@ namespace ProffCompanyLookupService
 
     /// @summary Calls the Proff API and returns a JArray of company data.
     /// @return A JArray of company data.</returns>
-    private static async Task<JArray> FetchCompanyDataFromProffApiAsync(string query, string country)
+    private static async Task<JArray> FetchCompanyDataFromProffApiAsync(string query, string country, ILogger log)
     {
       string proffApiKey = "PmWrTlGZhtzEh0xAWQP8cvFBX";
 
@@ -119,6 +117,23 @@ namespace ProffCompanyLookupService
 
       httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", proffApiKey);
       HttpResponseMessage response = await httpClient.GetAsync(proffApiUrl);
+
+      string jsonString = await response.Content.ReadAsStringAsync();
+
+      /*QUERY Call:
+      
+      
+      Orgnummer Call:
+      [{"name":"OSEBERG SOLUTIONS AS","companyTypeName":"Aksjeselskap","organisationNumber":"981586581","email":"","homePage":"http://www.oseberg.no","mobilePhone":"",
+      "telephoneNumber":"48086000","addressLine":"Grev Wedels gate 12","boxAddressLine":"","postPlace":"Tønsberg","zipCode":"3111","numberOfEmployees":"66","nace":null}]
+      */
+
+      /* @NOTE
+       * If we want data like numberOfEmployees, we need to make another call if the first call was a query for a name.
+       */
+      await Console.Out.WriteLineAsync($"JsonString: {jsonString}");
+
+      //log.LogInformation(jsonString);
 
       if (!response.IsSuccessStatusCode)
       {
@@ -133,8 +148,8 @@ namespace ProffCompanyLookupService
 
     private static JArray CreateJArrayFromApiResponse(JObject apiResponse)
     {
-      // If the response contains a "companyTypeName" property, it's a single company object
-      // Otherwise, return the "companies" array from the response
+      /* If the response contains a "companyTypeName" property, it's a single company object
+      Otherwise, return the "companies" array from the response */
       return apiResponse.ContainsKey("companyTypeName") ? new JArray(apiResponse) : apiResponse["companies"] as JArray;
     }
 
@@ -167,7 +182,6 @@ namespace ProffCompanyLookupService
           PostPlace = postalAddress?["postPlace"]?.ToString(),
           ZipCode = postalAddress?["zipCode"]?.ToString()
         };
-
       }).ToList();
     }
   }
