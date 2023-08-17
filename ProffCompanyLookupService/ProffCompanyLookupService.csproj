@@ -20,4 +20,5 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties proffapiresponse_x0020_-_x0020_copy_1json__JsonSchema="JSON" /></VisualStudio></ProjectExtensions>
 </Project>
