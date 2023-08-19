@@ -54,8 +54,9 @@ public class ProffApiService
     JObject apiResponse = JObject.Parse(apiResponseContent);
 
     // Extract the NumberOfEmployees and Nace data from the API response
-    string numberOfEmployees = apiResponse["numberOfEmployees"]?.ToString();
-    string nace = apiResponse["naceCategories"]?[0]?.ToString();
+    string numberOfEmployees = apiResponse["registerListing"]["numberOfEmployees"]?.ToString();
+    string nace = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString();
+
 
     return (numberOfEmployees, nace);
   }
@@ -77,21 +78,3 @@ public class ProffApiService
     return str.All(char.IsDigit);
   }
 }
-
-/*
-    {
-        "name": "Oseberg Solutions AS, avd Oslo",
-        "companyTypeName": null,
-        "organisationNumber": "981586581",
-        "email": "",
-        "homePage": "",
-        "mobilePhone": "",
-        "telephoneNumber": "47908080",
-        "addressLine": "Karl Johans gate 25",
-        "boxAddressLine": "",
-        "postPlace": "Oslo",
-        "zipCode": "0159",
-        "numberOfEmployees": null,
-        "nace": null
-    },
- */

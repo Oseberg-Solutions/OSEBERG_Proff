@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using ProffCompanyLookupService.Services;
 
 namespace ProffCompanyLookupService.Functions
 {
@@ -18,46 +19,49 @@ namespace ProffCompanyLookupService.Functions
     {
       try
       {
+        ProffApiService proffApiService = new();
         string domain = string.IsNullOrEmpty(req.Query["domain"]) ? "Unknown" : req.Query["domain"];
         string query = req.Query["query"];
         string country = req.Query["country"];
+        string proffCompanyId = req.Query["proffCompanyId"];
 
-        if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
+
+        if (string.IsNullOrEmpty(proffCompanyId))
         {
-          return new BadRequestObjectResult("Missing required parameters");
+          if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
+          {
+            return new BadRequestObjectResult("Missing required parameters");
+          }
+
+          JArray companies = await proffApiService.FetchCompanyDataAsync(query, country);
+
+          CompanyDataService companyDataService = new CompanyDataService();
+          var extractedData = companyDataService.ConvertJArrayToCompanyDataList(companies);
+
+          return new OkObjectResult(extractedData);
         }
-
-        ProffApiService proffApiService = new ProffApiService();
-        JArray companies = await proffApiService.FetchCompanyDataAsync(query, country);
-
-        CompanyDataService companyDataService = new CompanyDataService();
-        var extractedData = companyDataService.ConvertJArrayToCompanyDataList(companies);
 
         /*
-          Todo:
-          
-        Okei, so when a a user search for a ORGNR, they will get all companies back if there is more then one.
-        Before we give the result back to the user, we will allready find the ProffCompanyId adn find the nace and number of employees before retuning back the result.
+         * This part will always happen when the user chooses a Company, and only then will this part of the code run, 
+         * where we fetch detailed info where we have to grab from a different endpoint then the one in FetchCompanyDataAsync method on the proffApiService class.
+        */
 
-         */
+        (string numberOfEmployees, string nace) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId);
 
-        // lets get the number of employees and nace for each Companies fetched
-        // This is actually not IDEAL, becasue its overuse of API calls.
-        // We should actually only do this when the user clicks on a Card, then we fetch the Data and send it back.
-        foreach (var company in extractedData)
+        JObject extraCompanyInfo = new()
         {
-          var details = await proffApiService.GetDetailedCompanyInfo(country, company.ProffCompanyId);
-          company.NumberOfEmployees = details.NumberOfEmployees;
-          company.Nace = details.Nace;
-        }
+          ["numberOfEmployees"] = numberOfEmployees,
+          ["Nace"] = nace
+        };
+
+        return new OkObjectResult(extraCompanyInfo);
 
 
 #if !DEBUG
-                TableStorageService tableStorageService = new TableStorageService();
-                await tableStorageService.UpdateProffDomainsTable(domain);
+        AzureTableStorageService tableStorageService = new();
+        await tableStorageService.UpdateProffDomainsTable(domain);
 #endif
 
-        return new OkObjectResult(extractedData);
       }
       catch (Exception ex)
       {

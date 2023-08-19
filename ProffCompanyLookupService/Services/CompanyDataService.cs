@@ -11,12 +11,12 @@ public class CompanyDataService
     {
       JObject phoneNumbers = company["phoneNumbers"] as JObject;
       JObject postalAddress = company["postalAddress"] as JObject;
-      // JArray naceCategories = company["naceCategories"] as JArray;
+      //JArray naceCategories = company["naceCategories"] as JArray;
 
       return new CompanyData
       {
         Name = company["name"]?.ToString(),
-        ProffCompanyId = company["companyId"].ToString(),
+        ProffCompanyId = company["companyId"]?.ToString(),
         CompanyTypeName = company["companyTypeName"]?.ToString(),
         NumberOfEmployees = company["numberOfEmployees"]?.ToString(),
         OrganisationNumber = company["organisationNumber"]?.ToString(),
@@ -28,7 +28,8 @@ public class CompanyDataService
         BoxAddressLine = postalAddress?["boxAddressLine"]?.ToString(),
         PostPlace = postalAddress?["postPlace"]?.ToString(),
         ZipCode = postalAddress?["zipCode"]?.ToString(),
-        // NaceCategories = naceCategories?.Select(nc => nc.ToString()).ToArray()
+        //Nace = naceCategories?.Select(nace => nace.ToString()),
+        //NaceCategories = naceCategories?.Select(nace => nace.ToString())
       };
     }).ToList();
   }

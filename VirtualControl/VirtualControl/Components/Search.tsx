@@ -119,11 +119,16 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     }
   }, [debouncedSearchValue]);
 
-  const handleSearch = async (query: string) => {
+  const handleSearch = async (query: string, proffCompanyId: string = "") => {
     const domain: string = window.location.hostname;
     try {
       const response = await fetch(
-        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}`
+        `${AZURE_FUNCTION_BASE_URL}
+        ?code=${AZURE_FUNCTION_API_KEY}
+        &query=${query}
+        &country=${country}
+        &domain=${domain}
+        &proffCompanyId=${proffCompanyId}`
       );
       if (response.ok) {
         const result = await response.json();
@@ -151,9 +156,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     }
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     setShowConfirmationDialog(false);
     if (selectedItem && selectedItem.name && selectedItem.organisationNumber) {
+      if (selectedItem.ProffCompanyId) {
+        await handleSearch("", selectedItem.ProffCompanyId); // Call handleSearch with the companyId
+      }
       onCardClick(selectedItem);
       setResultsVisible(false);
     }
@@ -223,7 +231,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
         onDismiss={handleCancel}
         dialogContentProps={{
           type: DialogType.normal,
-          title: "Confirmation",
+          title: "PS!",
           closeButtonAriaLabel: "Close",
         }}
         modalProps={{
@@ -231,7 +239,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
         }}
       >
         <div>
-          PS! Dette valget vil overskrive ekisterende data ved lagring.
+          Dette valget vil overskrive ekisterende data ved lagring.
           <br></br>
           Ønsker du å fortsette?
         </div>

@@ -1,5 +1,6 @@
 export interface CompanyData {
   name: string;
+  ProffCompanyId: string;
   organisationNumber: string;
   email: string | null;
   homePage: string | null;
@@ -9,4 +10,6 @@ export interface CompanyData {
   boxAddressLine: string | null;
   postPlace: string | null;
   zipCode: string | null;
+  nace: string | null;
+  numberOfEmployees: string | null;
 }
