@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { SearchBox, ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
+import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import { Dropdown, IDropdownOption } from "@fluentui/react";
 import { Dialog, DialogType, DialogFooter } from "@fluentui/react/lib/Dialog";
 import { DefaultButton, PrimaryButton } from "@fluentui/react/lib/Button";
+import { isAllDigits, removeWhitespaces } from "../utils/utils";
+import { countryOptions, searchBoxStyles } from "../constants/constants";
+import FlagRenderer from "./FlagRenderer";
 import FlagOption from "./FlagOption";
 import { CompanyData } from "../interfaces/CompanyData";
 import "../css/searchcomponent.css";
-import NorwayFlag from "../Components/Flags/NorwayFlag";
-import SwedenFlag from "../Components/Flags/SwedenFlag";
-import DenmarkFlag from "../Components/Flags/DenmarkFlag";
 import ProffIcon from "../Components/ProffIcon";
 import {
   AZURE_FUNCTION_API_KEY,
@@ -21,30 +21,9 @@ interface SearchComponentProps {
 
 const allowCountryChoices = true;
 
-const countryOptions: IDropdownOption[] = [
-  { key: "NO", text: "NO" },
-  { key: "SE", text: "SE" },
-  { key: "DK", text: "DK" },
-];
-
-const searchBoxStyles: Partial<ISearchBoxStyles> = {
-  root: {
-    border: "none",
-    backgroundColor: "#f5f5f5",
-  },
-};
-
 /*----------------------------------------------------------------------------*/
 /* METHODS */
 /*----------------------------------------------------------------------------*/
-function isAllDigits(str: string) {
-  const regex = /^\s*\d+(\s*\d+)*\s*$/;
-  return regex.test(str);
-}
-
-function removeWhitespaces(str: string) {
-  return str.replace(/\s+/g, "");
-}
 
 const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
@@ -69,24 +48,13 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     }
   };
 
-  const renderFlag = (key: string) => {
-    switch (key) {
-      case "SE":
-        return <SwedenFlag />;
-      case "DK":
-        return <DenmarkFlag />;
-      default:
-        return <NorwayFlag />; // NO
-    }
-  };
-
   const renderPlaceholder = () => {
     const selectedCountry = countryOptions.find(
       (option) => option.key === country
     );
     return (
       <div style={{ display: "flex", alignItems: "center" }}>
-        {renderFlag(country)}
+        <FlagRenderer countryKey={country} />
         <span style={{ marginLeft: 8 }}>{selectedCountry?.text}</span>
       </div>
     );
@@ -115,24 +83,35 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
       handleSearch(searchValueToUse);
     } else {
-      setData([]); // Clear the data if the debounced search value is less than 3 characters
+      setData([]);
     }
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string, proffCompanyId: string = "") => {
+    console.log("Calling handle search...");
     const domain: string = window.location.hostname;
     try {
       const response = await fetch(
-        `${AZURE_FUNCTION_BASE_URL}
-        ?code=${AZURE_FUNCTION_API_KEY}
-        &query=${query}
-        &country=${country}
-        &domain=${domain}
-        &proffCompanyId=${proffCompanyId}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}&proffCompanyId=${proffCompanyId}`
       );
+
       if (response.ok) {
         const result = await response.json();
-        setData(result);
+
+        if (proffCompanyId === "") {
+          setData(result);
+          return;
+        }
+
+        const clickedObject = data.find(
+          (item) => item.proffCompanyId === proffCompanyId
+        );
+
+        if (clickedObject) {
+          clickedObject.numberOfEmployees = result.numberOfEmployees || "";
+          clickedObject.nace = result.Nace || "";
+          setData([clickedObject]);
+        }
       } else {
         console.error("Failed to fetch data from Azure Function");
       }
@@ -159,8 +138,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const handleConfirm = async () => {
     setShowConfirmationDialog(false);
     if (selectedItem && selectedItem.name && selectedItem.organisationNumber) {
-      if (selectedItem.ProffCompanyId) {
-        await handleSearch("", selectedItem.ProffCompanyId); // Call handleSearch with the companyId
+      if (selectedItem.proffCompanyId) {
+        await handleSearch("", selectedItem.proffCompanyId);
       }
       onCardClick(selectedItem);
       setResultsVisible(false);
@@ -198,7 +177,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
                 const option = props as IDropdownOption;
                 return (
                   <FlagOption
-                    flag={renderFlag(option.key as string)}
+                    flag={<FlagRenderer countryKey={option.key as string} />}
                     text={option.text}
                   />
                 );

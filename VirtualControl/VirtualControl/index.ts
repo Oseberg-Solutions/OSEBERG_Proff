@@ -49,7 +49,7 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
 
     public handleCardClick = (item: CompanyData): void => {
         this._name = item.name;
-        this._organisationNumber = item.organisationNumber;
+        this._organisationNumber = item.organisationNumber || undefined;
         this._email = item.email || undefined;
         this._homePage = item.homePage || undefined;
         this._mobilePhone = item.mobilePhone || undefined;

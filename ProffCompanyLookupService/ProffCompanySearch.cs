@@ -19,12 +19,12 @@ namespace ProffCompanyLookupService.Functions
     {
       try
       {
-        ProffApiService proffApiService = new();
         string domain = string.IsNullOrEmpty(req.Query["domain"]) ? "Unknown" : req.Query["domain"];
         string query = req.Query["query"];
         string country = req.Query["country"];
         string proffCompanyId = req.Query["proffCompanyId"];
 
+        ProffApiService proffApiService = new();
 
         if (string.IsNullOrEmpty(proffCompanyId))
         {

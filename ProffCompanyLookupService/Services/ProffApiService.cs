@@ -21,9 +21,6 @@ public class ProffApiService
     HttpResponseMessage response = await httpClient.GetAsync(proffApiUrl);
     string responseContent = await response.Content.ReadAsStringAsync();
 
-    SaveApiResponseToFile(responseContent, @"C:\git\PCF-Component\ProffCompanyLookupService\FetchCompanyData.json");
-
-
     if (!response.IsSuccessStatusCode)
     {
       throw new Exception($"Error calling Proff API: {responseContent}");
@@ -49,7 +46,6 @@ public class ProffApiService
     // Capture the full API response
     string apiResponseContent = await response.Content.ReadAsStringAsync();
 
-    SaveApiResponseToFile(apiResponseContent, @"C:\git\PCF-Component\ProffCompanyLookupService\proffApiResponse.json");
 
     JObject apiResponse = JObject.Parse(apiResponseContent);
 
@@ -60,13 +56,6 @@ public class ProffApiService
 
     return (numberOfEmployees, nace);
   }
-
-  private void SaveApiResponseToFile(string content, string filePath)
-  {
-    System.IO.File.WriteAllText(filePath, content);
-  }
-
-
 
   private JArray CreateJArrayFromApiResponse(JObject apiResponse)
   {

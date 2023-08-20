@@ -1,7 +1,7 @@
 export interface CompanyData {
   name: string;
-  ProffCompanyId: string;
-  organisationNumber: string;
+  proffCompanyId: string;
+  organisationNumber: string | null;
   email: string | null;
   homePage: string | null;
   mobilePhone: string | null;
