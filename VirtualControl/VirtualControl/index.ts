@@ -58,6 +58,8 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
         this._boxAddressLine = item.boxAddressLine || undefined;
         this._postPlace = item.postPlace || undefined;
         this._zipCode = item.zipCode || undefined;
+        this._nace = item.nace || undefined;
+        this._numberOfEmployees = item.numberOfEmployees || undefined;
 
         this.notifyOutputChanged();
     };
@@ -81,7 +83,7 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
             address1_postalcode: this._zipCode,
             cr41c_orgnr: this._organisationNumber,
             os_nace: this._nace,
-            os_AntallAnsatte: this._numberOfEmployees
+            os_antallansatte: this._numberOfEmployees
         };
 
         return outputs;

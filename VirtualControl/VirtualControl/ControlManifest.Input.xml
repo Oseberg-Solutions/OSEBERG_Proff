@@ -15,7 +15,7 @@
     <property name="address1_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="cr41c_orgnr" display-name-key="Org Nr" description-key="Org Nr" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_nace" display-name-key="Nace" description-key="Nace" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="os_AntallAnsatte" display-name-key="Antall Ansatte" description-key="Number OfEmployees" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="os_antallansatte" display-name-key="Antall Ansatte" description-key="Antall Ansatte" of-type="SingleLine.Text" usage="bound" required="false" />
     <resources>
       <code path="index.ts" order="1" />
       <platform-library name="React" version="16.8.6" />
