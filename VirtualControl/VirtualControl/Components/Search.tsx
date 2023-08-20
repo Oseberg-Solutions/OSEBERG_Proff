@@ -88,7 +88,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   }, [debouncedSearchValue]);
 
   const handleSearch = async (query: string, proffCompanyId: string = "") => {
-    console.log("Calling handle search...");
     const domain: string = window.location.hostname;
     try {
       const response = await fetch(
@@ -100,6 +99,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
         if (proffCompanyId === "") {
           setData(result);
+          console.log("Data: ", data);
           return;
         }
 
@@ -111,6 +111,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           clickedObject.numberOfEmployees = result.numberOfEmployees || "";
           clickedObject.nace = result.Nace || "";
           setData([clickedObject]);
+          console.log("ClickedObject: ", clickedObject);
+          console.log("Data clicked object: ", data);
         }
       } else {
         console.error("Failed to fetch data from Azure Function");

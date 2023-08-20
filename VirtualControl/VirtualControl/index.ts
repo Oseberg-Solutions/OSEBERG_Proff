@@ -80,8 +80,8 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
             address1_city: this._postPlace,
             address1_postalcode: this._zipCode,
             cr41c_orgnr: this._organisationNumber,
-            nace: this._nace,
-            numberOfEmployees: this._numberOfEmployees
+            os_nace: this._nace,
+            os_AntallAnsatte: this._numberOfEmployees
         };
 
         return outputs;
