@@ -13,4 +13,4 @@ steps:
     git clone -v https://github.com/Oseberg-Solutions/PCF-Component.git
     cd PCF-Component
     echo "Pushing to Azure DevOps..."
-    git push --mirror -v "https://sub@oseberg.com@dev.azure.com/OsebergCRM/CRM%20-%20Proff%20(Firma%20Søk)/"
+    git push --mirror -v "https://OsebergCRM@dev.azure.com/OsebergCRM/CRM%20-%20Proff%20(Firma%20S%C3%B8k)/_git/CRM%20-%20Proff%20(Firma%20S%C3%B8k)"
