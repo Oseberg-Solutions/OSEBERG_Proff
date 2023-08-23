@@ -15,4 +15,5 @@ steps:
 - checkout: none
 - script: |
     git clone https://github.com/Oseberg-Solutions/PCF-Component.git
+    cd PCF-Component
     git push https://sub@oseberg.com@dev.azure.com/OsebergCRM/CRM%20-%20Proff%20(Firma%20Søk)/_git/PCF-Component --all
