@@ -4,7 +4,7 @@ For PCF Komponentet, bruker vi React med Typscript og Fluent UI for style.
 
 Vi bruker REST API tjenesten til Proff for å query data, men Proff tilatter ikke direkte kommunikasjon mellom nettleser og deres webtjenester, så vi opprettet en .NET Azure Function som en Proxy server som fungerer da som et mellomledd for data flyten.
 
-Alle spørringer og responser går gjennom denne Azure Function applikasjonen. Se gjerne på flowchart under for en mer visuell beskrivelse.
+Alle spørringer og responser går gjennom denne Azure Function applikasjonen. Se gjerne på flowchart visualiseringen under for en mer detaljert og visuell beskrivelse av løsningensflyten.
 
 Flowchart av løsningen:
 
