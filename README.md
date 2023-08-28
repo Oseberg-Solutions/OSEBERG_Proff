@@ -46,5 +46,8 @@ Når vi har klikket på VirtualControl, så får vi opp et vindu som viser alle 
 
 I koden så har jeg allerede spesifisert de "Standard" feltene, og disse vil da automatisk bli feltet, men når det gjelder felter som ikke er "Standard" så må disse mappes.
 
-Eks i CRM så har vi ingen standard NACE felt, så her må vi da opprette et tekst felt på forretningsforbindelse som heter noe med osb_nace, så mapper vi det da opp:
+Eks i CRM så har vi ingen standard NACE felt, så her må vi da opprette et tekst felt på forretningsforbindelse som heter noe med osb_nace.
+
+Vi mapper dette da opp ved å finne nace feltet vi lagde:
+
 ![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/f06990e0-4d5f-4d39-89b4-94803324ee15)
