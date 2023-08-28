@@ -11,7 +11,6 @@ public class CompanyDataService
     {
       JObject phoneNumbers = company["phoneNumbers"] as JObject;
       JObject postalAddress = company["postalAddress"] as JObject;
-      //JArray naceCategories = company["naceCategories"] as JArray;
 
       return new CompanyData
       {
@@ -28,8 +27,6 @@ public class CompanyDataService
         BoxAddressLine = postalAddress?["boxAddressLine"]?.ToString(),
         PostPlace = postalAddress?["postPlace"]?.ToString(),
         ZipCode = postalAddress?["zipCode"]?.ToString(),
-        //Nace = naceCategories?.Select(nace => nace.ToString()),
-        //NaceCategories = naceCategories?.Select(nace => nace.ToString())
       };
     }).ToList();
   }
