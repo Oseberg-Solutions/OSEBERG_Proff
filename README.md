@@ -26,6 +26,7 @@ Felter vi henter fra proff:
 - Orgnr
 - Nace
 - Antall ansatte
+- Total Omsatt (Kommer...)
 
 Vi må huske å mappe disse feltene riktig når vi setter opp PCF Komponentet:
 Gå til Løsningen:
