@@ -28,3 +28,22 @@ Felter vi henter fra proff:
 - Antall ansatte
 
 Vi må huske å mappe disse feltene riktig når vi setter opp PCF Komponentet:
+Gå til Løsningen:
+![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/0ce76636-b20e-4ead-b04a-2703cdccea5e)
+
+Velg da Tabeller -> Så forretningsforbindelse -> Skjema så klikk å Hovedskjema:
+
+![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/256ae2da-8134-43cf-8e46-919fe6e731ba)
+
+Når vi er inne på skjema, dobbelklikk på Søke feltet, velg så Komponenter for å utvide for å se flere valg i Egeneskaper. Klikk så på VirtualControl:
+
+![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/2a557c3d-9837-4df0-aa5a-6dc55a1f885f)
+
+Når vi har klikket på VirtualControl, så får vi opp et vindu som viser alle feltene vi henter, og disse kan vi nå mappe til felter i Forretningsforbindelse felter:
+
+![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/6f9e6582-4ef6-436e-a2f5-bcfb89dd9a77)
+
+I koden så har jeg allerede spesifisert de "Standard" feltene, og disse vil da automatisk bli feltet, men når det gjelder felter som ikke er "Standard" så må disse mappes.
+
+Eks i CRM så har vi ingen standard NACE felt, så her må vi da opprette et tekst felt på forretningsforbindelse som heter noe med osb_nace, så mapper vi det da opp:
+![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/f06990e0-4d5f-4d39-89b4-94803324ee15)
