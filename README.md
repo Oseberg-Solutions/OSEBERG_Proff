@@ -8,4 +8,4 @@ Alle spørringer og responser går gjennom denne Azure Function applikasjonen. S
 
 Flowchart av løsningen:
 
-![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/b30fa934-a4ee-4e0a-8bb2-72edd121d39a)
+![Flow](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/bfb038c7-562d-49ad-a8b7-8fbfa396c842)
