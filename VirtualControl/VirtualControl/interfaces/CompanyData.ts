@@ -12,4 +12,6 @@ export interface CompanyData {
   zipCode: string | null;
   nace: string | null;
   numberOfEmployees: string | null;
+  profit: string | null;
+  revenue: string | null;
 }

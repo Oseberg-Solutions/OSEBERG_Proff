@@ -17,7 +17,8 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
     private _zipCode: string | undefined;
     private _nace: string | undefined;
     private _numberOfEmployees: string | undefined;
-
+    private _profit: string | undefined;
+    private _revenue: string | undefined;
 
     private context: ComponentFramework.Context<IInputs>;
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
@@ -65,6 +66,8 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
         this._zipCode = item.zipCode || undefined;
         this._nace = item.nace || undefined;
         this._numberOfEmployees = item.numberOfEmployees || undefined;
+        this._profit = item.profit || undefined;
+        this._revenue = item.revenue || undefined;
 
         this.notifyOutputChanged();
     };
@@ -88,7 +91,9 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
             address1_postalcode: this._zipCode,
             cr41c_orgnr: this._organisationNumber,
             os_nace: this._nace,
-            os_antallansatte: this._numberOfEmployees
+            os_antallansatte: this._numberOfEmployees,
+            os_driftsinntekter: this._revenue,
+            os_profit: this._profit
         };
 
         return outputs;

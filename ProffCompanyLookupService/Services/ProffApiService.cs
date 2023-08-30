@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using static System.Net.WebRequestMethods;
 
@@ -30,8 +31,10 @@ public class ProffApiService
     return CreateJArrayFromApiResponse(apiResponse);
   }
 
-  public async Task<(string NumberOfEmployees, string Nace)> GetDetailedCompanyInfo(string country, string proffCompanyId)
+  public async Task<(string NumberOfEmployees, string Nace, string Profit, String Revenue)> GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
   {
+    log.LogInformation("Calling Get Detailed Company Info");
+
     string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
 
     httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", proffApiKey);
@@ -48,13 +51,17 @@ public class ProffApiService
 
 
     JObject apiResponse = JObject.Parse(apiResponseContent);
+    log.LogInformation($"Api Response: {apiResponse}");
+
 
     // Extract the NumberOfEmployees and Nace data from the API response
     string numberOfEmployees = apiResponse["registerListing"]["numberOfEmployees"]?.ToString();
     string nace = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString();
 
+    string profit= apiResponse["registerListing"]["profit"]?.ToString();
+    string revenue = apiResponse["registerListing"]["revenue"]?.ToString();
 
-    return (numberOfEmployees, nace);
+    return (numberOfEmployees, nace, profit, revenue);
   }
 
   private JArray CreateJArrayFromApiResponse(JObject apiResponse)

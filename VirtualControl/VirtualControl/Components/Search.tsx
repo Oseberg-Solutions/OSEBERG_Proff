@@ -60,6 +60,20 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     );
   };
 
+  function thousandSeparator(input: string): string {
+    // Reverse the string to start from the least significant digit
+    let reversed = input.split("").reverse().join("");
+
+    // Add a space every 3 digits
+    let chunks = [];
+    for (let i = 0; i < reversed.length; i += 3) {
+      chunks.push(reversed.substr(i, 3));
+    }
+
+    // Join the chunks with a space and reverse it back to its original form
+    return chunks.join(" ").split("").reverse().join("");
+  }
+
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearchValue(searchValue);
@@ -99,7 +113,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
 
         if (proffCompanyId === "") {
           setData(result);
-          console.log("Data: ", data);
           return;
         }
 
@@ -110,9 +123,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
         if (clickedObject) {
           clickedObject.numberOfEmployees = result.numberOfEmployees || "";
           clickedObject.nace = result.Nace || "";
+          clickedObject.profit = thousandSeparator(result.profit) || "";
+          clickedObject.revenue = thousandSeparator(result.revenue) || "";
+
           setData([clickedObject]);
-          console.log("ClickedObject: ", clickedObject);
-          console.log("Data clicked object: ", data);
         }
       } else {
         console.error("Failed to fetch data from Azure Function");
@@ -221,6 +235,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
       >
         <div>
           Dette valget vil overskrive ekisterende data ved lagring.
+          <br></br>
           <br></br>
           Ønsker du å fortsette?
         </div>

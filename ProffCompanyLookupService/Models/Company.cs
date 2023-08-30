@@ -22,5 +22,8 @@ namespace ProffCompanyLookupService.Models
     public string ZipCode { get; set; }
     public string NumberOfEmployees { get; set; }
     public string Nace { get; set; }
+    public string Profit { get; set; }
+    public string Revenue { get; set; }
+
   }
 }
