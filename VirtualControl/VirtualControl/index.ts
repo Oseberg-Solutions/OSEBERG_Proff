@@ -47,11 +47,6 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
             SearchComponent, props
         );
     }
-    /* 
-        Fikse Nytt felt, Antall Ansatte osv. 
-        
-    */
-
 
     public handleCardClick = (item: CompanyData): void => {
         this._name = item.name;

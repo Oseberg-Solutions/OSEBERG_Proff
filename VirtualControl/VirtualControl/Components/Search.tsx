@@ -101,6 +101,26 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
     }
   }, [debouncedSearchValue]);
 
+  useEffect(() => {
+    const performConfirm = async () => {
+      if (
+        selectedItem &&
+        selectedItem.name &&
+        selectedItem.organisationNumber
+      ) {
+        if (selectedItem.proffCompanyId) {
+          await handleSearch("", selectedItem.proffCompanyId);
+        }
+        onCardClick(selectedItem);
+        setResultsVisible(false);
+      }
+    };
+
+    if (selectedItem) {
+      performConfirm();
+    }
+  }, [selectedItem]);
+
   const handleSearch = async (query: string, proffCompanyId: string = "") => {
     const domain: string = window.location.hostname;
     try {
@@ -145,25 +165,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   };
 
   const handleCardClick = (item: CompanyData) => {
-    if (item.name && item.organisationNumber) {
-      setSelectedItem(item);
-      setShowConfirmationDialog(true);
-    }
-  };
-
-  const handleConfirm = async () => {
-    setShowConfirmationDialog(false);
-    if (selectedItem && selectedItem.name && selectedItem.organisationNumber) {
-      if (selectedItem.proffCompanyId) {
-        await handleSearch("", selectedItem.proffCompanyId);
-      }
-      onCardClick(selectedItem);
-      setResultsVisible(false);
-    }
-  };
-
-  const handleCancel = () => {
-    setShowConfirmationDialog(false);
+    setSelectedItem(item);
+    setSearchValue("");
+    setDebouncedSearchValue("");
   };
 
   return (
@@ -221,30 +225,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           </div>
         )}
       </div>
-
-      <Dialog
-        hidden={!showConfirmationDialog}
-        onDismiss={handleCancel}
-        dialogContentProps={{
-          type: DialogType.normal,
-          title: "PS!",
-          closeButtonAriaLabel: "Close",
-        }}
-        modalProps={{
-          isBlocking: true,
-        }}
-      >
-        <div>
-          Dette valget vil overskrive ekisterende data ved lagring.
-          <br></br>
-          <br></br>
-          Ønsker du å fortsette?
-        </div>
-        <DialogFooter>
-          <PrimaryButton onClick={handleConfirm} text="Ok" />
-          <DefaultButton onClick={handleCancel} text="Cancel" />
-        </DialogFooter>
-      </Dialog>
     </div>
   );
 };
