@@ -221,6 +221,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           </div>
         )}
       </div>
+
       <Dialog
         hidden={!showConfirmationDialog}
         onDismiss={handleCancel}

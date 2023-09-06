@@ -91,8 +91,8 @@ export class VirtualControl implements ComponentFramework.ReactControl<IInputs, 
             address1_postalcode: this._zipCode,
             cr41c_orgnr: this._organisationNumber,
             os_nace: this._nace,
-            os_antallansatte: this._numberOfEmployees,
-            os_driftsinntekter: this._revenue,
+            numberofemployees: this._numberOfEmployees,
+            revenue: this._revenue,
             os_profit: this._profit
         };
 
