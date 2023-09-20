@@ -31,8 +31,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const [resultsVisible, setResultsVisible] = useState<Boolean>(true);
   const [searchValue, setSearchValue] = useState<string>("");
   const [country, setCountry] = useState<string>("NO");
-  const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
   const [data, setData] = useState<CompanyData[]>([]);
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>("");
   const [showConfirmationDialog, setShowConfirmationDialog] =
     useState<boolean>(false);
   const filteredCountryOptions = countryOptions.filter(
@@ -61,16 +61,13 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   };
 
   function thousandSeparator(input: string): string {
-    // Reverse the string to start from the least significant digit
     let reversed = input.split("").reverse().join("");
 
-    // Add a space every 3 digits
     let chunks = [];
     for (let i = 0; i < reversed.length; i += 3) {
       chunks.push(reversed.substr(i, 3));
     }
 
-    // Join the chunks with a space and reverse it back to its original form
     return chunks.join(" ").split("").reverse().join("");
   }
 
@@ -145,6 +142,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           clickedObject.nace = result.Nace || "";
           clickedObject.profit = thousandSeparator(result.profit) || "";
           clickedObject.revenue = thousandSeparator(result.revenue) || "";
+          clickedObject.country = country;
 
           setData([clickedObject]);
         }

@@ -6,8 +6,13 @@ export interface CompanyData {
   homePage: string | null;
   mobilePhone: string | null;
   telephoneNumber: string | null;
+  country: string | null;
   addressLine: string | null;
   boxAddressLine: string | null;
+  visitorAddressLine: string | null;
+  visitorBoxAddressLine: string | null;
+  visitorPostPlace: string | null;
+  visitorZipCode: string | null;
   postPlace: string | null;
   zipCode: string | null;
   nace: string | null;

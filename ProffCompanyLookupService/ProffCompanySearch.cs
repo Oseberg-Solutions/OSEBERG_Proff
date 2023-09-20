@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using ProffCompanyLookupService.Services;
+using System.Data.Common;
 
 namespace ProffCompanyLookupService.Functions
 {
@@ -49,14 +50,18 @@ namespace ProffCompanyLookupService.Functions
          * where we fetch detailed info where we have to grab from a different endpoint then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
 
-        (string numberOfEmployees, string nace, string profit, string revenue) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
+        (string numberOfEmployees, string nace, string profit, string revenue, string visitorAddressLine, string visitorBoxAddressLine, string visitorPostPlace, string visitorZipCode) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
 
         JObject extraCompanyInfo = new()
         {
           ["numberOfEmployees"] = numberOfEmployees,
           ["Nace"] = nace,
           ["profit"] = profit,
-          ["revenue"] = revenue
+          ["revenue"] = revenue,
+          ["visitorAddressLine"] = visitorAddressLine,
+          ["visitorBoxAddressLine"] = visitorBoxAddressLine,
+          ["visitorPostPlace"] = visitorPostPlace,
+          ["visitorZipCode"] = visitorZipCode
         };
 
         return new OkObjectResult(extraCompanyInfo);

@@ -31,7 +31,7 @@ public class ProffApiService
     return CreateJArrayFromApiResponse(apiResponse);
   }
 
-  public async Task<(string NumberOfEmployees, string Nace, string Profit, String Revenue)> GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
+  public async Task<(string NumberOfEmployees, string Nace, string Profit, string Revenue, string visitorAddressLine, string visitorBoxAddressLine, string visitorPostPlace, string visitorZipCode)> GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
   {
     log.LogInformation("Calling Get Detailed Company Info");
 
@@ -57,11 +57,15 @@ public class ProffApiService
     // Extract the NumberOfEmployees and Nace data from the API response
     string numberOfEmployees = apiResponse["registerListing"]["numberOfEmployees"]?.ToString();
     string nace = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString();
-
-    string profit= apiResponse["registerListing"]["profit"]?.ToString();
+    string profit = apiResponse["registerListing"]["profit"]?.ToString();
     string revenue = apiResponse["registerListing"]["revenue"]?.ToString();
 
-    return (numberOfEmployees, nace, profit, revenue);
+    string visitorAddressLine = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString();
+    string visitorBoxAddressLine = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString();
+    string visitorPostPlace = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString();
+    string visitorZipCode = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString();
+
+    return (numberOfEmployees, nace, profit, revenue, visitorAddressLine, visitorBoxAddressLine, visitorPostPlace, visitorZipCode);
   }
 
   private JArray CreateJArrayFromApiResponse(JObject apiResponse)

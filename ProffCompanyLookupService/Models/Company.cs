@@ -9,7 +9,7 @@ namespace ProffCompanyLookupService.Models
   public class CompanyData
   {
     public string Name { get; set; }
-    public string ProffCompanyId { get; set; } // Use this to fetch the NACe and employees data
+    public string ProffCompanyId { get; set; }
     public string CompanyTypeName { get; set; }
     public string OrganisationNumber { get; set; }
     public string Email { get; set; }
@@ -25,5 +25,9 @@ namespace ProffCompanyLookupService.Models
     public string Profit { get; set; }
     public string Revenue { get; set; }
 
+    public string VisitorAddressLine { get; set; }
+    public string VisitorBoxAddressLine { get; set; }
+    public string VisitorPostPlace { get; set; }
+    public string VisitorZipCode { get; set; }
   }
 }

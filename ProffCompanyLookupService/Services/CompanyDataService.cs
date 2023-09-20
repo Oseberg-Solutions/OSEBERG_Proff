@@ -11,6 +11,7 @@ public class CompanyDataService
     {
       JObject phoneNumbers = company["phoneNumbers"] as JObject;
       JObject postalAddress = company["postalAddress"] as JObject;
+      JObject visitorAddress = company["visitorAddress"] as JObject;
 
       return new CompanyData
       {
@@ -27,6 +28,11 @@ public class CompanyDataService
         BoxAddressLine = postalAddress?["boxAddressLine"]?.ToString(),
         PostPlace = postalAddress?["postPlace"]?.ToString(),
         ZipCode = postalAddress?["zipCode"]?.ToString(),
+
+        VisitorAddressLine = visitorAddress?["addressLine"]?.ToString(),
+        VisitorBoxAddressLine = visitorAddress?["boxAddressLine"]?.ToString(),
+        VisitorPostPlace = visitorAddress?["postPlace"]?.ToString(),
+        VisitorZipCode = visitorAddress?["zipCode"]?.ToString(),
       };
     }).ToList();
   }
