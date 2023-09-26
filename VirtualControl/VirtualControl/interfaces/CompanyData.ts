@@ -19,4 +19,5 @@ export interface CompanyData {
   numberOfEmployees: string | null;
   profit: string | null;
   revenue: string | null;
+  sic: string | null;
 }

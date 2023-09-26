@@ -51,3 +51,8 @@ Eks i CRM så har vi ingen standard NACE felt, så her må vi da opprette et tek
 Vi mapper dette da opp ved å finne nace feltet vi lagde:
 
 ![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/f06990e0-4d5f-4d39-89b4-94803324ee15)
+
+Det blir lagret hvilket domenet som gjør hvor mange kaller mot APIET:
+![Alt text](image.png)
+
+Per nå så lagrer vi ikke kunde for hver mnd, men dette skal vi utvide på til jeg kommer tilbake fra pappa perm.

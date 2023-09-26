@@ -14,19 +14,21 @@
     <property name="boxAddressLine" display-name-key="Box Address Line" description-key="Box Address Line" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address1_city" display-name-key="Post Place" description-key="Post Place" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address1_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="address1_country" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="address1_country" display-name-key="Country" description-key="Country" of-type="SingleLine.Text" usage="bound" required="false" />
 
 
     <property name="address2_line1" display-name-key="Address Line" description-key="Address Line" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address2_city" display-name-key="Post Place" description-key="Post Place" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address2_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
-
+    <property name="address2_country" display-name-key="Country" description-key="Country" of-type="SingleLine.Text" usage="bound" required="false" />
 
     <property name="cr41c_orgnr" display-name-key="Org Nr" description-key="Org Nr" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_nace" display-name-key="Nace" description-key="Nace" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="numberofemployees" display-name-key="Antall Ansatte" description-key="Antall Ansatte" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_profit" display-name-key="Profit" description-key="Profit" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="revenue" display-name-key="Driftsinntekter" description-key="Driftsinntekter" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="sic" display-name-key="Bransjekode" description-key="Bransjekode" of-type="SingleLine.Text" usage="bound" required="false" />
+
     <resources>
       <code path="index.ts" order="1" />
       <platform-library name="React" version="16.8.6" />

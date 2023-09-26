@@ -141,7 +141,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           clickedObject.numberOfEmployees = result.numberOfEmployees || "";
           clickedObject.nace = result.Nace || "";
           clickedObject.profit = thousandSeparator(result.profit) || "";
-          clickedObject.revenue = thousandSeparator(result.revenue) || "";
+          clickedObject.revenue = result.revenue || "";
           clickedObject.country = country;
 
           setData([clickedObject]);

@@ -15,9 +15,11 @@ export class VirtualControl
   private _addressLine: string | undefined;
   private _boxAddressLine: string | undefined;
   private _country: string | undefined;
+
   private _visitorAddressLine: string | undefined;
   private _vistiorPostPlace: string | undefined;
   private _visitorZipCode: string | undefined;
+  private _visitorCountry: string | undefined;
 
   private _postPlace: string | undefined;
   private _zipCode: string | undefined;
@@ -25,6 +27,7 @@ export class VirtualControl
   private _numberOfEmployees: string | undefined;
   private _profit: string | undefined;
   private _revenue: string | undefined;
+  private _sic: string | undefined;
 
   private context: ComponentFramework.Context<IInputs>;
   private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
@@ -60,6 +63,7 @@ export class VirtualControl
     this._homePage = item.homePage || undefined;
     this._mobilePhone = item.mobilePhone || undefined;
     this._telephoneNumber = item.telephoneNumber || undefined;
+
     this._country = item.country || undefined;
 
     this._addressLine = item.addressLine || undefined;
@@ -70,12 +74,13 @@ export class VirtualControl
     this._visitorAddressLine = item.visitorAddressLine || undefined;
     this._vistiorPostPlace = item.visitorPostPlace || undefined;
     this._visitorZipCode = item.visitorZipCode || undefined;
+    this._visitorCountry = item.country || undefined;
 
     this._nace = item.nace || undefined;
     this._numberOfEmployees = item.numberOfEmployees || undefined;
     this._profit = item.profit || undefined;
     this._revenue = item.revenue || undefined;
-
+    this._sic = item.sic || undefined;
     this.notifyOutputChanged();
   };
 
@@ -99,11 +104,13 @@ export class VirtualControl
       address2_line1: this._visitorAddressLine,
       address2_postalcode: this._visitorZipCode,
       address2_city: this._vistiorPostPlace,
+      address2_country: this._visitorCountry,
       cr41c_orgnr: this._organisationNumber,
       os_nace: this._nace,
       numberofemployees: this._numberOfEmployees,
       revenue: this._revenue,
       os_profit: this._profit,
+      //sic: this._sic,
     };
 
     return outputs;
