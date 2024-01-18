@@ -36,11 +36,3 @@
     </resources>
   </control>
 </manifest>
-
-
-"""visitorAddress"": {
-  ""addressLine"": ""Karl Johans gate 25"",
-  ""boxAddressLine"": null,
-  ""postPlace"": ""Oslo"",
-  ""zipCode"": ""0159""
-}"

@@ -28,7 +28,6 @@ public class CompanyDataService
         BoxAddressLine = postalAddress?["boxAddressLine"]?.ToString(),
         PostPlace = postalAddress?["postPlace"]?.ToString(),
         ZipCode = postalAddress?["zipCode"]?.ToString(),
-
         VisitorAddressLine = visitorAddress?["addressLine"]?.ToString(),
         VisitorBoxAddressLine = visitorAddress?["boxAddressLine"]?.ToString(),
         VisitorPostPlace = visitorAddress?["postPlace"]?.ToString(),

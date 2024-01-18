@@ -28,6 +28,7 @@ const allowCountryChoices = true;
 const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
   const [selectedItem, setSelectedItem] = useState<CompanyData | null>(null);
+  const [cachedItem, setCachedItem] = useState<CompanyData | null>(null);
   const [resultsVisible, setResultsVisible] = useState<Boolean>(true);
   const [searchValue, setSearchValue] = useState<string>("");
   const [country, setCountry] = useState<string>("NO");
@@ -163,10 +164,35 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   };
 
   const handleCardClick = (item: CompanyData) => {
-    setSelectedItem(item);
-    setSearchValue("");
-    setDebouncedSearchValue("");
+    if (item.name && item.organisationNumber) {
+      setShowConfirmationDialog(true);
+      setCachedItem(item);
+      setSearchValue("");
+      setDebouncedSearchValue("");
+    }
   };
+
+  const handleConfirm = async () => {
+    if (cachedItem) setSelectedItem(cachedItem);
+    setShowConfirmationDialog(false);
+
+    if (selectedItem) {
+      if (selectedItem.proffCompanyId) {
+        await handleSearch("", selectedItem.proffCompanyId);
+      }
+      onCardClick(selectedItem);
+      setResultsVisible(false);
+      setCachedItem(null);
+    }
+  };
+
+  const handleCancel = () => {
+    setShowConfirmationDialog(false);
+  };
+
+  /*----------------------------------------------------------------------------*/
+  /* JSX */
+  /*----------------------------------------------------------------------------*/
 
   return (
     <div className="main-container">
@@ -223,6 +249,29 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
           </div>
         )}
       </div>
+      <Dialog
+        hidden={!showConfirmationDialog}
+        onDismiss={handleCancel}
+        dialogContentProps={{
+          type: DialogType.normal,
+          title: "Advarsel",
+          closeButtonAriaLabel: "Close",
+        }}
+        modalProps={{
+          isBlocking: true,
+        }}
+      >
+        <div>
+          Dette valget vil overskrive ekisterende data ved lagring.
+          <br></br>
+          <br></br>
+          Ønsker du å fortsette?
+        </div>
+        <DialogFooter>
+          <PrimaryButton onClick={handleConfirm} text="Ok" />
+          <DefaultButton onClick={handleCancel} text="Cancel" />
+        </DialogFooter>
+      </Dialog>
     </div>
   );
 };

@@ -21,7 +21,6 @@ namespace ProffCompanyLookupService.Functions
       try
       {
         string domain = string.IsNullOrEmpty(req.Query["domain"]) ? "Unknown" : req.Query["domain"];
-
         string query = req.Query["query"];
         string country = req.Query["country"];
         string proffCompanyId = req.Query["proffCompanyId"];
@@ -44,13 +43,19 @@ namespace ProffCompanyLookupService.Functions
           return new OkObjectResult(extractedData);
         }
 
-
         /*
          * This part will always happen when the user chooses a Company, and only then will this part of the code run, 
          * where we fetch detailed info where we have to grab from a different endpoint then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
-
-        (string numberOfEmployees, string nace, string profit, string revenue, string visitorAddressLine, string visitorBoxAddressLine, string visitorPostPlace, string visitorZipCode) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
+        
+         (string numberOfEmployees, 
+          string nace, 
+          string profit, 
+          string revenue, 
+          string visitorAddressLine, 
+          string visitorBoxAddressLine, 
+          string visitorPostPlace, 
+          string visitorZipCode) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
 
         JObject extraCompanyInfo = new()
         {
