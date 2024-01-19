@@ -3,7 +3,11 @@ import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import { Dropdown, IDropdownOption } from "@fluentui/react";
 import { Dialog, DialogType, DialogFooter } from "@fluentui/react/lib/Dialog";
 import { DefaultButton, PrimaryButton } from "@fluentui/react/lib/Button";
-import { isAllDigits, removeWhitespaces } from "../utils/utils";
+import {
+  isAllDigits,
+  removeWhitespaces,
+  thousandSeparator,
+} from "../utils/utils";
 import { countryOptions, searchBoxStyles } from "../constants/constants";
 import FlagRenderer from "./FlagRenderer";
 import FlagOption from "./FlagOption";
@@ -60,17 +64,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
       </div>
     );
   };
-
-  function thousandSeparator(input: string): string {
-    let reversed = input.split("").reverse().join("");
-
-    let chunks = [];
-    for (let i = 0; i < reversed.length; i += 3) {
-      chunks.push(reversed.substr(i, 3));
-    }
-
-    return chunks.join(" ").split("").reverse().join("");
-  }
 
   useEffect(() => {
     const handler = setTimeout(() => {

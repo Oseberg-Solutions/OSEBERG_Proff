@@ -12,6 +12,7 @@
     "refreshTypes": "pcf-scripts refreshTypes"
   },
   "dependencies": {
+    "@azure/msal-browser": "^3.7.0",
     "@fluentui/react": "8.29.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"

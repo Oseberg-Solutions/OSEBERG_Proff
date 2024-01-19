@@ -16,7 +16,6 @@
     <property name="address1_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address1_country" display-name-key="Country" description-key="Country" of-type="SingleLine.Text" usage="bound" required="false" />
 
-
     <property name="address2_line1" display-name-key="Address Line" description-key="Address Line" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address2_city" display-name-key="Post Place" description-key="Post Place" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="address2_postalcode" display-name-key="Zip Code" description-key="Zip Code" of-type="SingleLine.Text" usage="bound" required="false" />
