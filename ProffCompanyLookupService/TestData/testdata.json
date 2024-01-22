@@ -1,0 +1,3528 @@
+﻿{
+  "companies": [
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IFCIHIY08ND",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E164954695",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Suran Mehmoudy",
+      "organisationNumber": "928010554",
+      "sOrganisationNumber": null,
+      "rank": 110315.4375,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "11209",
+        "name": "Transport",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/11209",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=11209&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/11209/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IFCIHIY08ND",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "11209",
+          "companyId": "IFCIHIY08ND",
+          "description": null,
+          "name": "Transport",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "379",
+          "companyId": "IFCIHIY00AJ",
+          "description": null,
+          "name": "Drosjer",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "47379",
+          "companyId": "IFCIHIY10K3",
+          "description": null,
+          "name": "Passasjertransport",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Østfold",
+        "municipality": "Fredrikstad",
+        "coordinates": [
+          {
+            "XCoordinate": 10.9188958,
+            "YCoordinate": 59.2353096,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Pettersand 54",
+        "boxAddressLine": null,
+        "postPlace": "Fredrikstad",
+        "zipCode": "1614"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Pettersand 54",
+        "boxAddressLine": null,
+        "postPlace": "Fredrikstad",
+        "zipCode": "1614"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IF5EHC007QQ",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E122637358",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Laszlo Surany",
+      "organisationNumber": "916066368",
+      "sOrganisationNumber": null,
+      "rank": 100232.75,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "10034",
+        "name": "Underholdning- og arrangørtjenester",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/10034",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=10034&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/10034/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IF5EHC007QQ",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "10034",
+          "companyId": "IF5EHC007QQ",
+          "description": null,
+          "name": "Underholdning- og arrangørtjenester",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Nord-Norge",
+        "county": "Troms",
+        "municipality": "Kvæfjord",
+        "coordinates": [
+          {
+            "XCoordinate": 16.0933448,
+            "YCoordinate": 68.8148806,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Røysveien 7",
+        "boxAddressLine": null,
+        "postPlace": "Borkenes",
+        "zipCode": "9475"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Røysveien 7",
+        "boxAddressLine": null,
+        "postPlace": "Borkenes",
+        "zipCode": "9475"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IGG2QRO00XB",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E87054246",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Suranga Wickramanayake",
+      "organisationNumber": "994460676",
+      "sOrganisationNumber": null,
+      "rank": 100190.75,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "1199",
+        "name": "Leger",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/1199",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=1199&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/1199/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IGG2QRO00XB",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "1199",
+          "companyId": "IGG2QRO00XB",
+          "description": null,
+          "name": "Leger",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "9003",
+          "companyId": "IGG2QRO06Y3",
+          "description": null,
+          "name": "Helsetjenester",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Vestlandet",
+        "county": "Vestland",
+        "municipality": "Voss",
+        "coordinates": [
+          {
+            "XCoordinate": 6.4295795,
+            "YCoordinate": 60.6352674,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Ringheimsvegen 52",
+        "boxAddressLine": null,
+        "postPlace": "Voss",
+        "zipCode": "5705"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Ringheimsvegen 52",
+        "boxAddressLine": null,
+        "postPlace": "Voss",
+        "zipCode": "5705"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IF30VPS10P5",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E94908366",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Nina SPA & Beaty Jetjinda Surangkana",
+      "organisationNumber": "912072592",
+      "sOrganisationNumber": null,
+      "rank": 100167.609375,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "47561",
+        "name": "Kroppspleie og fysisk velvære",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/47561",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=47561&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/47561/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IF30VPS10P5",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "47561",
+          "companyId": "IF30VPS10P5",
+          "description": null,
+          "name": "Kroppspleie og fysisk velvære",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Vestlandet",
+        "county": "Rogaland",
+        "municipality": "Sandnes",
+        "coordinates": [
+          {
+            "XCoordinate": 5.7367416,
+            "YCoordinate": 58.8550015,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "99674453",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Parkveien 5",
+        "boxAddressLine": null,
+        "postPlace": "Sandnes",
+        "zipCode": "4307"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Parkveien 5",
+        "boxAddressLine": null,
+        "postPlace": "Sandnes",
+        "zipCode": "4307"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IFA058K07TR",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E153915226",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Magnus Uran Eiendomsservice",
+      "organisationNumber": "923795588",
+      "sOrganisationNumber": null,
+      "rank": 48.785160064697266,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "10143",
+        "name": "Bygningshåndverkere",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/10143",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=10143&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/10143/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IFA058K07TR",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "10143",
+          "companyId": "IFA058K07TR",
+          "description": null,
+          "name": "Bygningshåndverkere",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "19946",
+          "companyId": "IFA058K0FE2",
+          "description": null,
+          "name": "Snekkere",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Akershus",
+        "municipality": "Bærum",
+        "coordinates": [
+          {
+            "XCoordinate": 10.626849,
+            "YCoordinate": 59.9391847,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Eilins vei 19 A",
+        "boxAddressLine": null,
+        "postPlace": "Jar",
+        "zipCode": "1358"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Eilins vei 19 A",
+        "boxAddressLine": null,
+        "postPlace": "Jar",
+        "zipCode": "1358"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IF578P80ARC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E120684349",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "S Insurance AS",
+      "organisationNumber": "915728588",
+      "sOrganisationNumber": null,
+      "rank": 34.69529342651367,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "13944",
+        "name": "Forsikring",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=13944&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IF578P80ARC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "13944",
+          "companyId": "IF578P80ARC",
+          "description": null,
+          "name": "Forsikring",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Vestlandet",
+        "county": "Vestland",
+        "municipality": "Bergen",
+        "coordinates": [
+          {
+            "XCoordinate": 5.3410517,
+            "YCoordinate": 60.3438672,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "90812526",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Statsminister Michelsens veg 38",
+        "boxAddressLine": null,
+        "postPlace": "Paradis",
+        "zipCode": "5230"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Statsminister Michelsens veg 38",
+        "boxAddressLine": null,
+        "postPlace": "Paradis",
+        "zipCode": "5230"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IF8UP2X0ARC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E148014942",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Ag-Insurance AS",
+      "organisationNumber": "921861753",
+      "sOrganisationNumber": null,
+      "rank": 34.69529342651367,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "13944",
+        "name": "Forsikring",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=13944&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IF8UP2X0ARC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "13944",
+          "companyId": "IF8UP2X0ARC",
+          "description": null,
+          "name": "Forsikring",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Vestlandet",
+        "county": "Vestland",
+        "municipality": "Bergen",
+        "coordinates": [
+          {
+            "XCoordinate": 5.3170301,
+            "YCoordinate": 60.4372568,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Eidsvågbakken 1",
+        "boxAddressLine": null,
+        "postPlace": "Eidsvåg I Åsane",
+        "zipCode": "5105"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Eidsvågbakken 1",
+        "boxAddressLine": null,
+        "postPlace": "Eidsvåg I Åsane",
+        "zipCode": "5105"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IFASLE20ARC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E158135894",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Z Insurance AS",
+      "organisationNumber": "925122890",
+      "sOrganisationNumber": null,
+      "rank": 34.69529342651367,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "13944",
+        "name": "Forsikring",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=13944&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IFASLE20ARC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "13944",
+          "companyId": "IFASLE20ARC",
+          "description": null,
+          "name": "Forsikring",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Oslo",
+        "municipality": "Oslo",
+        "coordinates": [
+          {
+            "XCoordinate": 10.6987105,
+            "YCoordinate": 59.9155494,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "93017000",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Gange-Rolvs gate 1 C",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "0273"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Gange-Rolvs gate 1 C",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "0273"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IFB2UOH0ARC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E159258927",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Lid Assuranse",
+      "organisationNumber": "925601489",
+      "sOrganisationNumber": null,
+      "rank": 34.69529342651367,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "13944",
+        "name": "Forsikring",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=13944&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IFB2UOH0ARC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "13944",
+          "companyId": "IFB2UOH0ARC",
+          "description": null,
+          "name": "Forsikring",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Vestlandet",
+        "county": "Rogaland",
+        "municipality": "Gjesdal",
+        "coordinates": [
+          {
+            "XCoordinate": 5.9356725,
+            "YCoordinate": 58.7889,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Hunnedalsvegen 450",
+        "boxAddressLine": null,
+        "postPlace": "Ålgård",
+        "zipCode": "4334"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Hunnedalsvegen 450",
+        "boxAddressLine": null,
+        "postPlace": "Ålgård",
+        "zipCode": "4334"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IG6O10N0ARC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E84421555",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "PS Assuranse",
+      "organisationNumber": "978657575",
+      "sOrganisationNumber": null,
+      "rank": 34.69529342651367,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "13944",
+        "name": "Forsikring",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=13944&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/13944/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IG6O10N0ARC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "13944",
+          "companyId": "IG6O10N0ARC",
+          "description": null,
+          "name": "Forsikring",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Oslo",
+        "municipality": "Oslo",
+        "coordinates": [
+          {
+            "XCoordinate": 10.7955787,
+            "YCoordinate": 59.828153,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "22763400",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Rosenholmveien 10",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "1252"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Rosenholmveien 10",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "1252"
+      }
+    }
+  ],
+  "correctedQuery": null,
+  "numberOfHits": 391,
+  "filterGroups": [
+    {
+      "displayName": "Bransjer",
+      "filterType": "navindustrynames",
+      "name": "industrynavigator",
+      "filters": [
+        {
+          "displayName": "Forsikring",
+          "hits": 131,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aForsikring",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "",
+          "hits": 29,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3a",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jordbruk",
+          "hits": 21,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aJordbruk",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Helsetjenester",
+          "hits": 16,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aHelsetjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skoler og undervisning",
+          "hits": 16,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSkoler+og+undervisning",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Eiendomshandel og -utleie",
+          "hits": 13,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aEiendomshandel+og+-utleie",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Faglig, vitenskapelig og teknisk virksomhet",
+          "hits": 13,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFaglig%2c+vitenskapelig+og+teknisk+virksomhet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Medlemsorganisasjoner",
+          "hits": 13,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMedlemsorganisasjoner",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bedriftsrådgivning",
+          "hits": 12,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aBedriftsrådgivning",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Teknisk prøving og analyse",
+          "hits": 11,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aTeknisk+prøving+og+analyse",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jordbruk - dyrking",
+          "hits": 9,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aJordbruk+-+dyrking",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kunstnerisk virksomhet",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKunstnerisk+virksomhet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Produsenter",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aProdusenter",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bygningshåndverkere",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aBygningshåndverkere",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jordbruk - oppdrett og husdyrhold",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aJordbruk+-+oppdrett+og+husdyrhold",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kroppspleie og fysisk velvære",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKroppspleie+og+fysisk+velvære",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Transport",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aTransport",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Underholdning- og arrangørtjenester",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aUnderholdning-+og+arrangørtjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Drosjer",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aDrosjer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Finans",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFinans",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Frisering og annen skjønnhetspleie",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFrisering+og+annen+skjønnhetspleie",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Frisører o.l.",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFrisører+o.l.",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Grossister",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aGrossister",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Klær",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKlær",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Konsulenter",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKonsulenter",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Leger",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aLeger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Passasjertransport",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aPassasjertransport",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Restauranter og kafeer",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aRestauranter+og+kafeer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Serveringssteder",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aServeringssteder",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skogbruk",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSkogbruk",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Snekkere",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSnekkere",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Storfehold",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aStorfehold",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Butikkhandel",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aButikkhandel",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "IT-konsulenter og rådgivning",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aIT-konsulenter+og+rådgivning",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Investeringsselskaper",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aInvesteringsselskaper",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jordbruk - melkeproduksjon",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aJordbruk+-+melkeproduksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Melkeproduksjon",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMelkeproduksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nærings- og nytelsesmidler",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aNærings-+og+nytelsesmidler",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rengjøring",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aRengjøring",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Reparatører",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aReparatører",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Detaljhandel",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aDetaljhandel",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Detaljhandel - annet",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aDetaljhandel+-+annet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kulturskoler og -undervisning",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKulturskoler+og+-undervisning",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Landbruksmaskiner og -redskaper",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aLandbruksmaskiner+og+-redskaper",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Oversettere og tolker",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aOversettere+og+tolker",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Religiøse organisasjoner",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aReligiøse+organisasjoner",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Utleie og leasing",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aUtleie+og+leasing",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Annen forretningsmessig tjenesteyting",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aAnnen+forretningsmessig+tjenesteyting",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Arbeidskrafttjenester",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aArbeidskrafttjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Borettslag",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aBorettslag",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bygg- og anleggsleverandører",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aBygg-+og+anleggsleverandører",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Catering",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aCatering",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Designere",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aDesignere",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Filmproduksjon",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFilmproduksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fiske",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFiske",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fotografering",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aFotografering",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hav- og kystfiske",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aHav-+og+kystfiske",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Internettdesign og programmering",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aInternettdesign+og+programmering",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jordbruk - andre tjenester",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aJordbruk+-+andre+tjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Klær - agentur og en gros",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKlær+-+agentur+og+en+gros",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Landbruksmaskiner og -redskaper - engros",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aLandbruksmaskiner+og+-redskaper+-+engros",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nærings- og nytelsesmidler - produksjon",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aNærings-+og+nytelsesmidler+-+produksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Postordre-/internetthandel",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aPostordre-%2finternetthandel",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Postordre-/internetthandel - annet",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aPostordre-%2finternetthandel+-+annet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sauehold",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSauehold",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sports- og fritidsutstyr",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSports-+og+fritidsutstyr",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Trevarer",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aTrevarer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Advokater og juridiske tjenester",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aAdvokater+og+juridiske+tjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Agenturer",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aAgenturer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Agenturhandel - annet",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aAgenturhandel+-+annet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Aktivitetsarrangører",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aAktivitetsarrangører",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Dataprogramvare og -utvikling",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aDataprogramvare+og+-utvikling",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Drikkevarer",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aDrikkevarer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Eiendomsforvaltning og -utvikling",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aEiendomsforvaltning+og+-utvikling",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Eiendomsmegling",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aEiendomsmegling",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Elektroniske produkter og utstyr",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aElektroniske+produkter+og+utstyr",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Entreprenører",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aEntreprenører",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Forlag",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aForlag",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gods- og varetransport",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aGods-+og+varetransport",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Grafiske tjenester",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aGrafiske+tjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Guider",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aGuider",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "IT-drift og support",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aIT-drift+og+support",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Interiørarkitekter",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aInteriørarkitekter",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Internasjonale organisasjoner og organer",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aInternasjonale+organisasjoner+og+organer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Klær - produksjon",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aKlær+-+produksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lønnet arbeid i private husholdninger",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aLønnet+arbeid+i+private+husholdninger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Maskiner og utstyr",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMaskiner+og+utstyr",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Maskiner og utstyr - reparasjon",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMaskiner+og+utstyr+-+reparasjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Metaller og metallvarer",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMetaller+og+metallvarer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Metaller og metallvarer - produksjon",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMetaller+og+metallvarer+-+produksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Møbler",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aMøbler",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Personlig tjenesteyting",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aPersonlig+tjenesteyting",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Reiselivstjenester",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aReiselivstjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Reklamebyråer",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aReklamebyråer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rekruttering",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aRekruttering",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sagbruk og høvlerier",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSagbruk+og+høvlerier",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skipsmeglere",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSkipsmeglere",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sports- og fritidsutstyr  - produksjon",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSports-+og+fritidsutstyr++-+produksjon",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sports- og fritidsutstyr - engros",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSports-+og+fritidsutstyr+-+engros",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Svinehold",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=name%3aSvinehold",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Kommune",
+      "filterType": "municipality",
+      "name": "municipalitynavigator",
+      "filters": [
+        {
+          "displayName": "Oslo",
+          "hits": 85,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aOslo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bærum",
+          "hits": 25,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aBærum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bergen",
+          "hits": 23,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aBergen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Trondheim ",
+          "hits": 13,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aTrondheim+",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Stavanger",
+          "hits": 10,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aStavanger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fredrikstad",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aFredrikstad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lillestrøm",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLillestrøm",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Stjørdal",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aStjørdal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Asker",
+          "hits": 7,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aAsker",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Levanger",
+          "hits": 7,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLevanger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Drammen",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aDrammen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Arendal",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aArendal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kinn",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKinn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nittedal",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNittedal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Selbu",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSelbu",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Surnadal",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSurnadal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tromsø",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aTromsø",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tønsberg",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aTønsberg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Øygarden",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aØygarden",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Eigersund",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aEigersund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Elverum",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aElverum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Frogn",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aFrogn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kristiansand",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKristiansand",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kristiansund",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKristiansund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Moss",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aMoss",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nordre Follo",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNordre+Follo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Porsgrunn",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aPorsgrunn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sandefjord",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSandefjord",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Aurskog-Høland",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aAurskog-Høland",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Averøy",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aAverøy",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kongsvinger",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKongsvinger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sarpsborg",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSarpsborg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sogndal",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSogndal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sola",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSola",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Volda",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aVolda",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ålesund",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aÅlesund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Færder",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aFærder",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gildeskål",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGildeskål",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gjøvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGjøvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Grimstad",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGrimstad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Indre Østfold",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aIndre+Østfold",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Larvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLarvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lier",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLier",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Løten",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLøten",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Malvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aMalvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nes",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nesodden",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNesodden",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nærøysund",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNærøysund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sandnes",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSandnes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tysnes",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aTysnes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ullensaker",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aUllensaker",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Voss",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aVoss",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Våler i Hedmark",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aVåler+i+Hedmark",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Alta",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aAlta",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Austrheim",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aAustrheim",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Balsfjord",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aBalsfjord",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bardu",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aBardu",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bømlo",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aBømlo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Deatnu-Tana",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aDeatnu-Tana",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Flatanger",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aFlatanger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Flekkefjord",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aFlekkefjord",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gausdal",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGausdal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Giske",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGiske",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gjerdrum",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGjerdrum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gjesdal",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGjesdal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gloppen",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGloppen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gran",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aGran",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Haugesund",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aHaugesund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Horten",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aHorten",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Klepp",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKlepp",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Krødsherad",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKrødsherad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kvæfjord",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aKvæfjord",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lillesand",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLillesand",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lyngen",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLyngen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lørenskog",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aLørenskog",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Melhus",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aMelhus",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Molde",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aMolde",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Namsos",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNamsos",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nannestad",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNannestad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Narvik",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNarvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nesbyen",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNesbyen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nordreisa",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aNordreisa",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Raarvikhe  Røyrvik",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aRaarvikhe+%c2%96+Røyrvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ringerike",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aRingerike",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ringsaker",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aRingsaker",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Røros",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aRøros",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sel",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSel",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Senja",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSenja",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skien",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSkien",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Smøla",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSmøla",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sula",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aSula",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tinn",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aTinn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Vestby",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aVestby",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ål",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aÅl",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ørsta",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aØrsta",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Østre Toten",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=municipality%3aØstre+Toten",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Fylke",
+      "filterType": "county",
+      "name": "countynavigator",
+      "filters": [
+        {
+          "displayName": "Agder",
+          "hits": 13,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aAgder",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Akershus",
+          "hits": 66,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aAkershus",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Buskerud",
+          "hits": 12,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aBuskerud",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Finnmark",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aFinnmark",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Innlandet",
+          "hits": 18,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aInnlandet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Møre og Romsdal",
+          "hits": 23,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aMøre+og+Romsdal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nordland",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aNordland",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Oslo",
+          "hits": 85,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aOslo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rogaland",
+          "hits": 22,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aRogaland",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Telemark",
+          "hits": 6,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aTelemark",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Troms",
+          "hits": 11,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aTroms",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Trøndelag",
+          "hits": 42,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aTrøndelag",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Vestfold",
+          "hits": 14,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aVestfold",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Vestland",
+          "hits": 43,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aVestland",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Østfold",
+          "hits": 17,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=county%3aØstfold",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Poststed",
+      "filterType": "postplace",
+      "name": "postplacenavigator",
+      "filters": [
+        {
+          "displayName": "Oslo",
+          "hits": 85,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aOslo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bergen",
+          "hits": 15,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBergen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Stavanger",
+          "hits": 9,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aStavanger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lysaker",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aLysaker",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Trondheim",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aTrondheim",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skatval",
+          "hits": 7,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSkatval",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fredrikstad",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFredrikstad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Høvik",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHøvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Levanger",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aLevanger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Selbu",
+          "hits": 5,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSelbu",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Asker",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAsker",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Drammen",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aDrammen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Drøbak",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aDrøbak",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Egersund",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aEgersund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Moss",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aMoss",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sandefjord",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSandefjord",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Surnadal",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSurnadal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tromsø",
+          "hits": 4,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aTromsø",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Arendal",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aArendal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Averøy",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAverøy",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Florø",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFlorø",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kongsvinger",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKongsvinger",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kristiansand S",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKristiansand+S",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kristiansund N",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKristiansund+N",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Porsgrunn",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aPorsgrunn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skedsmokorset",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSkedsmokorset",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Volda",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aVolda",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Ålesund",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aÅlesund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Askim",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAskim",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Aurskog",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAurskog",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bekkestua",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBekkestua",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Biri",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBiri",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Elverum",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aElverum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fornebu",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFornebu",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gressvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aGressvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Heimdal",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHeimdal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jar",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aJar",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Jessheim",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aJessheim",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Klokkarvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKlokkarvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Knarrevik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKnarrevik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Larvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aLarvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Løten",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aLøten",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Måløy",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aMåløy",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nesodden",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aNesodden",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nittedal",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aNittedal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Oppegård",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aOppegård",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rørvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aRørvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sandnes",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSandnes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sandvika",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSandvika",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sarpsborg",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSarpsborg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Skjetten",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSkjetten",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sogndal",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSogndal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sola",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSola",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Storvik",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aStorvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Strømmen",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aStrømmen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sørskogbygda",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aSørskogbygda",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tysnes",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aTysnes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tønsberg",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aTønsberg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Voss",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aVoss",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Alta",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAlta",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Atrå",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAtrå",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Austrheim",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aAustrheim",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bardu",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBardu",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Borkenes",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBorkenes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bosberg",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBosberg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Brandbu",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBrandbu",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Braskereidfoss",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBraskereidfoss",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Brevik",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBrevik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bryne",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBryne",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Brårud",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBrårud",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bødalen",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBødalen",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bømlo",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aBømlo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Eidsvåg I Åsane",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aEidsvåg+I+Åsane",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fevik",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFevik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Finnsnes",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFinnsnes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fjell",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFjell",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Flaktveit",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFlaktveit",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Flekkerøy",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFlekkerøy",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Frei",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aFrei",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Gjerdrum",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aGjerdrum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Godvik",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aGodvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Grimstad",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aGrimstad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hafrsfjord",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHafrsfjord",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hagan",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHagan",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hakadal",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHakadal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hallingby",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHallingby",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hasvåg",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHasvåg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Haugesund",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHaugesund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Heggedal",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHeggedal",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hell",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHell",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hemnes",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHemnes",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hestenesøyra",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHestenesøyra",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hidrasund",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHidrasund",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "His",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHis",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hommelvik",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHommelvik",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Horten",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHorten",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hosle",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aHosle",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kjeldebotn",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKjeldebotn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kongshavn",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKongshavn",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Krokstadelva",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=postplace%3aKrokstadelva",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Landsdel",
+      "filterType": "countrypart",
+      "name": "countrypartnavigator",
+      "filters": [
+        {
+          "displayName": "Midt-Norge",
+          "hits": 42,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=countrypart%3aMidt-Norge",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Nord-Norge",
+          "hits": 16,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=countrypart%3aNord-Norge",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Sørlandet",
+          "hits": 13,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=countrypart%3aSørlandet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Vestlandet",
+          "hits": 88,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=countrypart%3aVestlandet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Østlandet",
+          "hits": 218,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&filter=countrypart%3aØstlandet",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "samplerFilter",
+      "filterType": "specialNeeds",
+      "name": null,
+      "filters": [],
+      "removed": null
+    }
+  ],
+  "pagination": {
+    "CurrentPage": 1,
+    "NumberOfAvailablePages": 40,
+    "PageSize": 10,
+    "NearbyPages": [
+      {
+        "pageNumber": 1,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=1",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 2,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=2",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 3,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=3",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 4,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=4",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 5,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=5",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 6,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=6",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 7,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=7",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 8,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=8",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 9,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=9",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 10,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=10",
+        "rel": "related"
+      },
+      {
+        "pageNumber": 11,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=11",
+        "rel": "related"
+      }
+    ],
+    "Next": {
+      "pageNumber": 2,
+      "href": "https://api.proff.no/companies/eniropro/NO?name=Suran&includeRegisterListing=false&pageSize=10&pageNumber=2",
+      "rel": "next"
+    },
+    "Previous": null,
+    "Sorting": null
+  }
+}

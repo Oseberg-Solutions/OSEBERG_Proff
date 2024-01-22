@@ -4,6 +4,14 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="TestData\testdata.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\testdata.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="host.json" />
   </ItemGroup>
   <ItemGroup>

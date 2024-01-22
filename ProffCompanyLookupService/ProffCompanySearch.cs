@@ -29,6 +29,7 @@ namespace ProffCompanyLookupService.Functions
 
         if (string.IsNullOrEmpty(proffCompanyId))
         {
+          log.LogInformation($"inside null or empty");
 
           if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
           {

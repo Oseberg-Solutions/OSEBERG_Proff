@@ -21,6 +21,8 @@ import {
 
 interface SearchComponentProps {
   onCardClick: (item: CompanyData) => void;
+  isAccountNameFilled: boolean;
+  isOrgNumberFilled: boolean;
 }
 
 const allowCountryChoices = true;
@@ -29,7 +31,11 @@ const allowCountryChoices = true;
 /* METHODS */
 /*----------------------------------------------------------------------------*/
 
-const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
+const SearchComponent: React.FC<SearchComponentProps> = ({
+  onCardClick,
+  isAccountNameFilled,
+  isOrgNumberFilled,
+}) => {
   const MIN_ORGANISATIONNUMBER_LENGTH = 9;
   const [selectedItem, setSelectedItem] = useState<CompanyData | null>(null);
   const [cachedItem, setCachedItem] = useState<CompanyData | null>(null);
@@ -157,12 +163,20 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onCardClick }) => {
   };
 
   const handleCardClick = (item: CompanyData) => {
-    if (item.name && item.organisationNumber) {
+    console.log("Handle Card Click");
+    console.log("isAccountNameFilled: ", isAccountNameFilled);
+    console.log("isOrgNumberFilled: ", isOrgNumberFilled);
+
+    if (isAccountNameFilled && isOrgNumberFilled) {
+      console.log("ShowConfimrationDialog");
       setShowConfirmationDialog(true);
       setCachedItem(item);
-      setSearchValue("");
-      setDebouncedSearchValue("");
+    } else {
+      console.log("Set Item");
+      setSelectedItem(item);
     }
+    setSearchValue("");
+    setDebouncedSearchValue("");
   };
 
   const handleConfirm = async () => {
