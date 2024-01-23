@@ -52,8 +52,6 @@ export class VirtualControl
   ): React.ReactElement {
     const props = {
       onCardClick: this.handleCardClick,
-      // Here we can add Props to send to the Search.tsx component.
-      // Like account name and orgnr...
       isAccountNameFilled: !!context.parameters.companyName.raw,
       isOrgNumberFilled: !!context.parameters.cr41c_orgnr.raw,
     };

@@ -163,12 +163,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   };
 
   const handleCardClick = (item: CompanyData) => {
-    console.log("Handle Card Click");
-    console.log("isAccountNameFilled: ", isAccountNameFilled);
-    console.log("isOrgNumberFilled: ", isOrgNumberFilled);
-
     if (isAccountNameFilled && isOrgNumberFilled) {
-      console.log("ShowConfimrationDialog");
       setShowConfirmationDialog(true);
       setCachedItem(item);
     } else {
