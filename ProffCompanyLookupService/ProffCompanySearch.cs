@@ -48,15 +48,15 @@ namespace ProffCompanyLookupService.Functions
          * This part will always happen when the user chooses a Company, and only then will this part of the code run, 
          * where we fetch detailed info where we have to grab from a different endpoint then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
-        
-         (string numberOfEmployees, 
-          string nace, 
-          string profit, 
-          string revenue, 
-          string visitorAddressLine, 
-          string visitorBoxAddressLine, 
-          string visitorPostPlace, 
-          string visitorZipCode) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
+
+        (string numberOfEmployees,
+         string nace,
+         string profit,
+         string revenue,
+         string visitorAddressLine,
+         string visitorBoxAddressLine,
+         string visitorPostPlace,
+         string visitorZipCode) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
 
         JObject extraCompanyInfo = new()
         {
@@ -70,13 +70,12 @@ namespace ProffCompanyLookupService.Functions
           ["visitorZipCode"] = visitorZipCode
         };
 
-        return new OkObjectResult(extraCompanyInfo);
-
-
 #if !DEBUG
         AzureTableStorageService tableStorageService = new();
-        await tableStorageService.UpdateProffDomainsTable(domain);
+        await tableStorageService.UpdateProffDomainsTable("Dev");
 #endif
+
+        return new OkObjectResult(extraCompanyInfo);
 
       }
       catch (Exception ex)
