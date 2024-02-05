@@ -10,7 +10,12 @@ public class ProffApiService
 {
   private static readonly HttpClient httpClient = new HttpClient();
   private static string PROFF_BASE_URL = "https://api.proff.no/api";
-  private string proffApiKey = "PmWrTlGZhtzEh0xAWQP8cvFBX";
+  private string proffApiKey;
+
+  public ProffApiService()
+  {
+    proffApiKey = Environment.GetEnvironmentVariable("PROFF_API_KEY");
+  }
 
   public async Task<JArray> FetchCompanyDataAsync(string query, string country)
   {
