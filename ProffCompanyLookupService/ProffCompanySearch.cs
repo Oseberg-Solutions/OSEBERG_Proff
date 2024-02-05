@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using ProffCompanyLookupService.Services;
-using System.Data.Common;
 
 namespace ProffCompanyLookupService.Functions
 {
@@ -38,7 +37,7 @@ namespace ProffCompanyLookupService.Functions
 
           JArray companies = await proffApiService.FetchCompanyDataAsync(query, country);
 
-          CompanyDataService companyDataService = new CompanyDataService();
+          CompanyDataService companyDataService = new();
           var extractedData = companyDataService.ConvertJArrayToCompanyDataList(companies);
 
           return new OkObjectResult(extractedData);
@@ -46,7 +45,8 @@ namespace ProffCompanyLookupService.Functions
 
         /*
          * This part will always happen when the user chooses a Company, and only then will this part of the code run, 
-         * where we fetch detailed info where we have to grab from a different endpoint then the one in FetchCompanyDataAsync method on the proffApiService class.
+         * where we fetch detailed info where we have to grab from a different endpoint,
+         * then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
 
         (string numberOfEmployees,
