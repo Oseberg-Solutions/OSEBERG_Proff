@@ -28,8 +28,6 @@ namespace ProffCompanyLookupService.Functions
 
         if (string.IsNullOrEmpty(proffCompanyId))
         {
-          log.LogInformation($"inside null or empty");
-
           if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(country))
           {
             return new BadRequestObjectResult("Missing required parameters");
@@ -39,6 +37,7 @@ namespace ProffCompanyLookupService.Functions
 
           CompanyDataService companyDataService = new();
           var extractedData = companyDataService.ConvertJArrayToCompanyDataList(companies);
+          await SaveToTable(domain);
 
           return new OkObjectResult(extractedData);
         }
@@ -70,10 +69,7 @@ namespace ProffCompanyLookupService.Functions
           ["visitorZipCode"] = visitorZipCode
         };
 
-#if !DEBUG
-        AzureTableStorageService tableStorageService = new();
-        await tableStorageService.UpdateProffDomainsTable("Dev");
-#endif
+        await SaveToTable(domain);
 
         return new OkObjectResult(extraCompanyInfo);
 
@@ -83,6 +79,13 @@ namespace ProffCompanyLookupService.Functions
         log.LogError(ex, "Error occurred during function execution.");
         return new StatusCodeResult(StatusCodes.Status500InternalServerError);
       }
+    }
+    public static async Task SaveToTable(string domain)
+    {
+#if !DEBUG
+      AzureTableStorageService tableStorageService = new();
+      await tableStorageService.UpdateProffDomainsTable(domain);
+#endif
     }
   }
 }

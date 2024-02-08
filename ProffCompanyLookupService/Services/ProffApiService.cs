@@ -35,10 +35,16 @@ public class ProffApiService
     return CreateJArrayFromApiResponse(apiResponse);
   }
 
-  public async Task<(string NumberOfEmployees, string Nace, string Profit, string Revenue, string visitorAddressLine, string visitorBoxAddressLine, string visitorPostPlace, string visitorZipCode)> GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
+  public async Task<(
+    string NumberOfEmployees,
+    string Nace, string Profit,
+    string Revenue,
+    string visitorAddressLine,
+    string visitorBoxAddressLine,
+    string visitorPostPlace,
+    string visitorZipCode)>
+    GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
   {
-    log.LogInformation("Calling Get Detailed Company Info");
-
     string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
 
     httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", proffApiKey);
