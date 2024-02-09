@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,34 +12,39 @@ namespace ProffCompanyLookupService.Services
     private static HttpClient httpClient;
     private string _ProffPremiumApiToken;
     private string _base_url = "https://ppc.proff.no";
-    ProffPremiumApiService()
+    public ProffPremiumApiService()
     {
       _ProffPremiumApiToken = Environment.GetEnvironmentVariable("PROFF_PREMIUM_API_TOKEN");
       httpClient = new HttpClient();
     }
 
-    public async Task<CreditRating> GetCreditScore(string organisationNumber)
+    public async Task<(CreditRating, bool, HttpStatusCode)> GetCreditScore(string organisationNumber)
     {
       httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _ProffPremiumApiToken);
-      HttpResponseMessage response = await httpClient.GetAsync($"{_base_url}/CreditRating/{organisationNumber}");
 
-
-      if (response.StatusCode == System.Net.HttpStatusCode.OK)
+      try
       {
-        string responseContent = await response.Content.ReadAsStringAsync();
-        CreditRating creditRating = JsonConvert.DeserializeObject<CreditRating>(responseContent);
-        return creditRating;
+        using (var response = await httpClient.GetAsync($"{_base_url}/CreditRating/{organisationNumber}"))
+        {
+          if (response.IsSuccessStatusCode)
+          {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var creditRating = JsonConvert.DeserializeObject<CreditRating>(responseContent);
+            return (creditRating, true, response.StatusCode);
+          }
+          else
+          {
+            return (null, false, response.StatusCode);
+          }
+        }
       }
-      else if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+      catch (HttpRequestException)
       {
-
-        // Lets return a object that tells we didnt find records...
-        return null;
+        return (null, false, HttpStatusCode.ServiceUnavailable);
       }
-      else
+      catch (Exception)
       {
-        // Something went wrong ?
-        return null;
+        return (null, false, HttpStatusCode.InternalServerError);
       }
     }
   }

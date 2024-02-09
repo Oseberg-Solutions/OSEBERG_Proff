@@ -1,35 +1,50 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using ProffCompanyLookupService.Services;
+using System.Web.Http;
+using ProffCompanyLookupService.Models;
+using System.Net;
 
 namespace ProffCompanyLookupService
 {
-    public static class ProffPremiumCredit
+  public static class ProffPremiumCredit
+  {
+    [FunctionName("ProffPremiumCredit")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
     {
-        [FunctionName("ProffPremiumCredit")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
-        {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+      string orgNr = req.Query["orgNr"];
+      var (isValid, formattedOrgNr) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
 
-            string name = req.Query["name"];
+      if (!isValid)
+      {
+        return new BadRequestObjectResult("Invalid organisation number format.");
+      }
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+      ProffPremiumApiService proffPremiumApiService = new ProffPremiumApiService();
+      var (creditRating, isSuccess, statusCode) = await proffPremiumApiService.GetCreditScore(formattedOrgNr);
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
-        }
+      return HandleResponse(creditRating, isSuccess, statusCode);
     }
+
+    private static IActionResult HandleResponse(CreditRating creditRating, bool isSuccess, HttpStatusCode statusCode)
+    {
+      switch (statusCode)
+      {
+        case HttpStatusCode.OK:
+          return new OkObjectResult(creditRating);
+        case HttpStatusCode.NoContent:
+          return new NotFoundObjectResult("Company record not found.");
+        case HttpStatusCode.InternalServerError:
+          return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        default:
+          return new StatusCodeResult((int)statusCode);
+      }
+    }
+  }
 }
