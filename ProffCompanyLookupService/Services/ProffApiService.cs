@@ -14,6 +14,7 @@ public class ProffApiService
   public ProffApiService()
   {
     proffApiKey = Environment.GetEnvironmentVariable("PROFF_API_KEY");
+    proffApiKey = Environment.GetEnvironmentVariable("PROFF_PREMIUM_API_TOKEN");
   }
 
   public async Task<JArray> FetchCompanyDataAsync(string query, string country)
@@ -59,10 +60,8 @@ public class ProffApiService
     // Capture the full API response
     string apiResponseContent = await response.Content.ReadAsStringAsync();
 
-
     JObject apiResponse = JObject.Parse(apiResponseContent);
     log.LogInformation($"Api Response: {apiResponse}");
-
 
     // Extract the NumberOfEmployees and Nace data from the API response
     string numberOfEmployees = apiResponse["registerListing"]["numberOfEmployees"]?.ToString();
