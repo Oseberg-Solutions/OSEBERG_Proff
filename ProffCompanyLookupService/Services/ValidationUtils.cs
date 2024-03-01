@@ -4,15 +4,17 @@ namespace ProffCompanyLookupService.Services
 {
   public static class ValidationUtils
   {
-    public static (bool IsValid, string FormattedValue) ValidateAndFormatOrgNr(string orgNr)
+    public static (bool IsValid, string FormattedValue, string validationMessage) ValidateAndFormatOrgNr(string orgNr)
     {
-      if (string.IsNullOrEmpty(orgNr)) return (false, orgNr);
+      string validationMessage = "organisationNumber cannot be null or empty";
+      if (string.IsNullOrEmpty(orgNr)) return (false, orgNr, validationMessage);
 
       string formattedOrgNr = orgNr.Replace(" ", "");
 
-      bool isValid = formattedOrgNr.Length == 11 && formattedOrgNr.All(char.IsDigit);
+      bool isValid = formattedOrgNr.Length == 9 && formattedOrgNr.All(char.IsDigit);
+      if (!isValid) validationMessage = "organisationNumber is not correct format";
 
-      return (isValid, formattedOrgNr);
+      return (isValid, formattedOrgNr, validationMessage);
     }
   }
 }

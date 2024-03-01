@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rating Widget</title>
+<style>
+   .rating-container {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    margin: auto;
+  }
+
+.ratingScore {
+  display: flex;
+}
+
+.scoreText {
+  font-weight: bold;
+}
+.ScorePoint {
+  
+  color: #4bae49;    
+}
+
+  .score {
+    font-size: 2em;
+    color: #4CAF50;
+  }
+  
+  .risk-meter {
+    height: 20px;
+    background: linear-gradient(to right, #ff0000 0%, #ffff00 50%, #00ff00 100%);
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .risk-level {
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .category {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .category-rating {
+    height: 10px;
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .rating-value {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+  }
+  
+  .rating-number {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+      .gauge {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 25px; /* Adjust as needed */
+      }
+
+      .gauge-section {
+        flex: 1;
+        height: 10px;
+      }
+
+      .red {
+        background-color: #ff6666;
+      }
+
+      .yellow {
+        background-color: #aed39a;
+      }
+
+      .light-green {
+        background-color: #4bae49;
+      }
+
+      .green {
+        background-color: #1a8c37;
+      }
+
+      .orange {
+        background-color: #fbb72a;
+      }
+
+.gauge {
+  display: flex;
+  justify-content: center;
+  position: relative; /* Set the gauge to relative to position the circle indicator absolutely inside it */
+  height: 25px; /* Height of the gauge sections */
+}
+
+.gauge-circle {
+  width: 20px; /* Diameter of the circle indicator */
+  height: 20px; /* Diameter of the circle indicator */
+  border-radius: 50%; /* Make it round */
+  background-color: #fff; /* Color of the indicator */
+  border: 3px solid #ff6666;
+  position: absolute;
+  top: 50%;
+  left: 50%; /* Start in the middle */
+  transform: translateY(-50%); /* Adjust vertically */
+  z-index: 1; /* Below the text */
+}
+
+.gauge-section {
+  flex: 1;
+  display: flex;
+  align-items: center; /* Center the text vertically */
+  justify-content: center; /* Center the text horizontally */
+  position: relative; /* Needed to position the inner-text */
+}
+
+.gauge-fill {
+  width: 40%;
+  height: 40%;
+  border-radius: 40%;
+  position: absolute;
+  clip: rect(0px, 30px, 100px, 0px);
+}
+
+.gauge-cover {
+  background: #fff;
+  width: 20%; /* size of the center, to create the donut hole */
+  height: 20%; /* size of the center, to create the donut hole */
+  border-radius: 50%;
+  position: absolute;
+  top: 5px; /* offset from the parent */
+  left: 5px; /* offset from the parent */
+}
+.inner-text {
+  padding-top: 25%;
+  display: flex;
+  position: absolute;
+  z-index: 2; /* Higher z-index to be on top of the circle */
+  justify-content: center;
+}
+
+</style>
+</head>
+<body>
+
+<div id="rating-container" class="rating-container">
+  <div id="score" class="score">A++</div>
+  <div id="ratingScore" class="ratingScore">
+  <div id="scoreText" class="scoreText">Score: </div>
+  <div id="scorePoint" class="ScorePoint">99</div>
+  <div id="scoreMaxPoint" class="scoreMaxPoint">/100</div>
+</div>
+  
+  <div class="gauge">
+<div class="gauge-section red" style="background-color: #ff6666;">
+  <div class="inner-text">Høy risiko</div>
+</div>
+<div class="gauge-section orange" style="background-color: #fbb72a;">
+  <div class="inner-text">Moderat risiko</div>
+</div>
+<div class="gauge-section green" style="background-color: #4bae49;">
+  <div class="inner-text">Lav risiko</div>
+</div>
+    <div class="gauge-circle" id="gaugeCircle">
+      <div class="gauge-fill"></div>
+      <div class="gauge-cover"></div>
+    </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

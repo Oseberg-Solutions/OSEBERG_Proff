@@ -68,7 +68,6 @@ public class ProffApiService
     string nace = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString();
     string profit = apiResponse["registerListing"]["profit"]?.ToString();
     string revenue = apiResponse["registerListing"]["revenue"]?.ToString();
-
     string visitorAddressLine = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString();
     string visitorBoxAddressLine = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString();
     string visitorPostPlace = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString();

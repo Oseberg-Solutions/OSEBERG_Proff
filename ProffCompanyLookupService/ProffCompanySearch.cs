@@ -12,6 +12,9 @@ namespace ProffCompanyLookupService.Functions
 {
   public static class ProffCompanySearch
   {
+
+    private static string _storageAccountTableName = "ProffDomains";
+
     [FunctionName("ProffCompanySearch")]
     public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
@@ -83,7 +86,7 @@ namespace ProffCompanyLookupService.Functions
     public static async Task SaveToTable(string domain)
     {
 #if !DEBUG
-      AzureTableStorageService tableStorageService = new();
+      AzureTableStorageService tableStorageService = new(_storageAccountTableName);
       await tableStorageService.UpdateProffDomainsTable(domain);
 #endif
     }

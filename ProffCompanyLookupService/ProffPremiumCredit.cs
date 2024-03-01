@@ -5,7 +5,6 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using ProffCompanyLookupService.Services;
-using System.Web.Http;
 using ProffCompanyLookupService.Models;
 using System.Net;
 
@@ -19,12 +18,22 @@ namespace ProffCompanyLookupService
         ILogger log)
     {
       string orgNr = req.Query["orgNr"];
-      var (isValid, formattedOrgNr) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
+      var (isValid, formattedOrgNr, validationMessage) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
+      if (!isValid) return new BadRequestObjectResult(validationMessage);
 
-      if (!isValid)
+      // Here we can check if we allready have done a Query towards a orgNr in our table, and if we find a row, return that.
+      AzureTableStorageService azureTableStorageService = new("ProffPremium");
+
+      var existingData = await azureTableStorageService.GetPremiumInfo(int.Parse(orgNr));
+
+      if (!string.IsNullOrEmpty(existingData))
       {
-        return new BadRequestObjectResult("Invalid organisation number format.");
+        return new OkObjectResult(existingData);
       }
+
+      return new OkObjectResult("Not Found");
+
+
 
       ProffPremiumApiService proffPremiumApiService = new ProffPremiumApiService();
       var (creditRating, isSuccess, statusCode) = await proffPremiumApiService.GetCreditScore(formattedOrgNr);
