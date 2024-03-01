@@ -160,7 +160,6 @@
 
 <div id="rating-container" class="rating-container">
   <div id="score" class="score">A++</div>
-  <div id="ratingScore" class="ratingScore">
   <div id="scoreText" class="scoreText">Score: </div>
   <div id="scorePoint" class="ScorePoint">99</div>
   <div id="scoreMaxPoint" class="scoreMaxPoint">/100</div>
@@ -176,12 +175,73 @@
 <div class="gauge-section green" style="background-color: #4bae49;">
   <div class="inner-text">Lav risiko</div>
 </div>
-    <div class="gauge-circle" id="gaugeCircle">
+<div class="gauge-circle" id="gauge-circle">
       <div class="gauge-fill"></div>
       <div class="gauge-cover"></div>
     </div>
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      console.log("PROFF_RATING_LIVE");
+  
+      var clientUrl = parent.Xrm.Page.context.getClientUrl();
+      console.log("ClientUrl: ", clientUrl);
+      var entityId = parent.Xrm.Page.data.entity.getId(); 
+      console.log("entityId: ", entityId);
+
+      var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_proffpremiumratingscore,name,cr41c_orgnr`;
+  
+      fetch(query, {
+          method: "GET",
+          headers: {
+              "OData-MaxVersion": "4.0",
+              "OData-Version": "4.0",
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "Prefer": "odata.include-annotations=\"*\""
+          }
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok.');
+          }
+          return response.json();
+      })
+      .then(data => {
+          // You might want to do something with the data here, like updating the DOM
+          document.getElementById("score").innerHTML = data["os_proffpremiumratingscore"]
+          document.getElementById("scorePoint").innerHTML = 34;
+          //document.getElementById("ratingScore").innerHTML = "meh"
+
+          moveCircle(34)
+      })
+      .catch(error => console.error("Error making API call:", error));
+
+      function moveCircle(score) {
+        score = Math.max(0, Math.min(score, 100));
+        var circle = document.getElementById("gauge-circle");
+        console.log(circle);
+        var leftPosition = score;
+        circle.style.left = `calc(${leftPosition}% - 15px)`;
+        updateCircleBorderColor(circle, leftPosition);
+      }
+
+
+      function updateCircleBorderColor(circle, leftPosition) {
+        var gaugeSections = document.querySelectorAll(".gauge-section");
+        var colors = ["#ff6666", "#fbb72a", "#4bae49"]; // Colors corresponding to sections
+        var sectionWidth = 100 / gaugeSections.length; // Assuming equal width sections
+
+        var sectionIndex = Math.min(
+          gaugeSections.length - 1,
+          Math.floor(leftPosition / sectionWidth)
+        );
+
+        circle.style.borderColor = colors[sectionIndex];
+      }
+  });
+  </script>
 </body>
 </html>
