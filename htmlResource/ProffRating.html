@@ -17,9 +17,13 @@
 
 .scoreText {
   font-weight: bold;
+  margin-right: 5px
 }
-.ScorePoint {
-  
+.scoreMaxPoint {
+  font-weight: bold;
+}
+.scorePoint {
+  font-weight: bold;
   color: #4bae49;    
 }
 
@@ -147,11 +151,11 @@
   left: 5px; /* offset from the parent */
 }
 .inner-text {
-  padding-top: 25%;
   display: flex;
   position: absolute;
   z-index: 2; /* Higher z-index to be on top of the circle */
   justify-content: center;
+  padding-top: max(50px, 10%);
 }
 
 </style>
@@ -160,20 +164,22 @@
 
 <div id="rating-container" class="rating-container">
   <div id="score" class="score">A++</div>
-  <div id="scoreText" class="scoreText">Score: </div>
-  <div id="scorePoint" class="ScorePoint">99</div>
-  <div id="scoreMaxPoint" class="scoreMaxPoint">/100</div>
+  <div class="ratingScore">
+    <div id="scoreText" class="scoreText">Score: </div>
+    <div id="scorePoint" class="scorePoint">99</div>
+    <div id="scoreMaxPoint" class="scoreMaxPoint">/100</div>
+  </div>
 </div>
   
   <div class="gauge">
 <div class="gauge-section red" style="background-color: #ff6666;">
-  <div class="inner-text">Høy risiko</div>
+  <div class="inner-text">High risk</div>
 </div>
 <div class="gauge-section orange" style="background-color: #fbb72a;">
-  <div class="inner-text">Moderat risiko</div>
+  <div class="inner-text">Moderate risk</div>
 </div>
 <div class="gauge-section green" style="background-color: #4bae49;">
-  <div class="inner-text">Lav risiko</div>
+  <div class="inner-text">Low risk</div>
 </div>
 <div class="gauge-circle" id="gauge-circle">
       <div class="gauge-fill"></div>
@@ -184,14 +190,12 @@
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-      console.log("PROFF_RATING_LIVE");
-  
       var clientUrl = parent.Xrm.Page.context.getClientUrl();
       console.log("ClientUrl: ", clientUrl);
       var entityId = parent.Xrm.Page.data.entity.getId(); 
       console.log("entityId: ", entityId);
 
-      var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_proffpremiumratingscore,name,cr41c_orgnr`;
+      var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_proff_rating,os_proff_ratingscore`;
   
       fetch(query, {
           method: "GET",
@@ -210,12 +214,17 @@
           return response.json();
       })
       .then(data => {
-          // You might want to do something with the data here, like updating the DOM
-          document.getElementById("score").innerHTML = data["os_proffpremiumratingscore"]
-          document.getElementById("scorePoint").innerHTML = 34;
-          //document.getElementById("ratingScore").innerHTML = "meh"
+        
+        var rating = data["os_proff_rating"] || "No rating found.";
+        var ratingScore = data["os_proff_ratingscore"] || 50;
 
-          moveCircle(34)
+        console.log("Rating: ", rating);
+        console.log("RatingScore: ", ratingScore);
+
+
+        document.getElementById("score").innerHTML = rating;
+        document.getElementById("scorePoint").innerHTML = ratingScore;
+        moveCircle(ratingScore)
       })
       .catch(error => console.error("Error making API call:", error));
 
