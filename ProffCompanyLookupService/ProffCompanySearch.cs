@@ -6,14 +6,13 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using ProffCompanyLookupService.Services;
 
 namespace ProffCompanyLookupService.Functions
 {
   public static class ProffCompanySearch
   {
-
-    private static string _storageAccountTableName = "ProffDomains";
+    // TODO-SURAN: Remove the connection strng to a param in the azure function
+    private static string _storageAccountTableName = "ProffRequestActivity";
 
     [FunctionName("ProffCompanySearch")]
     public static async Task<IActionResult> Run(
@@ -51,26 +50,7 @@ namespace ProffCompanyLookupService.Functions
          * then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
 
-        (string numberOfEmployees,
-         string nace,
-         string profit,
-         string revenue,
-         string visitorAddressLine,
-         string visitorBoxAddressLine,
-         string visitorPostPlace,
-         string visitorZipCode) = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
-
-        JObject extraCompanyInfo = new()
-        {
-          ["numberOfEmployees"] = numberOfEmployees,
-          ["Nace"] = nace,
-          ["profit"] = profit,
-          ["revenue"] = revenue,
-          ["visitorAddressLine"] = visitorAddressLine,
-          ["visitorBoxAddressLine"] = visitorBoxAddressLine,
-          ["visitorPostPlace"] = visitorPostPlace,
-          ["visitorZipCode"] = visitorZipCode
-        };
+        JObject extraCompanyInfo = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
 
         await SaveToTable(domain);
 
@@ -86,8 +66,12 @@ namespace ProffCompanyLookupService.Functions
     public static async Task SaveToTable(string domain)
     {
 #if !DEBUG
-      AzureTableStorageService tableStorageService = new(_storageAccountTableName);
-      await tableStorageService.UpdateProffDomainsTable(domain);
+      AzureTableStorageService tableService = new(_storageAccountTableName);
+      DomainActivityService domainActivityService = new(tableService);
+      await domainActivityService.UpdateDomainRequestCountAsync(domain);
+
+      //AzureTableStorageService tableStorageService = new(_storageAccountTableName);
+      //await tableStorageService.UpdateProffDomainsTable(domain);
 #endif
     }
   }

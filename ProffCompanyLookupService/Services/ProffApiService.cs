@@ -36,15 +36,7 @@ public class ProffApiService
     return CreateJArrayFromApiResponse(apiResponse);
   }
 
-  public async Task<(
-    string NumberOfEmployees,
-    string Nace, string Profit,
-    string Revenue,
-    string visitorAddressLine,
-    string visitorBoxAddressLine,
-    string visitorPostPlace,
-    string visitorZipCode)>
-    GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
+  public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
   {
     string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
 
@@ -57,23 +49,21 @@ public class ProffApiService
       throw new Exception($"Error calling Proff API for detailed info: {responseContent}");
     }
 
-    // Capture the full API response
     string apiResponseContent = await response.Content.ReadAsStringAsync();
 
     JObject apiResponse = JObject.Parse(apiResponseContent);
-    log.LogInformation($"Api Response: {apiResponse}");
 
-    // Extract the NumberOfEmployees and Nace data from the API response
-    string numberOfEmployees = apiResponse["registerListing"]["numberOfEmployees"]?.ToString();
-    string nace = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString();
-    string profit = apiResponse["registerListing"]["profit"]?.ToString();
-    string revenue = apiResponse["registerListing"]["revenue"]?.ToString();
-    string visitorAddressLine = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString();
-    string visitorBoxAddressLine = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString();
-    string visitorPostPlace = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString();
-    string visitorZipCode = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString();
-
-    return (numberOfEmployees, nace, profit, revenue, visitorAddressLine, visitorBoxAddressLine, visitorPostPlace, visitorZipCode);
+    return new()
+    {
+      ["numberOfEmployees"] = apiResponse["registerListing"]["numberOfEmployees"]?.ToString(),
+      ["Nace"] = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString(),
+      ["profit"] = apiResponse["registerListing"]["profit"]?.ToString(),
+      ["revenue"] = apiResponse["registerListing"]["revenue"]?.ToString(),
+      ["visitorAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString(),
+      ["visitorBoxAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString(),
+      ["visitorPostPlace"] = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString(),
+      ["visitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString()
+    };
   }
 
   private JArray CreateJArrayFromApiResponse(JObject apiResponse)

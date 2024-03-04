@@ -8,7 +8,8 @@
 
 pac auth create --url https://suran.crm4.dynamics.com/
 
-1. msbuild /t:build /restore
-2. pac pcf push --publisher-prefix os
+1. cd VirtualControl
+2. msbuild /t:build /restore
+3. pac pcf push --publisher-prefix os
 
 https://suran.crm4.dynamics.com/

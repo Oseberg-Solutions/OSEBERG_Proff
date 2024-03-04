@@ -7,33 +7,37 @@ using Microsoft.Extensions.Logging;
 using ProffCompanyLookupService.Services;
 using ProffCompanyLookupService.Models;
 using System.Net;
+using Microsoft.Extensions.Primitives;
 
 namespace ProffCompanyLookupService
 {
   public static class ProffPremiumCredit
   {
+    private static string _storageAccountTableName = "ProffPremiumRequestActivity";
+
     [FunctionName("ProffPremiumCredit")]
     public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
         ILogger log)
     {
       string orgNr = req.Query["orgNr"];
+      string countryCode = StringValues.IsNullOrEmpty(req.Query["countryCode"]) ? "NO" : req.Query["countryCode"].ToString();
+
       var (isValid, formattedOrgNr, validationMessage) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
       if (!isValid) return new BadRequestObjectResult(validationMessage);
 
-      // Here we can check if we allready have done a Query towards a orgNr in our table, and if we find a row, return that.
-      AzureTableStorageService azureTableStorageService = new("ProffPremium");
+      AzureTableStorageService azureTableStorageService = new(_storageAccountTableName);
 
-      var existingData = await azureTableStorageService.GetPremiumInfo(int.Parse(orgNr));
+      PremiumInfoService premiumService = new(azureTableStorageService);
+      var existingData = await premiumService.GetPremiumInfoAsync(orgNr, countryCode);
 
-      if (!string.IsNullOrEmpty(existingData))
+      if (string.IsNullOrEmpty(existingData))
       {
-        return new OkObjectResult(existingData);
+        // We dont have this cached data, lets do a API Call.
+        return new OkObjectResult("We did not find any matching record");
       }
 
-      return new OkObjectResult("Not Found");
-
-
+      return new OkObjectResult(existingData);
 
       ProffPremiumApiService proffPremiumApiService = new ProffPremiumApiService();
       var (creditRating, isSuccess, statusCode) = await proffPremiumApiService.GetCreditScore(formattedOrgNr);
