@@ -12,10 +12,11 @@ namespace ProffCompanyLookupService.Services
   {
     private readonly CloudTable _table;
     private readonly string connectionString;
+    private readonly string AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING = "AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING";
 
     public AzureTableStorageService(string tableName)
     {
-      connectionString = Environment.GetEnvironmentVariable("AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING");
+      connectionString = Environment.GetEnvironmentVariable(AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING);
       CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
       CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
       _table = tableClient.GetTableReference(tableName);

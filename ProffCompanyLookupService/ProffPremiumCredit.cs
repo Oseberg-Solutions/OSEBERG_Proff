@@ -8,12 +8,19 @@ using ProffCompanyLookupService.Services;
 using ProffCompanyLookupService.Models;
 using System.Net;
 using Microsoft.Extensions.Primitives;
+using System;
 
 namespace ProffCompanyLookupService
 {
   public static class ProffPremiumCredit
   {
-    private static string _storageAccountTableName = "ProffPremiumRequestActivity";
+    private readonly static string _proffPremiumRequestActivity = "ProffPremiumRequestActivity";
+    private readonly static string _proffPremiumCache = "ProffPremiumCache";
+    private static ProffPremiumCacheService _proffPremiumCacheService;
+    private static string _orgNr;
+    private static string _countryCode;
+    private static bool isValid;
+    private static string validationMessage;
 
     [FunctionName("ProffPremiumCredit")]
     public static async Task<IActionResult> Run(
@@ -21,35 +28,39 @@ namespace ProffCompanyLookupService
         ILogger log)
     {
       string orgNr = req.Query["orgNr"];
-      string countryCode = StringValues.IsNullOrEmpty(req.Query["countryCode"]) ? "NO" : req.Query["countryCode"].ToString();
+      _countryCode = StringValues.IsNullOrEmpty(req.Query["countryCode"]) ? "NO" : req.Query["countryCode"].ToString();
 
-      var (isValid, formattedOrgNr, validationMessage) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
+      (isValid, _orgNr, validationMessage) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
       if (!isValid) return new BadRequestObjectResult(validationMessage);
 
-      AzureTableStorageService azureTableStorageService = new(_storageAccountTableName);
+      _proffPremiumCacheService = InitializePremiumServices(_proffPremiumCache);
+      var existingData = await _proffPremiumCacheService.GetPremiumInfoAsync(_orgNr, _countryCode);
 
-      PremiumInfoService premiumService = new(azureTableStorageService);
-      var existingData = await premiumService.GetPremiumInfoAsync(orgNr, countryCode);
-
-      if (string.IsNullOrEmpty(existingData))
+      if (existingData != null)
       {
-        // We dont have this cached data, lets do a API Call.
-        return new OkObjectResult("We did not find any matching record");
+        await Console.Out.WriteLineAsync("Existing Data is not null");
+        return new OkObjectResult(existingData);
       }
 
-      return new OkObjectResult(existingData);
-
       ProffPremiumApiService proffPremiumApiService = new ProffPremiumApiService();
-      var (creditRating, isSuccess, statusCode) = await proffPremiumApiService.GetCreditScore(formattedOrgNr);
+      var (creditRating, statusCode) = await proffPremiumApiService.GetCreditScore(_orgNr);
 
-      return HandleResponse(creditRating, isSuccess, statusCode);
+      return HandleResponse(creditRating, statusCode);
     }
 
-    private static IActionResult HandleResponse(CreditRating creditRating, bool isSuccess, HttpStatusCode statusCode)
+    private static ProffPremiumCacheService InitializePremiumServices(string tableName)
+    {
+      AzureTableStorageService azureTableStorageService = new(tableName);
+      ProffPremiumCacheService premiumService = new(azureTableStorageService);
+      return premiumService;
+    }
+
+    private static IActionResult HandleResponse(CreditRating creditRating, HttpStatusCode statusCode)
     {
       switch (statusCode)
       {
         case HttpStatusCode.OK:
+          _ = _proffPremiumCacheService.CreateOrUpdatePremiumInfoAsync(_orgNr, _countryCode, creditRating);
           return new OkObjectResult(creditRating);
         case HttpStatusCode.NoContent:
           return new NotFoundObjectResult("Company record not found.");
