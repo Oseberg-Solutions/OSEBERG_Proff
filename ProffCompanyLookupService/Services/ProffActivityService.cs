@@ -1,10 +1,11 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
+using ProffCompanyLookupService.Infrastructure;
 using System;
 using System.Threading.Tasks;
 
 namespace ProffCompanyLookupService.Services
 {
-  public class ProffActivityService
+    public class ProffActivityService
   {
     private readonly AzureTableStorageService _tableService;
 
@@ -13,7 +14,7 @@ namespace ProffCompanyLookupService.Services
       _tableService = tableService;
     }
 
-    public async Task UpdateDomainRequestCountAsync(string domain)
+    public async Task UpdateRequestCountAsync(string domain)
     {
       var entity = await _tableService.RetrieveEntityAsync(domain, domain);
       if (entity != null)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
+using ProffCompanyLookupService.Infrastructure;
 using ProffCompanyLookupService.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProffCompanyLookupService.Services
 {
-  public class ProffPremiumCacheService
+    public class ProffPremiumCacheService
   {
     private readonly AzureTableStorageService _tableService;
 
@@ -35,7 +36,7 @@ namespace ProffCompanyLookupService.Services
 
       entity.Properties.Add("economy", new EntityProperty(creditRating.Economy));
       entity.Properties.Add("leadOwnership", new EntityProperty(creditRating.LeadOwnership));
-      entity.Properties.Add("organisationNumber", new EntityProperty(creditRating.OrganisationNumber.ToString())); // Assuming you want it stored as a string
+      entity.Properties.Add("organisationNumber", new EntityProperty(creditRating.OrganisationNumber.ToString()));
       entity.Properties.Add("rating", new EntityProperty(creditRating.Rating));
       entity.Properties.Add("ratingScore", new EntityProperty(creditRating.RatingScore));
 

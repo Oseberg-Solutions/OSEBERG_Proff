@@ -9,10 +9,13 @@ using ProffCompanyLookupService.Models;
 using System.Net;
 using Microsoft.Extensions.Primitives;
 using System;
+using ProffCompanyLookupService.Utils;
+using ProffCompanyLookupService.ExternalServices;
+using ProffCompanyLookupService.Infrastructure;
 
 namespace ProffCompanyLookupService
 {
-  public static class ProffPremiumCredit
+    public static class ProffPremiumCredit
   {
     private readonly static string _proffPremiumRequestActivity = "ProffPremiumRequestActivity";
     private readonly static string _proffPremiumCache = "ProffPremiumCache";
