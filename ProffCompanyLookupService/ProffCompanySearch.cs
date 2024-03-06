@@ -8,12 +8,13 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using ProffCompanyLookupService.Services;
 using ProffCompanyLookupService.Infrastructure;
+using ProffCompanyLookupService.ExternalServices;
 
 namespace ProffCompanyLookupService
 {
   public static class ProffCompanySearch
   {
-    private static string _storageAccountTableName = "ProffRequestActivity";
+    private readonly static string _storageAccountTableName = "ProffRequestActivity";
 
     [FunctionName("ProffCompanySearch")]
     public static async Task<IActionResult> Run(
@@ -52,7 +53,7 @@ namespace ProffCompanyLookupService
          * then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
 
-        JObject extraCompanyInfo = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
+        JObject extraCompanyInfo = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId);
 
         await SaveToTable(domain);
 

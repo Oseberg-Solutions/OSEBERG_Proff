@@ -29,7 +29,7 @@ namespace ProffCompanyLookupService.Services
       }
       else
       {
-        DynamicTableEntity newEntity = new DynamicTableEntity("domain", domain);
+        DynamicTableEntity newEntity = new("domain", domain);
         newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
         newEntity.Properties.Add("domain", new EntityProperty(domain));
         newEntity.Properties.Add("last_request", new EntityProperty(DateTime.UtcNow));

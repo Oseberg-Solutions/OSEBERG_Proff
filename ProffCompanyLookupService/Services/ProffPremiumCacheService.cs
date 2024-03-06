@@ -32,7 +32,7 @@ namespace ProffCompanyLookupService.Services
 
     public async Task CreateOrUpdatePremiumInfoAsync(string orgNr, string countryCode, CreditRating creditRating)
     {
-      DynamicTableEntity entity = new DynamicTableEntity(countryCode, orgNr);
+      DynamicTableEntity entity = new(countryCode, orgNr);
 
       entity.Properties.Add("economy", new EntityProperty(creditRating.Economy));
       entity.Properties.Add("leadOwnership", new EntityProperty(creditRating.LeadOwnership));
