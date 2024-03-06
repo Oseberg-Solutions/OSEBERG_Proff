@@ -6,12 +6,13 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using ProffCompanyLookupService.Services;
+using ProffCompanyLookupService.Infrastructure;
 
-namespace ProffCompanyLookupService.Functions
+namespace ProffCompanyLookupService
 {
   public static class ProffCompanySearch
   {
-    // TODO-SURAN: Remove the connection strng to a param in the azure function
     private static string _storageAccountTableName = "ProffRequestActivity";
 
     [FunctionName("ProffCompanySearch")]
@@ -44,6 +45,7 @@ namespace ProffCompanyLookupService.Functions
           return new OkObjectResult(extractedData);
         }
 
+
         /*
          * This part will always happen when the user chooses a Company, and only then will this part of the code run, 
          * where we fetch detailed info where we have to grab from a different endpoint,
@@ -65,14 +67,9 @@ namespace ProffCompanyLookupService.Functions
     }
     public static async Task SaveToTable(string domain)
     {
-#if !DEBUG
       AzureTableStorageService tableService = new(_storageAccountTableName);
-      DomainActivityService domainActivityService = new(tableService);
-      await domainActivityService.UpdateDomainRequestCountAsync(domain);
-
-      //AzureTableStorageService tableStorageService = new(_storageAccountTableName);
-      //await tableStorageService.UpdateProffDomainsTable(domain);
-#endif
+      ProffActivityService proffActivityService = new(tableService);
+      await proffActivityService.UpdateRequestCountAsync(domain);
     }
   }
 }

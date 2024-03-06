@@ -9,12 +9,11 @@ public class ProffApiService
 {
   private static readonly HttpClient httpClient = new HttpClient();
   private static string PROFF_BASE_URL = "https://api.proff.no/api";
-  private string proffApiKey;
+  private readonly string _proffApiKey;
 
   public ProffApiService()
   {
-    proffApiKey = Environment.GetEnvironmentVariable("PROFF_API_KEY");
-    proffApiKey = Environment.GetEnvironmentVariable("PROFF_PREMIUM_API_TOKEN");
+    _proffApiKey = Environment.GetEnvironmentVariable("PROFF_API_KEY");
   }
 
   public async Task<JArray> FetchCompanyDataAsync(string query, string country)
@@ -23,7 +22,7 @@ public class ProffApiService
         ? $"{PROFF_BASE_URL}/companies/eniropro/{country}?industry={query}"
         : $"{PROFF_BASE_URL}/companies/eniropro/{country}?name={query}";
 
-    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", proffApiKey);
+    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
     HttpResponseMessage response = await httpClient.GetAsync(proffApiUrl);
     string responseContent = await response.Content.ReadAsStringAsync();
 
@@ -40,7 +39,7 @@ public class ProffApiService
   {
     string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
 
-    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", proffApiKey);
+    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
     HttpResponseMessage response = await httpClient.GetAsync(proffCompanyListingUrl);
 
     if (!response.IsSuccessStatusCode)

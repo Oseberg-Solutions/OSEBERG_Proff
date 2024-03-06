@@ -3,40 +3,37 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+using System.Net;
+using System;
 using ProffCompanyLookupService.Services;
 using ProffCompanyLookupService.Models;
-using System.Net;
-using Microsoft.Extensions.Primitives;
-using System;
 using ProffCompanyLookupService.Utils;
 using ProffCompanyLookupService.ExternalServices;
 using ProffCompanyLookupService.Infrastructure;
 
 namespace ProffCompanyLookupService
 {
-    public static class ProffPremiumCredit
+  public static class ProffPremiumCredit
   {
     private readonly static string _proffPremiumRequestActivity = "ProffPremiumRequestActivity";
     private readonly static string _proffPremiumCache = "ProffPremiumCache";
     private static ProffPremiumCacheService _proffPremiumCacheService;
+    private static ProffPremiumActivityService _proffPremiumActivityService;
     private static string _orgNr;
+    private static string _domain;
     private static string _countryCode;
     private static bool isValid;
-    private static string validationMessage;
+    private static string _validationMessage;
 
     [FunctionName("ProffPremiumCredit")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-        ILogger log)
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
     {
-      string orgNr = req.Query["orgNr"];
-      _countryCode = StringValues.IsNullOrEmpty(req.Query["countryCode"]) ? "NO" : req.Query["countryCode"].ToString();
 
-      (isValid, _orgNr, validationMessage) = ValidationUtils.ValidateAndFormatOrgNr(orgNr);
-      if (!isValid) return new BadRequestObjectResult(validationMessage);
+      (isValid, _orgNr, _domain, _countryCode, _validationMessage) = ValidationUtils.ValidateQueryInput(req);
+      if (!isValid) return new BadRequestObjectResult(_validationMessage);
 
-      _proffPremiumCacheService = InitializePremiumServices(_proffPremiumCache);
+      _proffPremiumCacheService = InitializePremiumCacheService(_proffPremiumCache);
       var existingData = await _proffPremiumCacheService.GetPremiumInfoAsync(_orgNr, _countryCode);
 
       if (existingData != null)
@@ -45,17 +42,24 @@ namespace ProffCompanyLookupService
         return new OkObjectResult(existingData);
       }
 
-      ProffPremiumApiService proffPremiumApiService = new ProffPremiumApiService();
+      ProffPremiumApiService proffPremiumApiService = new();
       var (creditRating, statusCode) = await proffPremiumApiService.GetCreditScore(_orgNr);
 
       return HandleResponse(creditRating, statusCode);
     }
 
-    private static ProffPremiumCacheService InitializePremiumServices(string tableName)
+    private static ProffPremiumCacheService InitializePremiumCacheService(string tableName)
     {
       AzureTableStorageService azureTableStorageService = new(tableName);
       ProffPremiumCacheService premiumService = new(azureTableStorageService);
       return premiumService;
+    }
+
+    private static ProffPremiumActivityService InitializePremiumActivityService(string tableName)
+    {
+      AzureTableStorageService azureTableStorageService = new(tableName);
+      ProffPremiumActivityService proffPremiumActivityService = new(azureTableStorageService);
+      return proffPremiumActivityService;
     }
 
     private static IActionResult HandleResponse(CreditRating creditRating, HttpStatusCode statusCode)
@@ -64,6 +68,9 @@ namespace ProffCompanyLookupService
       {
         case HttpStatusCode.OK:
           _ = _proffPremiumCacheService.CreateOrUpdatePremiumInfoAsync(_orgNr, _countryCode, creditRating);
+          _proffPremiumActivityService = InitializePremiumActivityService(_proffPremiumRequestActivity);
+          _ = _proffPremiumActivityService.UpdateRequestCountAsync(_domain);
+
           return new OkObjectResult(creditRating);
         case HttpStatusCode.NoContent:
           return new NotFoundObjectResult("Company record not found.");
