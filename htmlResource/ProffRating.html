@@ -189,68 +189,86 @@
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var clientUrl = parent.Xrm.Page.context.getClientUrl();
-      console.log("ClientUrl: ", clientUrl);
-      var entityId = parent.Xrm.Page.data.entity.getId(); 
-      console.log("entityId: ", entityId);
 
-      var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_proff_rating,os_proff_ratingscore`;
-  
-      fetch(query, {
-          method: "GET",
-          headers: {
-              "OData-MaxVersion": "4.0",
-              "OData-Version": "4.0",
-              "Accept": "application/json",
-              "Content-Type": "application/json; charset=utf-8",
-              "Prefer": "odata.include-annotations=\"*\""
-          }
-      })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Network response was not ok.');
-          }
-          return response.json();
-      })
-      .then(data => {
-        
-        var rating = data["os_proff_rating"] || "No rating found.";
-        var ratingScore = data["os_proff_ratingscore"] || 50;
+function moveCircle(score) {
+  score = Math.max(0, Math.min(score, 100));
+  var circle = document.getElementById("gauge-circle");
+  var leftPosition = score;
+  circle.style.left = `calc(${leftPosition}% - 15px)`;
+  updateCircleBorderColor(circle, leftPosition);
+}
 
-        console.log("Rating: ", rating);
-        console.log("RatingScore: ", ratingScore);
+function updateCircleBorderColor(circle, leftPosition) {
+  var gaugeSections = document.querySelectorAll(".gauge-section");
+  var colors = ["#ff6666", "#fbb72a", "#4bae49"];
+  var sectionWidth = 100 / gaugeSections.length;
 
+  var sectionIndex = Math.min(
+    gaugeSections.length - 1,
+    Math.floor(leftPosition / sectionWidth)
+  );
 
-        document.getElementById("score").innerHTML = rating;
-        document.getElementById("scorePoint").innerHTML = ratingScore;
-        moveCircle(ratingScore)
-      })
-      .catch(error => console.error("Error making API call:", error));
+  circle.style.borderColor = colors[sectionIndex];
+}
 
-      function moveCircle(score) {
-        score = Math.max(0, Math.min(score, 100));
-        var circle = document.getElementById("gauge-circle");
-        console.log(circle);
-        var leftPosition = score;
-        circle.style.left = `calc(${leftPosition}% - 15px)`;
-        updateCircleBorderColor(circle, leftPosition);
-      }
+function QueryData(orgNr)
+{
+  var domain = window.location.host
+  var azureQuery = "https://company-lookup.azurewebsites.net/api/ProffPremiumCredit"
+  var AZURE_FUNCTION_API_KEY  = "zZSTDpXMqXTVRPIb7XL1lqb-ssnihlDbujQMBpr3RA42AzFuE86izg=="
+  var query = `${azureQuery}?code=${AZURE_FUNCTION_API_KEY}&domain=${domain}&orgNr=${orgNr}`
+  fetch(query, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    }
+  })
+  .then(response => {
+    if(!response.ok){
+      throw new Error("'Network response was not ok")
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("data: ", data);
+    document.getElementById("score").innerHTML = data.rating;
+    document.getElementById("scorePoint").innerHTML = data.ratingScore;
+    moveCircle(data.ratingScore)
+  })
+  .catch(error => {
+    console.log("Error during fetch: ", error);
+  })
+}
 
+document.addEventListener('DOMContentLoaded', function() {
+    var clientUrl = parent.Xrm.Page.context.getClientUrl();
+    console.log("ClientUrl: ", clientUrl);
+    var entityId = parent.Xrm.Page.data.entity.getId(); 
+    console.log("entityId: ", entityId);
 
-      function updateCircleBorderColor(circle, leftPosition) {
-        var gaugeSections = document.querySelectorAll(".gauge-section");
-        var colors = ["#ff6666", "#fbb72a", "#4bae49"]; // Colors corresponding to sections
-        var sectionWidth = 100 / gaugeSections.length; // Assuming equal width sections
+    var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_proff_rating,os_proff_ratingscore,cr41c_orgnr`;
 
-        var sectionIndex = Math.min(
-          gaugeSections.length - 1,
-          Math.floor(leftPosition / sectionWidth)
-        );
-
-        circle.style.borderColor = colors[sectionIndex];
-      }
-  });
+    fetch(query, {
+        method: "GET",
+        headers: {
+            "OData-MaxVersion": "4.0",
+            "OData-Version": "4.0",
+            "Content-Type": "application/json; charset=utf-8",
+            "Prefer": "odata.include-annotations=\"*\""
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        return response.json();
+    })
+    .then(data => {
+      var orgNr = data["cr41c_orgnr"];
+      QueryData(orgNr);
+    })
+    .catch(error => console.error("Error making API call:", error));
+});
   </script>
 </body>
 </html>

@@ -10,6 +10,7 @@ using ProffCompanyLookupService.Models;
 using ProffCompanyLookupService.Utils;
 using ProffCompanyLookupService.ExternalServices;
 using ProffCompanyLookupService.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace ProffCompanyLookupService
 {
@@ -27,23 +28,24 @@ namespace ProffCompanyLookupService
 
     [FunctionName("ProffPremiumCredit")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req, ILogger log)
     {
-
-      (isValid, _orgNr, _domain, _countryCode, _validationMessage) = ValidationUtils.ValidateQueryInput(req);
+      (isValid, _orgNr, _domain, _countryCode, _validationMessage) = ValidationUtils.ValidateQueryInput(req, log);
       if (!isValid) return new BadRequestObjectResult(_validationMessage);
+
 
       _proffPremiumCacheService = InitializePremiumCacheService(_proffPremiumCache);
       var existingData = await _proffPremiumCacheService.GetPremiumInfoAsync(_orgNr, _countryCode);
 
       if (existingData != null)
       {
-        await Console.Out.WriteLineAsync("Existing Data is not null");
         return new OkObjectResult(existingData);
       }
 
       ProffPremiumApiService proffPremiumApiService = new();
       var (creditRating, statusCode) = await proffPremiumApiService.GetCreditScore(_orgNr);
+
+      log.LogInformation(creditRating.ToString());
 
       return HandleResponse(creditRating, statusCode);
     }
@@ -70,7 +72,6 @@ namespace ProffCompanyLookupService
           _ = _proffPremiumCacheService.CreateOrUpdatePremiumInfoAsync(_orgNr, _countryCode, creditRating);
           _proffPremiumActivityService = InitializePremiumActivityService(_proffPremiumRequestActivity);
           _ = _proffPremiumActivityService.UpdateRequestCountAsync(_domain);
-
           return new OkObjectResult(creditRating);
         case HttpStatusCode.NoContent:
           return new NotFoundObjectResult("Company record not found.");

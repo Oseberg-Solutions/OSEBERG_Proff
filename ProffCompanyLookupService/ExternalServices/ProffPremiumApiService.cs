@@ -22,7 +22,6 @@ namespace ProffCompanyLookupService.ExternalServices
     public async Task<(CreditRating, HttpStatusCode)> GetCreditScore(string organisationNumber)
     {
 
-#if DEBUG
       HttpStatusCode _statusCode = HttpStatusCode.OK;
       CreditRating testRating = new()
       {
@@ -36,7 +35,6 @@ namespace ProffCompanyLookupService.ExternalServices
       return (testRating, _statusCode);
       /* TESTING ABOVE */
 
-#endif
 
       _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _ProffPremiumApiToken);
 
