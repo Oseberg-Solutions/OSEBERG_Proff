@@ -10,7 +10,7 @@ namespace ProffCompanyLookupService.ExternalServices
   public class ProffPremiumApiService
   {
     private static HttpClient _httpClient;
-    private string _base_url = "https://ppc.proff.no";
+    private readonly string _base_url = "https://ppc.proff.no";
     private readonly string _ProffPremiumApiToken;
     private readonly string PROFF_PREMIUM_API_TOKEN = "PROFF_PREMIUM_API_TOKEN";
     public ProffPremiumApiService()
@@ -24,7 +24,7 @@ namespace ProffCompanyLookupService.ExternalServices
 
 #if DEBUG
       HttpStatusCode _statusCode = HttpStatusCode.OK;
-      CreditRating testRating = new CreditRating
+      CreditRating testRating = new()
       {
         Economy = 1,
         LeadOwnership = 2,
@@ -42,19 +42,17 @@ namespace ProffCompanyLookupService.ExternalServices
 
       try
       {
-        using (var response = await _httpClient.GetAsync($"{_base_url}/CreditRating/{organisationNumber}"))
+        using var response = await _httpClient.GetAsync($"{_base_url}/CreditRating/{organisationNumber}");
+        if (response.IsSuccessStatusCode)
         {
-          if (response.IsSuccessStatusCode)
-          {
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var creditRating = JsonConvert.DeserializeObject<CreditRating>(responseContent);
+          var responseContent = await response.Content.ReadAsStringAsync();
+          var creditRating = JsonConvert.DeserializeObject<CreditRating>(responseContent);
 
-            return (creditRating, response.StatusCode);
-          }
-          else
-          {
-            return (null, response.StatusCode);
-          }
+          return (creditRating, response.StatusCode);
+        }
+        else
+        {
+          return (null, response.StatusCode);
         }
       }
       catch (HttpRequestException)
