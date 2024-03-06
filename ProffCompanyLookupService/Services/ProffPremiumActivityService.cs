@@ -17,10 +17,13 @@ namespace ProffCompanyLookupService.Services
 
     public async Task UpdateRequestCountAsync(string domain)
     {
-      var entity = await _tableService.RetrieveEntityAsync(domain, domain);
+      var monthYear = DateTime.UtcNow.ToString("yyyyMM");
+      var rowKey = $"{domain}_{monthYear}";
+
+      var entity = await _tableService.RetrieveEntityAsync("domain", rowKey);
+
       if (entity != null)
       {
-        // Increment the request count
         var amountOfRequests = entity.Properties.ContainsKey("amount_of_request") ? entity.Properties["amount_of_request"].Int32Value ?? 0 : 0;
         amountOfRequests++;
         entity.Properties["amount_of_request"] = new EntityProperty(amountOfRequests);
@@ -30,9 +33,9 @@ namespace ProffCompanyLookupService.Services
       }
       else
       {
-        DynamicTableEntity newEntity = new(domain, domain);
-        newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
+        DynamicTableEntity newEntity = new("domain", domain);
         newEntity.Properties.Add("domain", new EntityProperty(domain));
+        newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
         newEntity.Properties.Add("last_request", new EntityProperty(DateTime.UtcNow));
 
         await _tableService.InsertOrMergeEntityAsync(newEntity);

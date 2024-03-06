@@ -1,41 +1,40 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using ProffCompanyLookupService.Infrastructure;
-using System;
 using System.Threading.Tasks;
+using System;
 
-namespace ProffCompanyLookupService.Services
+public class ProffActivityService
 {
-  public class ProffActivityService
+  private readonly AzureTableStorageService _tableService;
+
+  public ProffActivityService(AzureTableStorageService tableService)
   {
-    private readonly AzureTableStorageService _tableService;
+    _tableService = tableService;
+  }
 
-    public ProffActivityService(AzureTableStorageService tableService)
+  public async Task UpdateRequestCountAsync(string domain)
+  {
+    var monthYear = DateTime.UtcNow.ToString("yyyyMM");
+    var rowKey = $"{domain}_{monthYear}";
+
+    var entity = await _tableService.RetrieveEntityAsync("domain", rowKey);
+    if (entity != null)
     {
-      _tableService = tableService;
+      var amountOfRequests = entity.Properties.ContainsKey("amount_of_request") ? entity.Properties["amount_of_request"].Int32Value ?? 0 : 0;
+      amountOfRequests++;
+      entity.Properties["amount_of_request"] = new EntityProperty(amountOfRequests);
+      entity.Properties["last_request"] = new EntityProperty(DateTime.UtcNow);
+
+      await _tableService.UpdateEntityAsync(entity);
     }
-
-    public async Task UpdateRequestCountAsync(string domain)
+    else
     {
-      var entity = await _tableService.RetrieveEntityAsync("domain", domain);
-      if (entity != null)
-      {
-        // Increment the request count
-        var amountOfRequests = entity.Properties.ContainsKey("amount_of_request") ? entity.Properties["amount_of_request"].Int32Value ?? 0 : 0;
-        amountOfRequests++;
-        entity.Properties["amount_of_request"] = new EntityProperty(amountOfRequests);
-        entity.Properties["last_request"] = new EntityProperty(DateTime.UtcNow);
+      DynamicTableEntity newEntity = new DynamicTableEntity("domain", rowKey);
+      newEntity.Properties.Add("domain", new EntityProperty(domain));
+      newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
+      newEntity.Properties.Add("last_request", new EntityProperty(DateTime.UtcNow));
 
-        await _tableService.UpdateEntityAsync(entity);
-      }
-      else
-      {
-        DynamicTableEntity newEntity = new("domain", domain);
-        newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
-        newEntity.Properties.Add("domain", new EntityProperty(domain));
-        newEntity.Properties.Add("last_request", new EntityProperty(DateTime.UtcNow));
-
-        await _tableService.InsertOrMergeEntityAsync(newEntity);
-      }
+      await _tableService.InsertOrMergeEntityAsync(newEntity);
     }
   }
 }
