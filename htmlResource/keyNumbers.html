@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .gauge {
+        width: 100%;
+      }
+      .inner-container {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gauge">
+      <div class="container">
+        <p>LIKVIDITET</p>
+        <div class="inner-container">
+          <canvas id="gauge-1"></canvas>
+          <div>
+            <p id="likviditet" style="font-weight: bold"></p>
+            <p>89%</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p>LØNNSOMHET</p>
+        <div class="inner-container">
+          <canvas id="gauge-2"></canvas>
+          <div>
+            <p id="lonnsomhet" style="font-weight: bold"></p>
+            <p>23%</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p>SOLIDITET</p>
+        <div class="inner-container">
+          <canvas id="gauge-3"></canvas>
+          <div>
+            <p id="soliditet" style="font-weight: bold"></p>
+            <p>48%</p>
+          </div>
+        </div>
+      </div>
+    <!--<script src="GaugeLibrary/dist/gauge.min.js"></script>--> 
+
+    <script src="/WebResources/os_gauge.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var opts = {
+          angle: 0.005, // The span of the gauge arc
+          lineWidth: 0.4, // The line thickness
+          radiusScale: 1, // Relative radius
+          pointer: {
+            length: 0.5, // // Relative to gauge radius
+            strokeWidth: 0.1, // The thickness
+            color: "#000000", // Fill color
+          },
+          limitMax: false, // If false, max value increases automatically if value > maxValue
+          limitMin: false, // If true, the min value of the gauge will be fixed
+          staticZones: [
+            { strokeStyle: "#e7372a", min: 0, max: 20 }, // Red
+            { strokeStyle: "#fbb72a", min: 20, max: 40 }, // Orange
+            { strokeStyle: "#aed39a", min: 40, max: 60 }, // light Green
+            { strokeStyle: "#4bae49", min: 60, max: 80 }, // Green
+            { strokeStyle: "#1a8c37", min: 80, max: 100 }, // Dark Green
+          ],
+
+          generateGradient: true,
+          highDpiSupport: true, // High resolution support
+        };
+
+        function CreateTargetGauges(index, value) {
+          var elementId = `gauge-${index}`;
+          var target = document.getElementById(elementId);
+          var gauge = new Gauge(target).setOptions(opts);
+          gauge.maxValue = 100;
+          gauge.setMinValue(0);
+          gauge.animationSpeed = 32;
+          gauge.set(value);
+        }
+
+
+        var likviditetElement = document.getElementById("likviditet");
+        var lonnsomhetElement = document.getElementById("lonnsomhet");
+        var soliditetElement = document.getElementById("soliditet");
+
+        CreateTargetGauges("1", 89);
+        CreateTargetGauges("2", 23);
+        CreateTargetGauges("3", 48);
+
+        likviditetElement.innerHTML = "God";
+        lonnsomhetElement.innerHTML = "Dårlig";
+        soliditetElement.innerHTML = "Ok";
+
+
+      });
+    </script>
+  </body>
+</html>
