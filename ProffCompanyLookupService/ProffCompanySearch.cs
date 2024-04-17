@@ -6,7 +6,6 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using ProffCompanyLookupService.Services;
 using ProffCompanyLookupService.Infrastructure;
 using ProffCompanyLookupService.ExternalServices;
 
