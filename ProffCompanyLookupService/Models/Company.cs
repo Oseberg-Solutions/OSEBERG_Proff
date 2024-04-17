@@ -24,10 +24,12 @@ namespace ProffCompanyLookupService.Models
     public string Nace { get; set; }
     public string Profit { get; set; }
     public string Revenue { get; set; }
-
     public string VisitorAddressLine { get; set; }
     public string VisitorBoxAddressLine { get; set; }
     public string VisitorPostPlace { get; set; }
     public string VisitorZipCode { get; set; }
+    public string Likviditetsgrad { get; set; }
+    public string TotalrentabilitetLoennsomhet { get; set; }
+    public string Egenkapitalandel { get; set; }
   }
 }

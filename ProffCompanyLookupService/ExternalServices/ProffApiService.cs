@@ -18,7 +18,7 @@ namespace ProffCompanyLookupService.ExternalServices
       _proffApiKey = Environment.GetEnvironmentVariable("PROFF_API_KEY");
     }
 
-    public async Task<JArray> FetchCompanyDataAsync(string query, string country)
+    public async Task<JArray> FetchCompanyDataAsync(string query, string country, ILogger log)
     {
       string proffApiUrl = ContainsOnlyDigits(query)
           ? $"{PROFF_BASE_URL}/companies/eniropro/{country}?industry={query}"
@@ -34,10 +34,12 @@ namespace ProffCompanyLookupService.ExternalServices
       }
 
       JObject apiResponse = JObject.Parse(await response.Content.ReadAsStringAsync());
+      await Console.Out.WriteLineAsync($"ApiResponse: {apiResponse}");
+
       return CreateJArrayFromApiResponse(apiResponse);
     }
 
-    public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId)
+    public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId, ILogger log)
     {
       string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
 
@@ -63,7 +65,12 @@ namespace ProffCompanyLookupService.ExternalServices
         ["visitorAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString(),
         ["visitorBoxAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString(),
         ["visitorPostPlace"] = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString(),
-        ["visitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString()
+        ["visitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString(),
+        /*
+        ["likviditetsgrad"] = apiResponse["registerOwnListing"]["analyses"]["companyFigures"]["likviditetsgrad"]?.ToString(),
+        ["totalrentabilitetLoennsomhet "] = apiResponse["registerOwnListing"]["analyses"]["companyFigures"]["totalrentabilitetLoennsomhet"]?.ToString(),
+        ["egenkapitalandel "] = apiResponse["registerOwnListing"]["analyses"]["companyFigures"]["egenkapitalandel"]?.ToString(),
+        */
       };
     }
 

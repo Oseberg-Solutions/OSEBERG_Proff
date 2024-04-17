@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProffCompanyLookupService.Services
 {
-    public class ProffPremiumCacheService
+  public class ProffPremiumCacheService
   {
     private readonly AzureTableStorageService _tableService;
 

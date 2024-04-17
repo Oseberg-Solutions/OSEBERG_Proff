@@ -31,7 +31,7 @@ public class CompanyDataService
         VisitorAddressLine = visitorAddress?["addressLine"]?.ToString(),
         VisitorBoxAddressLine = visitorAddress?["boxAddressLine"]?.ToString(),
         VisitorPostPlace = visitorAddress?["postPlace"]?.ToString(),
-        VisitorZipCode = visitorAddress?["zipCode"]?.ToString(),
+        VisitorZipCode = visitorAddress?["zipCode"]?.ToString()
       };
     }).ToList();
   }

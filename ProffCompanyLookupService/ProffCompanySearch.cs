@@ -37,7 +37,7 @@ namespace ProffCompanyLookupService
             return new BadRequestObjectResult("Missing required parameters");
           }
 
-          JArray companies = await proffApiService.FetchCompanyDataAsync(query, country);
+          JArray companies = await proffApiService.FetchCompanyDataAsync(query, country, log);
 
           CompanyDataService companyDataService = new();
           var extractedData = companyDataService.ConvertJArrayToCompanyDataList(companies);
@@ -53,7 +53,8 @@ namespace ProffCompanyLookupService
          * then the one in FetchCompanyDataAsync method on the proffApiService class.
         */
 
-        JObject extraCompanyInfo = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId);
+        JObject extraCompanyInfo = await proffApiService.GetDetailedCompanyInfo(country, proffCompanyId, log);
+        log.LogInformation($"ExtraCompanyInfo: {extraCompanyInfo}");
 
         await SaveToTable(domain);
 

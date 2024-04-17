@@ -4,10 +4,10 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="TestData\testdata.json" />
+    <None Remove="TestData\FetchCompanyData_Oseberg.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="TestData\testdata.json">
+    <EmbeddedResource Include="TestData\FetchCompanyData_Oseberg.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
