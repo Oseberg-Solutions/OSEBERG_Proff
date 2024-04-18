@@ -1,5 +1,4 @@
 ﻿using Azure.Data.Tables;
-using Proff.Infrastructure;
 using Proff.Models;
 using System.Collections.Generic;
 using System.Linq;

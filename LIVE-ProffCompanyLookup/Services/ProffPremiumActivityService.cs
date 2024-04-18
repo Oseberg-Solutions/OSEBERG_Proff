@@ -1,5 +1,4 @@
-﻿using Proff.Infrastructure;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace Proff.Services

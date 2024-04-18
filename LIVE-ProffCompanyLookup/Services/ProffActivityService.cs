@@ -1,15 +1,16 @@
-﻿using Proff.Infrastructure;
-using System.Threading.Tasks;
-using System;
+﻿using Azure.Data.Tables;
+using LIVE_ProffCompanyLookup.Infrastructure;
+
+namespace LIVE_ProffCompanyLookup.Services;
 
 public class ProffActivityService
 {
-  /*
-  private readonly AzureTableStorageService _tableService;
+  private readonly AzureTableStorageService _storageService;
+  private TableEntity? _entity;
 
-  public ProffActivityService(AzureTableStorageService tableService)
+  public ProffActivityService(AzureTableStorageService storageService)
   {
-    _tableService = tableService;
+    _storageService = storageService;
   }
 
   public async Task UpdateRequestCountAsync(string domain)
@@ -17,25 +18,31 @@ public class ProffActivityService
     var monthYear = DateTime.UtcNow.ToString("yyyyMM");
     var rowKey = $"{domain}_{monthYear}";
 
-    var entity = await _tableService.RetrieveEntityAsync("domain", rowKey);
-    if (entity != null)
-    {
-      var amountOfRequests = entity.Properties.ContainsKey("amount_of_request") ? entity.Properties["amount_of_request"].Int32Value ?? 0 : 0;
-      amountOfRequests++;
-      entity.Properties["amount_of_request"] = new EntityProperty(amountOfRequests);
-      entity.Properties["last_request"] = new EntityProperty(DateTime.UtcNow);
+    _entity = await _storageService.RetrieveEntityAsync("domain", rowKey);
 
-      await _tableService.UpdateEntityAsync(entity);
+    if (_entity != null)
+    {
+      var amountOfRequests = GetAmountOfRequests();
+      amountOfRequests++;
+
+      _entity["amount_of_request"] = amountOfRequests;
+      _entity["last_requests"] = DateTime.UtcNow;
+      await _storageService.UpsertEntityAsync(_entity);
     }
     else
     {
-      DynamicTableEntity newEntity = new DynamicTableEntity("domain", rowKey);
-      newEntity.Properties.Add("domain", new EntityProperty(domain));
-      newEntity.Properties.Add("amount_of_request", new EntityProperty(1));
-      newEntity.Properties.Add("last_request", new EntityProperty(DateTime.UtcNow));
-
-      await _tableService.InsertOrMergeEntityAsync(newEntity);
+      var newEntity = new TableEntity("domain", rowKey);
+      newEntity.Add("domain", domain);
+      newEntity.Add("amount_of_request", 1);
+      newEntity.Add("amount_of_request", DateTime.UtcNow);
+      await _storageService.UpsertEntityAsync(newEntity);
     }
-}
-    */
+  }
+
+  private int GetAmountOfRequests()
+  {
+    return _entity != null && _entity.TryGetValue("amount_of_request", out var value)
+      ? Convert.ToInt32(value)
+      : 0;
+  }
 }
