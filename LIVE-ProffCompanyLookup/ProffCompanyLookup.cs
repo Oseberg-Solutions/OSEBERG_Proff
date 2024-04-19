@@ -26,7 +26,11 @@ namespace Proff.Function
       HttpRequestData req)
     {
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-      QueryPayload queryPayLoad = new(req);
+      ParamPayload paramPayLoad = new(req);
+      
+      
+      
+      
       
       string domain = string.IsNullOrEmpty(req.Query["domain"]) ? "Unknown" : req.Query["domain"];
 
