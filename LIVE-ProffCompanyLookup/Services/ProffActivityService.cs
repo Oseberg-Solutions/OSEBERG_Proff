@@ -13,10 +13,10 @@ public class ProffActivityService
     _storageService = storageService;
   }
 
-  public async Task UpdateRequestCountAsync(string domain)
+  public async Task UpdateRequestCountAsync(string origin)
   {
     var monthYear = DateTime.UtcNow.ToString("yyyyMM");
-    var rowKey = $"{domain}_{monthYear}";
+    var rowKey = $"{origin}_{monthYear}";
 
     _entity = await _storageService.RetrieveEntityAsync("domain", rowKey);
 
@@ -32,9 +32,9 @@ public class ProffActivityService
     else
     {
       var newEntity = new TableEntity("domain", rowKey);
-      newEntity.Add("domain", domain);
+      newEntity.Add("domain", origin);
       newEntity.Add("amount_of_request", 1);
-      newEntity.Add("amount_of_request", DateTime.UtcNow);
+      newEntity.Add("last_request", DateTime.UtcNow);
       await _storageService.UpsertEntityAsync(newEntity);
     }
   }

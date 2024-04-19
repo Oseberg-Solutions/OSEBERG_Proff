@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Proff.Models;
+
+namespace LIVE_ProffCompanyLookup.Services;
 
 public class CompanyDataService
 {

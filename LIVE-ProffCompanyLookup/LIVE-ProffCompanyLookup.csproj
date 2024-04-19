@@ -30,4 +30,7 @@
   <ItemGroup>
     <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\QueryPayload.cs" />
+  </ItemGroup>
 </Project>
