@@ -1,6 +1,6 @@
 ﻿using Azure.Data.Tables;
 
-namespace LIVE_ProffCompanyLookup.Infrastructure
+namespace Proff.Infrastructure
 {
   public class AzureTableStorageService
   {

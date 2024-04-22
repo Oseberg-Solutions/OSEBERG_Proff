@@ -1,7 +1,7 @@
 ﻿using Azure.Data.Tables;
-using LIVE_ProffCompanyLookup.Infrastructure;
+using Proff.Infrastructure;
 
-namespace LIVE_ProffCompanyLookup.Services;
+namespace Proff.Services;
 
 public class ProffActivityService
 {
@@ -22,21 +22,31 @@ public class ProffActivityService
 
     if (_entity != null)
     {
-      var amountOfRequests = GetAmountOfRequests();
-      amountOfRequests++;
-
-      _entity["amount_of_request"] = amountOfRequests;
-      _entity["last_requests"] = DateTime.UtcNow;
-      await _storageService.UpsertEntityAsync(_entity);
+      await UpdateExistingEntity();
     }
     else
     {
-      var newEntity = new TableEntity("domain", rowKey);
-      newEntity.Add("domain", origin);
-      newEntity.Add("amount_of_request", 1);
-      newEntity.Add("last_request", DateTime.UtcNow);
-      await _storageService.UpsertEntityAsync(newEntity);
+      await CreateNewEntity(rowKey, origin);
     }
+  }
+
+  private async Task UpdateExistingEntity()
+  {
+    var amountOfRequests = GetAmountOfRequests();
+    amountOfRequests++;
+
+    _entity["amount_of_request"] = amountOfRequests;
+    _entity["last_request"] = DateTime.UtcNow;
+    await _storageService.UpsertEntityAsync(_entity);
+  }
+
+  private async Task CreateNewEntity(string rowKey, string origin)
+  {
+    var newEntity = new TableEntity("domain", rowKey);
+    newEntity.Add("domain", origin);
+    newEntity.Add("amount_of_request", 1);
+    newEntity.Add("last_request", DateTime.UtcNow);
+    await _storageService.UpsertEntityAsync(newEntity);
   }
 
   private int GetAmountOfRequests()
