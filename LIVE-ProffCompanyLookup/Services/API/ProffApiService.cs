@@ -39,6 +39,11 @@ namespace Proff.ExternalServices
       return CreateJArrayFromApiResponse(apiResponse);
     }
 
+    /* TODO-SURAN:
+     * We dont want to return NACE, Profit and Revenue if the domain dont have the premium license.
+     * Lets also check if we get Likviditets,total
+     * Maybe we just want to cal the register endpoint here instead of the eniropro so we can get aLl at the same time?
+    */
     public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId)
     {
       string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
