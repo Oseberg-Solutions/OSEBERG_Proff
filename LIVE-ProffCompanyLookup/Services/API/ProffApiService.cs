@@ -21,10 +21,11 @@ namespace Proff.ExternalServices
     public async Task<JArray> FetchCompanyDataAsync(string query, string country)
     {
       string proffApiUrl = ContainsOnlyDigits(query)
-          ? $"{PROFF_BASE_URL}/companies/eniropro/{country}?industry={query}"
-          : $"{PROFF_BASE_URL}/companies/eniropro/{country}?name={query}";
+        ? $"{PROFF_BASE_URL}/companies/eniropro/{country}?industry={query}"
+        : $"{PROFF_BASE_URL}/companies/eniropro/{country}?name={query}";
 
-      httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
+      httpClient.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
       HttpResponseMessage response = await httpClient.GetAsync(proffApiUrl);
       string responseContent = await response.Content.ReadAsStringAsync();
 
@@ -34,21 +35,66 @@ namespace Proff.ExternalServices
       }
 
       JObject apiResponse = JObject.Parse(await response.Content.ReadAsStringAsync());
-      await Console.Out.WriteLineAsync($"ApiResponse: {apiResponse}");
-
       return CreateJArrayFromApiResponse(apiResponse);
     }
 
     /* TODO-SURAN:
      * We dont want to return NACE, Profit and Revenue if the domain dont have the premium license.
-     * Lets also check if we get Likviditets,total
-     * Maybe we just want to cal the register endpoint here instead of the eniropro so we can get aLl at the same time?
-    */
+     */
+
+    public async Task<JObject> GetDetailedCompanyInfoCopy(string country, string organisationNumber)
+    {
+      string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/register/{country}/{organisationNumber}";
+
+      httpClient.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
+      HttpResponseMessage response = await httpClient.GetAsync(proffCompanyListingUrl);
+
+      if (!response.IsSuccessStatusCode)
+      {
+        string responseContent = await response.Content.ReadAsStringAsync();
+        throw new Exception($"Error calling Proff API for detailed info: {responseContent}");
+      }
+
+      string apiResponseContent = await response.Content.ReadAsStringAsync();
+
+      JObject apiResponse = JObject.Parse(apiResponseContent);
+
+      try
+      {
+        var jsonObject = new JObject
+        {
+          ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
+          ["Nace"] = apiResponse["naceCategories"]?[0]?.ToString(),
+          ["profit"] = apiResponse["profit"]?.ToString(),
+          ["revenue"] = apiResponse["revenue"]?.ToString(),
+          ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
+          ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
+          ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
+          ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
+          ["likviditetsgrad"] = apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString(),
+          ["totalrentabilitetLoennsomhet "] =
+            apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString(),
+          ["egenkapitalandel "] = apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString(),
+        };
+
+        return jsonObject;
+      }
+      catch (Exception ex)
+      {
+        // Log any exceptions that occur during JObject creation
+        Console.WriteLine($"Error creating JObject: {ex.Message}");
+        throw;
+      }
+    }
+
+
     public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId)
     {
       string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
 
-      httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
+      httpClient.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
       HttpResponseMessage response = await httpClient.GetAsync(proffCompanyListingUrl);
 
       if (!response.IsSuccessStatusCode)
@@ -81,7 +127,10 @@ namespace Proff.ExternalServices
 
     private static JArray CreateJArrayFromApiResponse(JObject apiResponse)
     {
-      return apiResponse.ContainsKey("companyTypeName") ? new JArray(apiResponse) : apiResponse["companies"] as JArray;
+      var jsonArray = apiResponse.ContainsKey("companyTypeName")
+        ? new JArray(apiResponse)
+        : apiResponse["companies"] as JArray;
+      return jsonArray;
     }
 
     private static bool ContainsOnlyDigits(string str)

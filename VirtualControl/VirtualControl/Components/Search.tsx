@@ -102,11 +102,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     const performConfirm = async () => {
       if (
         selectedItem &&
-        selectedItem.name &&
-        selectedItem.organisationNumber
+        selectedItem.Name &&
+        selectedItem.OrganisationNumber
       ) {
-        if (selectedItem.proffCompanyId) {
-          await handleSearch("", selectedItem.proffCompanyId);
+        if (selectedItem.OrganisationNumber) {
+          await handleSearch("", selectedItem.OrganisationNumber);
         }
         onCardClick(selectedItem);
         setResultsVisible(false);
@@ -118,31 +118,37 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     }
   }, [selectedItem]);
 
-  const handleSearch = async (query: string, proffCompanyId: string = "") => {
+  const handleSearch = async (
+    query: string,
+    organisationNumber: string = ""
+  ) => {
     const domain: string = window.location.hostname;
+    console.log("Handle Search..");
     try {
       const response = await fetch(
-        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}&proffCompanyId=${proffCompanyId}`
+        `http://localhost:7071/api/ProffCompanyLookup?query=${query}&country=${country}&domain=suran.localhost&organisationNumber=${organisationNumber}`
+        //`${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}&organisationNumber=${organisationNumber}`
       );
 
       if (response.ok) {
         const result = await response.json();
+        console.log("Result: ", result);
 
-        if (proffCompanyId === "") {
+        if (organisationNumber === "") {
           setData(result);
           return;
         }
 
         const clickedObject = data.find(
-          (item) => item.proffCompanyId === proffCompanyId
+          (item) => item.OrganisationNumber === organisationNumber
         );
 
         if (clickedObject) {
-          clickedObject.numberOfEmployees = result.numberOfEmployees || "";
-          clickedObject.nace = result.Nace || "";
-          clickedObject.profit = thousandSeparator(result.profit) || "";
-          clickedObject.revenue = result.revenue || "";
-          clickedObject.country = country;
+          clickedObject.NumberOfEmployees = result.NumberOfEmployees || "";
+          clickedObject.Nace = result.Nace || "";
+          clickedObject.Profit = thousandSeparator(result.Profit) || "";
+          clickedObject.Revenue = result.Revenue || "";
+          clickedObject.Country = country;
 
           setData([clickedObject]);
         }
@@ -152,14 +158,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
-
-  const renderSuffix = () => {
-    return (
-      <div style={{ height: "16px", width: "16px" }}>
-        <ProffIcon />
-      </div>
-    );
   };
 
   const handleCardClick = (item: CompanyData) => {
@@ -179,8 +177,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     setShowConfirmationDialog(false);
 
     if (selectedItem) {
-      if (selectedItem.proffCompanyId) {
-        await handleSearch("", selectedItem.proffCompanyId);
+      if (selectedItem.OrganisationNumber) {
+        await handleSearch("", selectedItem.OrganisationNumber);
       }
       onCardClick(selectedItem);
       setResultsVisible(false);
@@ -235,16 +233,16 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
       <div className="search-results-wrapper">
         {searchValue && resultsVisible && (
           <div className="search-results">
-            {data.map((item) => (
+            {data.map((item, index) => (
               <div
-                key={item.name + item.organisationNumber}
+                key={item.Name + "_" + item.ProffCompanyId + "_" + index}
                 className="search-result-card"
                 onClick={() => handleCardClick(item)}
               >
-                <div className="search-result-title">{item.name}</div>
-                <div className="search-result-id">{item.addressLine}</div>
+                <div className="search-result-title">{item.Name}</div>
+                <div className="search-result-id">{item.AddressLine}</div>
                 <div className="search-result-subtext">
-                  Org nr: {item.organisationNumber}
+                  Org nr: {item.OrganisationNumber}
                 </div>
               </div>
             ))}

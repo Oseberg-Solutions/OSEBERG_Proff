@@ -1,4 +1,5 @@
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using Proff.Infrastructure;
 using Proff.Services;
@@ -40,46 +41,43 @@ namespace Proff.Function
       HttpRequestData req)
     {
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-      ParamPayload paramPayLoad = new(req);
+      InputParams inputParams = new(req);
 
-
-      // TODO-SURAN:
-      // We need to check if this works or not??..
-      if (!await EntityHasActiveSubscription(paramPayLoad.domain))
+      if (!await EntityHasActiveSubscription(inputParams.domain))
       {
         return await ConstructHttpResponse(req, HttpStatusCode.BadRequest, "No active subscription found");
       }
 
-      if (string.IsNullOrEmpty(paramPayLoad.proffCompanyId))
+      if (string.IsNullOrEmpty(inputParams.organisationNumber))
       {
-        if (string.IsNullOrEmpty(paramPayLoad.query) || string.IsNullOrEmpty(paramPayLoad.country))
+        if (string.IsNullOrEmpty(inputParams.query) || string.IsNullOrEmpty(inputParams.country))
         {
           return await ConstructHttpResponse(req, HttpStatusCode.BadRequest, "Missing required parameters");
         }
 
-        var companies = GetCompanyData(paramPayLoad.query, paramPayLoad.country);
-        await _proffActivityService.UpdateRequestCountAsync(paramPayLoad.domain);
+        var companies = await GetCompanyData(inputParams.query, inputParams.country);
+        await _proffActivityService.UpdateRequestCountAsync(inputParams.domain);
         return await ConstructHttpResponse(req, HttpStatusCode.OK, companies);
       }
 
       JObject extraCompanyInfo =
-        await _proffApiService.GetDetailedCompanyInfo(paramPayLoad.country, paramPayLoad.proffCompanyId);
-      await _proffActivityService.UpdateRequestCountAsync(paramPayLoad.domain);
+        await _proffApiService.GetDetailedCompanyInfoCopy(inputParams.country, inputParams.organisationNumber);
+      await _proffActivityService.UpdateRequestCountAsync(inputParams.domain);
       return await ConstructHttpResponse(req, HttpStatusCode.OK, extraCompanyInfo);
     }
 
     private async Task<bool> EntityHasActiveSubscription(string domain)
     {
       var entity = await _azureConfigurationService.RetrieveEntityAsync(domain, domain);
-      return entity == null || entity["active_subscription"] is bool and false;
+      return entity != null && entity.GetBoolean("active_subscription") == true;
     }
-
 
     private async Task<List<CompanyData>> GetCompanyData(string query, string country)
     {
       JArray companies = await _proffApiService.FetchCompanyDataAsync(query, country);
       CompanyDataService companyDataService = new();
-      return companyDataService.ConvertJArrayToCompanyDataList(companies);
+      var companyDataList = companyDataService.ConvertJArrayToCompanyDataList(companies);
+      return companyDataList;
     }
 
     private async Task<HttpResponseData> ConstructHttpResponse(HttpRequestData req, HttpStatusCode statusCode,
@@ -102,7 +100,7 @@ namespace Proff.Function
     }
 
     private async Task<HttpResponseData> ConstructHttpResponse(HttpRequestData req, HttpStatusCode statusCode,
-      Task<List<CompanyData>> companyData)
+      List<CompanyData> companyData)
     {
       _response = req.CreateResponse(statusCode);
       string jsonString = JsonConvert.SerializeObject(companyData);

@@ -2,18 +2,18 @@
 
 namespace Proff.Models;
 
-public class ParamPayload
+public class InputParams
 {
   public string? domain;
   public string? query;
   public string? country;
-  public string? proffCompanyId;
+  public string? organisationNumber;
 
-  public ParamPayload(HttpRequestData req)
+  public InputParams(HttpRequestData req)
   {
     domain = string.IsNullOrEmpty(req.Query["domain"]) ? "Unknown" : req.Query["domain"];
     query = req.Query["query"];
     country = req.Query["country"];
-    proffCompanyId = req.Query["proffCompanyId"];
+    organisationNumber = req.Query["organisationNumber"];
   }
 }
