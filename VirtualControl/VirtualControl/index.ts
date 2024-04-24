@@ -59,30 +59,26 @@ export class VirtualControl
   }
 
   public handleCardClick = (item: CompanyData): void => {
-    this._name = item.name;
-    this._organisationNumber = item.organisationNumber || undefined;
-    this._email = item.email || undefined;
-    this._homePage = item.homePage || undefined;
-    this._mobilePhone = item.mobilePhone || undefined;
-    this._telephoneNumber = item.telephoneNumber || undefined;
-
-    this._country = item.country || undefined;
-
-    this._addressLine = item.addressLine || undefined;
-    this._boxAddressLine = item.boxAddressLine || undefined;
-    this._postPlace = item.postPlace || undefined;
-    this._zipCode = item.zipCode || undefined;
-
-    this._visitorAddressLine = item.visitorAddressLine || undefined;
-    this._vistiorPostPlace = item.visitorPostPlace || undefined;
-    this._visitorZipCode = item.visitorZipCode || undefined;
-    this._visitorCountry = item.country || undefined;
-
-    this._nace = item.nace || undefined;
-    this._numberOfEmployees = item.numberOfEmployees || undefined;
-    this._profit = item.profit || undefined;
-    this._revenue = item.revenue || undefined;
-    this._sic = item.sic || undefined;
+    this._name = item.Name;
+    this._organisationNumber = item.OrganisationNumber || undefined;
+    this._email = item.Email || undefined;
+    this._homePage = item.HomePage || undefined;
+    this._mobilePhone = item.MobilePhone || undefined;
+    this._telephoneNumber = item.TelephoneNumber || undefined;
+    this._country = item.Country || undefined;
+    this._addressLine = item.AddressLine || undefined;
+    this._boxAddressLine = item.BoxAddressLine || undefined;
+    this._postPlace = item.PostPlace || undefined;
+    this._zipCode = item.ZipCode || undefined;
+    this._visitorAddressLine = item.VisitorAddressLine || undefined;
+    this._vistiorPostPlace = item.VisitorPostPlace || undefined;
+    this._visitorZipCode = item.VisitorZipCode || undefined;
+    this._visitorCountry = item.Country || undefined;
+    this._nace = item.Nace || undefined;
+    this._numberOfEmployees = item.NumberOfEmployees || undefined;
+    this._profit = item.Profit || undefined;
+    this._revenue = item.Revenue || undefined;
+    this._sic = item.Sic || undefined;
     this.notifyOutputChanged();
   };
 
