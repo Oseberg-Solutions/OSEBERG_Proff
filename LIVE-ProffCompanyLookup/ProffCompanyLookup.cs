@@ -32,7 +32,7 @@ namespace Proff.Function
       _azureRequestActivityService = new AzureTableStorageService(AzureRequestTableActivityName);
       _azureConfigurationService = new AzureTableStorageService(AzureConfigurationTableName);
       _proffActivityService = new ProffActivityService(_azureRequestActivityService);
-      _proffApiService = new ProffApiService();
+      _proffApiService = new ProffApiService(_azureConfigurationService);
     }
 
     [Function("ProffCompanyLookup")]

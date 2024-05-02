@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using Proff.Infrastructure;
 
 namespace Proff.ExternalServices
 {
@@ -12,9 +13,11 @@ namespace Proff.ExternalServices
     private static readonly HttpClient httpClient = new();
     private readonly static string PROFF_BASE_URL = "https://api.proff.no/api";
     private readonly string _proffApiKey;
+    private readonly AzureTableStorageService _azureProffConfigurationTableService;
 
-    public ProffApiService()
+    public ProffApiService(AzureTableStorageService azureProffConfigurationTableService)
     {
+      _azureProffConfigurationTableService = azureProffConfigurationTableService;
       _proffApiKey = Environment.GetEnvironmentVariable("PROFF_API_KEY");
     }
 
@@ -38,56 +41,68 @@ namespace Proff.ExternalServices
       return CreateJArrayFromApiResponse(apiResponse);
     }
 
-    /* TODO-SURAN:
-     * We dont want to return NACE, Profit and Revenue if the domain dont have the premium license.
-     */
-
     public async Task<JObject> GetDetailedCompanyInfoCopy(string country, string organisationNumber)
     {
       string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/register/{country}/{organisationNumber}";
-
-      httpClient.DefaultRequestHeaders.Authorization =
-        new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
-      HttpResponseMessage response = await httpClient.GetAsync(proffCompanyListingUrl);
+      HttpResponseMessage response = await FetchProffDataAsync(proffCompanyListingUrl);
 
       if (!response.IsSuccessStatusCode)
       {
-        string responseContent = await response.Content.ReadAsStringAsync();
-        throw new Exception($"Error calling Proff API for detailed info: {responseContent}");
+        throw await HandleProffApiErrorAsync(response);
       }
 
       string apiResponseContent = await response.Content.ReadAsStringAsync();
-
       JObject apiResponse = JObject.Parse(apiResponseContent);
 
-      try
-      {
-        var jsonObject = new JObject
-        {
-          ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
-          ["Nace"] = apiResponse["naceCategories"]?[0]?.ToString(),
-          ["profit"] = apiResponse["profit"]?.ToString(),
-          ["revenue"] = apiResponse["revenue"]?.ToString(),
-          ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
-          ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
-          ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
-          ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
-          ["likviditetsgrad"] = apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString(),
-          ["totalrentabilitetLoennsomhet "] =
-            apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString(),
-          ["egenkapitalandel "] = apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString(),
-        };
+      JObject companyInfo = await ExtractDetailedCompanyInfoAsync(apiResponse);
 
-        return jsonObject;
-      }
-      catch (Exception ex)
-      {
-        // Log any exceptions that occur during JObject creation
-        Console.WriteLine($"Error creating JObject: {ex.Message}");
-        throw;
-      }
+      return companyInfo;
     }
 
+    private async Task<HttpResponseMessage> FetchProffDataAsync(string url)
+    {
+      httpClient.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
+      return await httpClient.GetAsync(url);
+    }
+
+    private async Task<Exception> HandleProffApiErrorAsync(HttpResponseMessage response)
+    {
+      string responseContent = await response.Content.ReadAsStringAsync();
+      string errorMessage = $"Error calling Proff API for detailed info: {responseContent}";
+      return new Exception(errorMessage);
+    }
+
+    private async Task<JObject> ExtractDetailedCompanyInfoAsync(JObject apiResponse)
+    {
+      var jsonObject = new JObject
+      {
+        ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
+        ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
+        ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
+        ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
+        ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
+        ["likviditetsgrad"] = apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString(),
+        ["totalrentabilitetLoennsomhet "] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString(),
+        ["egenkapitalandel "] = apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString(),
+      };
+
+      // Premium fields (if applicable)
+      if (IsPremiumLicenseActive())
+      {
+        jsonObject["Nace"] = apiResponse["naceCategories"]?[0]?.ToString();
+        jsonObject["profit"] = apiResponse["profit"]?.ToString();
+        jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
+      }
+
+      return jsonObject;
+    }
+
+    private bool IsPremiumLicenseActive()
+    {
+      return _azureProffConfigurationTableService.EntityHasPremiumLicense();
+    }
 
     public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId)
     {

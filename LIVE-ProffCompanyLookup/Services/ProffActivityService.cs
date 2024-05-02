@@ -29,7 +29,7 @@ public class ProffActivityService
       await CreateNewEntity(rowKey, origin);
     }
   }
-
+  
   private async Task UpdateExistingEntity()
   {
     var amountOfRequests = GetAmountOfRequests();
