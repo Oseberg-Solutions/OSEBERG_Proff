@@ -22,8 +22,9 @@ namespace Proff.Infrastructure
     public async Task<TableEntity?> RetrieveEntityAsync(string partitionKey, string rowKey)
     {
       var entity = await _tableClient.GetEntityIfExistsAsync<TableEntity>(partitionKey, rowKey);
-      _entity = entity.Value;
-      return entity.HasValue ? entity.Value : null;
+      if (entity.HasValue)
+        _entity = entity.Value;
+      return _entity;
     }
 
     public bool EntityHasPremiumLicense()

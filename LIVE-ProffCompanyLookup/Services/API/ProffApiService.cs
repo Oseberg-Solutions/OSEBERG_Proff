@@ -77,21 +77,24 @@ namespace Proff.ExternalServices
     {
       var jsonObject = new JObject
       {
+        ["Nace"] = apiResponse["naceCategories"]?[0]?.ToString(),
         ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
         ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
         ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
         ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
         ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
-        ["likviditetsgrad"] = apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString(),
-        ["totalrentabilitetLoennsomhet "] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString(),
-        ["egenkapitalandel "] = apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString(),
       };
 
       // Premium fields (if applicable)
-      if (IsPremiumLicenseActive())
+      if (EntityPremiumLicenseIsActive())
       {
-        jsonObject["Nace"] = apiResponse["naceCategories"]?[0]?.ToString();
+        jsonObject["likviditetsgrad"] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString();
+        jsonObject["totalrentabilitetLoennsomhet"] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString();
+        jsonObject["egenkapitalandel"] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
+
         jsonObject["profit"] = apiResponse["profit"]?.ToString();
         jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
       }
@@ -99,7 +102,7 @@ namespace Proff.ExternalServices
       return jsonObject;
     }
 
-    private bool IsPremiumLicenseActive()
+    private bool EntityPremiumLicenseIsActive()
     {
       return _azureProffConfigurationTableService.EntityHasPremiumLicense();
     }
@@ -122,22 +125,23 @@ namespace Proff.ExternalServices
 
       JObject apiResponse = JObject.Parse(apiResponseContent);
 
-      return new()
+      var jsonObject = new JObject()
       {
-        ["numberOfEmployees"] = apiResponse["registerListing"]["numberOfEmployees"]?.ToString(),
         ["Nace"] = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString(),
-        ["profit"] = apiResponse["registerListing"]["profit"]?.ToString(),
-        ["revenue"] = apiResponse["registerListing"]["revenue"]?.ToString(),
+        ["numberOfEmployees"] = apiResponse["registerListing"]["numberOfEmployees"]?.ToString(),
         ["visitorAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString(),
         ["visitorBoxAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString(),
         ["visitorPostPlace"] = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString(),
         ["visitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString(),
-        /*
-        ["likviditetsgrad"] = apiResponse["registerOwnListing"]["analyses"]["companyFigures"]["likviditetsgrad"]?.ToString(),
-        ["totalrentabilitetLoennsomhet "] = apiResponse["registerOwnListing"]["analyses"]["companyFigures"]["totalrentabilitetLoennsomhet"]?.ToString(),
-        ["egenkapitalandel "] = apiResponse["registerOwnListing"]["analyses"]["companyFigures"]["egenkapitalandel"]?.ToString(),
-        */
       };
+
+      if (EntityPremiumLicenseIsActive())
+      {
+        jsonObject["profit"] = apiResponse["registerListing"]["profit"]?.ToString();
+        jsonObject["revenue"] = apiResponse["registerListing"]["revenue"]?.ToString();
+      }
+
+      return jsonObject;
     }
 
     private static JArray CreateJArrayFromApiResponse(JObject apiResponse)
