@@ -20,4 +20,7 @@ export interface CompanyData {
   Profit: string | null;
   Revenue: string | null;
   Sic: string | null;
+  Likviditetsgrad: string | null;
+  TotalrentabilitetLoennsomhet: string | null;
+  Egenkapitalandel: string | null;
 }

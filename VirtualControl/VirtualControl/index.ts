@@ -28,6 +28,9 @@ export class VirtualControl
   private _profit: string | undefined;
   private _revenue: string | undefined;
   private _sic: string | undefined;
+  private _likviditetsgrad: string | undefined;
+  private _totalrentabilitetLoennsomhet: string | undefined;
+  private _egenkapitalandel: string | undefined;
 
   private context: ComponentFramework.Context<IInputs>;
   private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
@@ -79,6 +82,11 @@ export class VirtualControl
     this._profit = item.Profit || undefined;
     this._revenue = item.Revenue || undefined;
     this._sic = item.Sic || undefined;
+    this._likviditetsgrad = item.Likviditetsgrad || undefined;
+    this._totalrentabilitetLoennsomhet =
+      item.TotalrentabilitetLoennsomhet || undefined;
+    this._egenkapitalandel = item.Egenkapitalandel || undefined;
+
     this.notifyOutputChanged();
   };
 
@@ -108,7 +116,10 @@ export class VirtualControl
       numberofemployees: this._numberOfEmployees,
       revenue: this._revenue,
       os_profit: this._profit,
-      //sic: this._sic,
+      likviditetsgrad: this._likviditetsgrad,
+      totalrentabilitetLoennsomhet: this._totalrentabilitetLoennsomhet,
+      egenkapitalandel: this._egenkapitalandel,
+      sic: this._sic,
     };
 
     return outputs;
