@@ -1,6 +1,4 @@
 using System.Net;
-using System.Security.Cryptography;
-using System.Text;
 using Proff.Infrastructure;
 using Proff.Services;
 using Proff.ExternalServices;
@@ -40,8 +38,7 @@ namespace Proff.Function
       [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
       HttpRequestData req)
     {
-      
-        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+      string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
       InputParams inputParams = new(req);
 
       if (!await EntityHasActiveSubscription(inputParams.domain))

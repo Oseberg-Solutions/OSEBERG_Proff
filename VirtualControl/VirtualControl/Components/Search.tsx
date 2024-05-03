@@ -126,8 +126,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     console.log("Handle Search..");
     try {
       const response = await fetch(
-        `http://localhost:7071/api/ProffCompanyLookup?query=${query}&country=${country}&domain=suran.localhost&organisationNumber=${organisationNumber}`
-        //`${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}&organisationNumber=${organisationNumber}`
+        `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}&organisationNumber=${organisationNumber}`
       );
 
       if (response.ok) {
