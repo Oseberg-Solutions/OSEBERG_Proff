@@ -38,8 +38,11 @@ namespace Proff.Function
       [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
       HttpRequestData req)
     {
+      _logger.LogInformation("Starting...");
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
       InputParams inputParams = new(req);
+
+      _logger.LogInformation(message: JsonConvert.SerializeObject(inputParams));
 
       if (!await EntityHasActiveSubscription(inputParams.domain))
       {
@@ -53,10 +56,15 @@ namespace Proff.Function
           return await ConstructHttpResponse(req, HttpStatusCode.BadRequest, "Missing required parameters");
         }
 
+
+        _logger.LogInformation("Get CompanyData...");
+
         var companies = await GetCompanyData(inputParams.query, inputParams.country);
         await _proffActivityService.UpdateRequestCountAsync(inputParams.domain);
         return await ConstructHttpResponse(req, HttpStatusCode.OK, companies);
       }
+
+      _logger.LogInformation("Get Detailed Company Info");
 
       JObject extraCompanyInfo =
         await _proffApiService.GetDetailedCompanyInfoCopy(inputParams.country, inputParams.organisationNumber);

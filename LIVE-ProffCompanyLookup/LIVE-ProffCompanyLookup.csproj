@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>LIVE_ProffCompanyLookup</RootNamespace>
+    <ApplicationInsightsResourceId>/subscriptions/d9fe2984-1e44-4c7e-ac8c-d435c8281b3a/resourceGroups/dev-crm-rg/providers/microsoft.insights/components/OSB-proff-company-lookup</ApplicationInsightsResourceId>
+    <UserSecretsId>aaece7ae-4b44-4067-bd41-b5517c31e250</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -16,6 +18,7 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.2" />
     <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.22.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
   <ItemGroup>

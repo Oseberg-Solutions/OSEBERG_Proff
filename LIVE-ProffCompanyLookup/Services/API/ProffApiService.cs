@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using Proff.Infrastructure;
 
@@ -14,7 +10,6 @@ namespace Proff.ExternalServices
     private readonly static string PROFF_BASE_URL = "https://api.proff.no/api";
     private readonly string _proffApiKey;
     private readonly AzureTableStorageService _azureProffConfigurationTableService;
-
     public ProffApiService(AzureTableStorageService azureProffConfigurationTableService)
     {
       _azureProffConfigurationTableService = azureProffConfigurationTableService;
@@ -78,25 +73,30 @@ namespace Proff.ExternalServices
       var jsonObject = new JObject
       {
         ["Nace"] = apiResponse["naceCategories"]?[0]?.ToString(),
-        ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
-        ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
-        ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
-        ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
-        ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
+        ["NumberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
+        ["VisitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
+        ["VisitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
+        ["VisitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
+        ["VisitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
       };
 
       // Premium fields (if applicable)
       if (EntityPremiumLicenseIsActive())
       {
-        jsonObject["likviditetsgrad"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString();
-        jsonObject["totalrentabilitetLoennsomhet"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString();
-        jsonObject["egenkapitalandel"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
+        var analysesArray = apiResponse["analyses"] as JArray;
+        if (analysesArray != null && analysesArray.Count > 0)
+        {
+          var companyFigures = analysesArray[0]?["companyFigures"];
+          if (companyFigures != null)
+          {
+            jsonObject["Likviditetsgrad"] = companyFigures["likviditetsgrad"]?.ToString();
+            jsonObject["TotalrentabilitetLoennsomhet"] = companyFigures["totalrentabilitetLoennsomhet"]?.ToString();
+            jsonObject["Egenkapitalandel"] = companyFigures["egenkapitalandel"]?.ToString();
+          }
+        }
 
-        jsonObject["profit"] = apiResponse["profit"]?.ToString();
-        jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
+        jsonObject["Profit"] = apiResponse["profit"]?.ToString();
+        jsonObject["Revenue"] = apiResponse["revenue"]?.ToString();
       }
 
       return jsonObject;
@@ -128,17 +128,17 @@ namespace Proff.ExternalServices
       var jsonObject = new JObject()
       {
         ["Nace"] = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString(),
-        ["numberOfEmployees"] = apiResponse["registerListing"]["numberOfEmployees"]?.ToString(),
-        ["visitorAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString(),
-        ["visitorBoxAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString(),
-        ["visitorPostPlace"] = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString(),
-        ["visitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString(),
+        ["NumberOfEmployees"] = apiResponse["registerListing"]["numberOfEmployees"]?.ToString(),
+        ["VisitorAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString(),
+        ["VisitorBoxAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString(),
+        ["VisitorPostPlace"] = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString(),
+        ["VisitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString(),
       };
 
       if (EntityPremiumLicenseIsActive())
       {
-        jsonObject["profit"] = apiResponse["registerListing"]["profit"]?.ToString();
-        jsonObject["revenue"] = apiResponse["registerListing"]["revenue"]?.ToString();
+        jsonObject["Profit"] = apiResponse["registerListing"]["profit"]?.ToString();
+        jsonObject["Revenue"] = apiResponse["registerListing"]["revenue"]?.ToString();
       }
 
       return jsonObject;
