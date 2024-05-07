@@ -15,12 +15,10 @@ export class VirtualControl
   private _addressLine: string | undefined;
   private _boxAddressLine: string | undefined;
   private _country: string | undefined;
-
   private _visitorAddressLine: string | undefined;
   private _vistiorPostPlace: string | undefined;
   private _visitorZipCode: string | undefined;
   private _visitorCountry: string | undefined;
-
   private _postPlace: string | undefined;
   private _zipCode: string | undefined;
   private _nace: string | undefined;
@@ -34,10 +32,9 @@ export class VirtualControl
 
   private context: ComponentFramework.Context<IInputs>;
   private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
+  private saveClicked: boolean = false;
 
   private notifyOutputChanged: () => void;
-
-  private saveClicked: boolean = false;
 
   constructor() {}
 
@@ -114,12 +111,12 @@ export class VirtualControl
       cr41c_orgnr: this._organisationNumber,
       os_nace: this._nace,
       numberofemployees: this._numberOfEmployees,
-      revenue: this._revenue,
+      os_driftsinntekter: this._revenue,
       os_profit: this._profit,
-      likviditetsgrad: this._likviditetsgrad,
-      totalrentabilitetLoennsomhet: this._totalrentabilitetLoennsomhet,
-      egenkapitalandel: this._egenkapitalandel,
-      sic: this._sic,
+      os_likviditetsgrad: this._likviditetsgrad,
+      os_totalrentabilitetlnnsomhet: this._totalrentabilitetLoennsomhet,
+      os_egenkapitalandel: this._egenkapitalandel,
+      os_sic: this._sic,
     };
 
     return outputs;

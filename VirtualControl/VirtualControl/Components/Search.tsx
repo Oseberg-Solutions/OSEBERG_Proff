@@ -106,7 +106,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         selectedItem.OrganisationNumber
       ) {
         if (selectedItem.OrganisationNumber) {
-          await handleSearch("", selectedItem.OrganisationNumber);
+          await handleSearch(
+            "",
+            selectedItem.OrganisationNumber,
+            selectedItem.ProffCompanyId
+          );
         }
         onCardClick(selectedItem);
         setResultsVisible(false);
@@ -120,10 +124,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
   const handleSearch = async (
     query: string,
-    organisationNumber: string = ""
+    organisationNumber: string = "",
+    proffCompanyId: string = ""
   ) => {
     const domain: string = window.location.hostname;
-    console.log("Handle Search..");
     try {
       const response = await fetch(
         `${AZURE_FUNCTION_BASE_URL}?code=${AZURE_FUNCTION_API_KEY}&query=${query}&country=${country}&domain=${domain}&organisationNumber=${organisationNumber}`
@@ -131,23 +135,42 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
       if (response.ok) {
         const result = await response.json();
-        console.log("Result: ", result);
 
-        if (organisationNumber === "") {
+        // ProffCompanyId is the unique id in the "data" set wich we want to get in the clickedObject.
+        if (proffCompanyId === "") {
           setData(result);
           return;
         }
 
         const clickedObject = data.find(
-          (item) => item.OrganisationNumber === organisationNumber
+          (item) => item.ProffCompanyId === proffCompanyId
         );
 
         if (clickedObject) {
-          clickedObject.NumberOfEmployees = result.NumberOfEmployees || "";
-          clickedObject.Nace = result.Nace || "";
-          clickedObject.Profit = thousandSeparator(result.Profit) || "";
-          clickedObject.Revenue = result.Revenue || "";
-          clickedObject.Country = country;
+          clickedObject.Name == "" ? (clickedObject.Name = result.Name) : "";
+          clickedObject.NumberOfEmployees == null
+            ? (clickedObject.NumberOfEmployees = result.NumberOfEmployees)
+            : "";
+          clickedObject.Nace == null ? (clickedObject.Nace = result.Nace) : "";
+          clickedObject.Profit == null
+            ? (clickedObject.Profit = result.Profit)
+            : "";
+          clickedObject.Revenue == null
+            ? (clickedObject.Revenue = result.Revenue)
+            : "";
+          clickedObject.Country == null
+            ? (clickedObject.Country = result.Country)
+            : "";
+          clickedObject.TotalrentabilitetLoennsomhet == null
+            ? (clickedObject.TotalrentabilitetLoennsomhet =
+                result.TotalrentabilitetLoennsomhet)
+            : "";
+          clickedObject.Egenkapitalandel == null
+            ? (clickedObject.Egenkapitalandel = result.Egenkapitalandel)
+            : "";
+          clickedObject.Likviditetsgrad == null
+            ? (clickedObject.Likviditetsgrad = result.Likviditetsgrad)
+            : "";
 
           setData([clickedObject]);
         }
@@ -164,7 +187,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
       setShowConfirmationDialog(true);
       setCachedItem(item);
     } else {
-      console.log("Set Item");
       setSelectedItem(item);
     }
     setSearchValue("");
@@ -177,7 +199,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
     if (selectedItem) {
       if (selectedItem.OrganisationNumber) {
-        await handleSearch("", selectedItem.OrganisationNumber);
+        await handleSearch(
+          "",
+          selectedItem.OrganisationNumber,
+          selectedItem.ProffCompanyId
+        );
       }
       onCardClick(selectedItem);
       setResultsVisible(false);
