@@ -1,4 +1,5 @@
 ﻿using Azure.Data.Tables;
+using static Grpc.Core.Metadata;
 
 namespace Proff.Infrastructure
 {
@@ -24,6 +25,12 @@ namespace Proff.Infrastructure
       if (entity.HasValue)
         _entity = entity.Value;
       return _entity;
+    }
+
+    public async Task<bool> EntityHasActiveSubscription(string? domain)
+    {
+      var entity = await RetrieveEntityAsync(domain, domain);
+      return entity != null && entity.GetBoolean("active_subscription") == true;
     }
 
     public bool EntityHasPremiumLicense()

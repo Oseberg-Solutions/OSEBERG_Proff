@@ -41,7 +41,7 @@ namespace Proff.ExternalServices
       return CreateJArrayFromApiResponse(apiResponse);
     }
 
-    public async Task<JObject> GetDetailedCompanyInfoCopy(string country, string organisationNumber)
+    public async Task<JObject> GetDetailedCompanyInfoCopy(string? country, string? organisationNumber)
     {
       string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/register/{country}/{organisationNumber}";
       HttpResponseMessage response = await FetchProffDataAsync(proffCompanyListingUrl);
