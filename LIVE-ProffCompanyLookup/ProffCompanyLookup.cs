@@ -38,7 +38,6 @@ namespace Proff.Function
       [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
       HttpRequestData req)
     {
-      string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
       InputParams inputParams = new(req);
 
       if (!await _azureConfigurationService.EntityHasActiveSubscription(inputParams.domain))
