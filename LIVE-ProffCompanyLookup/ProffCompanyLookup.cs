@@ -17,6 +17,8 @@ namespace Proff.Function
     private readonly ILogger<ProffCompanyLookup> _logger;
     private const string AzureRequestTableActivityName = "ProffRequestActivity";
     private const string AzureConfigurationTableName = "ProffConfiguration";
+    private const string HttpMessageMissingRequiredParameters = "Missing required parameters"; 
+    private const string HttpMessageNoActiveSubscription = "No active subscription found";
     private static HttpResponseData? _response;
 
     private AzureTableStorageService _azureRequestActivityService;
@@ -35,21 +37,21 @@ namespace Proff.Function
 
     [Function("ProffCompanyLookup")]
     public async Task<HttpResponseData> Run(
-      [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
+      [HttpTrigger(AuthorizationLevel.Function, "get")]
       HttpRequestData req)
     {
-      InputParams inputParams = new(req);
+      InputParams inputParams = new InputParams(req);
 
       if (!await _azureConfigurationService.EntityHasActiveSubscription(inputParams.domain))
       {
-        return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest, "No active subscription found");
+        return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest, HttpMessageNoActiveSubscription);
       }
 
       if (string.IsNullOrEmpty(inputParams.organisationNumber))
       {
         if (string.IsNullOrEmpty(inputParams.query) || string.IsNullOrEmpty(inputParams.country))
         {
-          return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest, "Missing required parameters");
+          return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest, HttpMessageMissingRequiredParameters);
         }
 
         var companies = await GetCompanyData(inputParams.query, inputParams.country);
