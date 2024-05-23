@@ -10,12 +10,12 @@ Flowchart av løsningen:
 
 ![FlowChart](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/c1a69d16-526c-4eba-8253-249d43bead2a)
 
-Som vi ser på flowcharten, så gjør vi en ny spørring når vi først klikker på et kort for å hente ytterlig informasjon for det selskapet. 
+Som vi ser på flowcharten, så gjør vi en ny spørring når vi først klikker på et kort for å hente ytterlig informasjon for det selskapet.
 Dette er for å spare API spørringer da, det er ulike endepunkter for å hente info som numberOfEmployees og NACE. Vi henter disse dataene da når brukeren først bestemmer seg for en kunde og klikker på en.
 
 Felter vi ber om fra proff (ikke sikkert alle felt har verdi):
 
-Basic subscription (active subscription):
+Basis subscription (active subscription):
 
 - Name
 - ProffCompanyId
@@ -35,7 +35,7 @@ Basic subscription (active subscription):
 - VisitorPostPlace
 - VisitorZipCode
 
-* Med Premium:
+Med Premium subscription. Alt i basis +:
 
 - Profit
 - Revenue
