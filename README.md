@@ -1,6 +1,6 @@
 Løsningen er under utvikling og nyeste versjon vill alltid ligge på Suran.crm4 miljøet da det er det aktive endepunktet for React-PCF komponentet.
 
-For PCF Komponentet, bruker vi React med Typscript og Fluent UI for style.
+PCF Komponentet er et Virtual Control, utvikelt med React Typscript og Fluent UI.
 
 Vi bruker REST API tjenesten til Proff for å query data, men Proff tilatter ikke direkte kommunikasjon mellom nettleser og deres webtjenester, så vi opprettet en .NET Azure Function som en Proxy server som fungerer da som et mellomledd for data flyten.
 
@@ -12,21 +12,35 @@ Flowchart av løsningen:
 
 Som vi ser på flowcharten, så gjør vi en ny spørring når vi først klikker på et kort for å hente ytterlig informasjon for det selskapet. Dette er for å spare API spørringer da, det er ulike endepunkter for å hente info som numberOfEmployees og NACE. Vi henter disse dataene da når brukeren først bestemmer seg for en kunde og klikker på en.
 
-Felter vi henter fra proff:
+Felter vi ber om fra proff (ikke sikkert alle felt har verdi):
 
-- Navn
-- Epost
-- Webside
-- Mobil
-- Telefon
-- Adresse
-- Postboks addresse
-- By
-- Post nummer
-- Orgnr
-- Nace
-- Antall ansatte
-- Total Omsatt (Kommer...)
+Basic subscription (active subscription):
+
+- Name
+- ProffCompanyId
+- CompanyTypeName
+- NumberOfEmployees
+- OrganisationNumber
+- Email
+- HomePage
+- MobilePhone
+- TelephoneNumber
+- AddressLine
+- BoxAddressLine
+- PostPlace
+- ZipCode
+- VisitorAddressLine
+- VisitorBoxAddressLine
+- VisitorPostPlace
+- VisitorZipCode
+
+* Med Premium:
+
+- Profit
+- Revenue
+- Likviditetsgrad
+- TotalrentabilitetLoennsomhet
+- Egenkapitalandel
 
 Vi må huske å mappe disse feltene riktig når vi setter opp PCF Komponentet:
 Gå til Løsningen:
@@ -54,5 +68,3 @@ Vi mapper dette da opp ved å finne nace feltet vi lagde:
 
 Det blir lagret hvilket domenet som gjør hvor mange kaller mot APIET:
 ![Alt text](image.png)
-
-Per nå så lagrer vi ikke kunde for hver mnd, men dette skal vi utvide på til jeg kommer tilbake fra pappa perm.
