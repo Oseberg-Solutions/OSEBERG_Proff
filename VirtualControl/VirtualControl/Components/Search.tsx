@@ -99,6 +99,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   }, [debouncedSearchValue]);
 
   useEffect(() => {
+    console.log("Data updated:", data);
+  }, [data]);
+
+  useEffect(() => {
     const performConfirm = async () => {
       if (
         selectedItem &&
@@ -106,12 +110,17 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         selectedItem.OrganisationNumber
       ) {
         if (selectedItem.OrganisationNumber) {
+          console.log("PerformConfirm - handleSearch");
           await handleSearch(
             "",
             selectedItem.OrganisationNumber,
             selectedItem.ProffCompanyId
           );
         }
+
+        console.log("On Card Click-SelectedItem!", selectedItem);
+        console.log("On Card Click-Data!", data);
+
         onCardClick(selectedItem);
         setResultsVisible(false);
       }
@@ -136,7 +145,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
       if (response.ok) {
         const result = await response.json();
 
-        // ProffCompanyId is the unique id in the "data" set wich we want to get in the clickedObject.
         if (proffCompanyId === "") {
           setData(result);
           return;
@@ -147,32 +155,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         );
 
         if (clickedObject) {
-          clickedObject.Name == "" ? (clickedObject.Name = result.Name) : "";
-          clickedObject.NumberOfEmployees == null
-            ? (clickedObject.NumberOfEmployees = result.NumberOfEmployees)
-            : "";
-          clickedObject.Nace == null ? (clickedObject.Nace = result.Nace) : "";
-          clickedObject.Profit == null
-            ? (clickedObject.Profit = result.Profit)
-            : "";
-          clickedObject.Revenue == null
-            ? (clickedObject.Revenue = result.Revenue)
-            : "";
-          clickedObject.Country == null
-            ? (clickedObject.Country = result.Country)
-            : "";
-          clickedObject.TotalrentabilitetLoennsomhet == null
-            ? (clickedObject.TotalrentabilitetLoennsomhet =
-                result.TotalrentabilitetLoennsomhet)
-            : "";
-          clickedObject.Egenkapitalandel == null
-            ? (clickedObject.Egenkapitalandel = result.Egenkapitalandel)
-            : "";
-          clickedObject.Likviditetsgrad == null
-            ? (clickedObject.Likviditetsgrad = result.Likviditetsgrad)
-            : "";
-
-          setData([clickedObject]);
+          mergeData(clickedObject, result);
         }
       } else {
         console.error("Failed to fetch data from Azure Function");
@@ -182,22 +165,82 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     }
   };
 
+  const mergeData = (clickedObject: CompanyData, result: any) => {
+    console.log("Result: ", result);
+    console.log("ClickedObject: ", clickedObject);
+
+    clickedObject.VisitorAddressLine == null
+      ? (clickedObject.VisitorAddressLine = result.visitorAddressLine)
+      : "";
+
+    clickedObject.Country = country;
+
+    clickedObject.VisitorBoxAddressLine == null
+      ? (clickedObject.VisitorBoxAddressLine = result.visitorBoxAddressLine)
+      : "";
+
+    clickedObject.VisitorPostPlace == null
+      ? (clickedObject.VisitorPostPlace = result.visitorPostPlace)
+      : "";
+
+    clickedObject.VisitorZipCode == null
+      ? (clickedObject.VisitorZipCode = result.visitorZipCode)
+      : "";
+
+    if (result.homePage && result.homePage !== "") {
+      clickedObject.HomePage = result.homePage;
+    }
+
+    clickedObject.NumberOfEmployees == null
+      ? (clickedObject.NumberOfEmployees = result.numberOfEmployees)
+      : "";
+
+    clickedObject.Nace == null ? (clickedObject.Nace = result.Nace) : "";
+
+    clickedObject.Profit == null ? (clickedObject.Profit = result.profit) : "";
+    clickedObject.Revenue == null
+      ? (clickedObject.Revenue = result.revenue)
+      : "";
+
+    clickedObject.TelephoneNumber == null
+      ? (clickedObject.TelephoneNumber = result.telephoneNumber)
+      : "";
+
+    clickedObject.Country == null
+      ? (clickedObject.Country = result.country)
+      : "";
+    clickedObject.TotalrentabilitetLoennsomhet == null
+      ? (clickedObject.TotalrentabilitetLoennsomhet =
+          result.totalrentabilitetLoennsomhet)
+      : "";
+    clickedObject.Egenkapitalandel == null
+      ? (clickedObject.Egenkapitalandel = result.egenkapitalandel)
+      : "";
+    clickedObject.Likviditetsgrad == null
+      ? (clickedObject.Likviditetsgrad = result.likviditetsgrad)
+      : "";
+
+    setData([clickedObject]);
+  };
+
   const handleCardClick = (item: CompanyData) => {
     if (isAccountNameFilled && isOrgNumberFilled) {
+      console.log("01-handleCardClick-item: ", item);
       setShowConfirmationDialog(true);
       setCachedItem(item);
     } else {
+      console.log("02-handleCardClick-item: ", item);
       setSelectedItem(item);
     }
-    setSearchValue("");
-    setDebouncedSearchValue("");
   };
 
   const handleConfirm = async () => {
+    console.log("01-HandleConfirm-CachedItem: ", cachedItem);
     if (cachedItem) setSelectedItem(cachedItem);
     setShowConfirmationDialog(false);
 
     if (selectedItem) {
+      console.log("02-HandleConfirm-SelectedItem:", selectedItem);
       if (selectedItem.OrganisationNumber) {
         await handleSearch(
           "",
@@ -205,10 +248,15 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           selectedItem.ProffCompanyId
         );
       }
+
+      console.log("Before passing data to Index: ", selectedItem);
       onCardClick(selectedItem);
       setResultsVisible(false);
       setCachedItem(null);
     }
+
+    setSearchValue("");
+    setDebouncedSearchValue("");
   };
 
   const handleCancel = () => {
