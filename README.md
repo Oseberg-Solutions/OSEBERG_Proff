@@ -82,14 +82,15 @@ I proffwebstorage har vi alt av data i følgende tabeller:
 - Proff Premium Request Activity (ikke i bruk enda...)
 
 I ProffConfiguration tabellen så må lage en ny entitet (rad) med følgende eksempel data:
+![AddEntity](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/5db68a84-231a-48f3-b688-a0f13b1a21a3)
 
 Partitionkey: suran.crm4.dynamics.com
 RowKey: suran.crm4.dynamics.com
 active_Subscription: true
 domain: suran.crm4.dynamics.com
 premium_subscription: false
+![Oversikt](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/32a2d9ae-bf1e-4ff2-9353-95d585920b31)
 
-ADD PICTURE HERE.
 
 I ProffRequestActivity tabellen holder vi oversikt over hvem som gjør hvor mange kall.
 Her skal ikke vi gjøre noe manuelt, denne tabellen blir styrt av logikken.
@@ -105,4 +106,9 @@ I denne tabellen har vi:
 
 Merk at det blir laget en ny rad for hver mnd. Dette er for å kunne holde koll på hvem som gjør flest kall pr mnd.
 
-I RowKey så kan vi se at verdien er domenet + år + måned.
+I RowKey så kan vi se at verdien er: domain_år+måned.
+Hvis vi tar rkf for et eksempel, lager jeg et enkelt filter som filtrerer på deres domenet så får vi dette:
+![Query](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/b53b022a-d285-4c06-bdec-837206222014)
+
+Resultatet gir en oversikt over hvor mange kall RKF har gjort disse månedene.
+
