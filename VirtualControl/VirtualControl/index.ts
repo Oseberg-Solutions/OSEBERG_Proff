@@ -126,3 +126,5 @@ export class VirtualControl
     // Add code to cleanup control if necessary
   }
 }
+
+// Få den stabil.

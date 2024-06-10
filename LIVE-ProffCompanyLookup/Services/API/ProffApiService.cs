@@ -83,20 +83,18 @@ namespace Proff.ExternalServices
         ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
         ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
         ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
-        ["homePage"] = apiResponse["homePage"]?.ToString()
+        ["homePage"] = apiResponse["homePage"]?.ToString(),
+        ["profit"] = apiResponse["profit"]?.ToString(),
+        ["likviditetsgrad"] = apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString(),
+        ["totalrentabilitetLoennsomhet"] = apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString(),
+        ["egenkapitalandel"] = apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString(),
+        ["revenue"] = apiResponse["revenue"]?.ToString()
       };
 
       // Premium fields (if applicable)
       if (EntityPremiumLicenseIsActive())
       {
-        jsonObject["likviditetsgrad"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString();
-        jsonObject["totalrentabilitetLoennsomhet"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString();
-        jsonObject["egenkapitalandel"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
-        jsonObject["profit"] = apiResponse["profit"]?.ToString();
-        jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
+        // Add Premium rating to the request here...
       }
 
       return jsonObject;
