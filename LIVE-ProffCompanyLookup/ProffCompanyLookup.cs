@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Proff.Models;
+using LIVE_ProffCompanyLookup.Utils;
 
 namespace Proff.Function
 {
@@ -16,9 +17,9 @@ namespace Proff.Function
     private readonly ILogger<ProffCompanyLookup> _logger;
     private const string AzureRequestTableActivityName = "ProffRequestActivity";
     private const string AzureConfigurationTableName = "ProffConfiguration";
-    private static HttpResponseData _response;
-
-
+    private const string HttpMessageMissingRequiredParameters = "Missing required parameters";
+    private const string HttpMessageNoActiveSubscription = "No active subscription found";
+    private static HttpResponseData? _response;
     private AzureTableStorageService _azureRequestActivityService;
     private AzureTableStorageService _azureConfigurationService;
     private ProffActivityService _proffActivityService;
@@ -35,9 +36,10 @@ namespace Proff.Function
 
     [Function("ProffCompanyLookup")]
     public async Task<HttpResponseData> Run(
-      [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
-      HttpRequestData req)
+      [HttpTrigger(AuthorizationLevel.Function, "get")]
+      HttpRequestData req, FunctionContext executionContext)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
       _logger.LogInformation("Starting...");
 =======
@@ -48,15 +50,22 @@ namespace Proff.Function
       _logger.LogInformation(message: JsonConvert.SerializeObject(inputParams));
 
       if (!await EntityHasActiveSubscription(inputParams.domain))
+=======
+      InputParams inputParams = new InputParams(req);
+
+      if (!await _azureConfigurationService.EntityHasActiveSubscription(inputParams.domain))
+>>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
       {
-        return await ConstructHttpResponse(req, HttpStatusCode.BadRequest, "No active subscription found");
+        return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest,
+          HttpMessageNoActiveSubscription);
       }
 
       if (string.IsNullOrEmpty(inputParams.organisationNumber))
       {
         if (string.IsNullOrEmpty(inputParams.query) || string.IsNullOrEmpty(inputParams.country))
         {
-          return await ConstructHttpResponse(req, HttpStatusCode.BadRequest, "Missing required parameters");
+          return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest,
+            HttpMessageMissingRequiredParameters);
         }
 
 
@@ -64,7 +73,7 @@ namespace Proff.Function
 
         var companies = await GetCompanyData(inputParams.query, inputParams.country);
         await _proffActivityService.UpdateRequestCountAsync(inputParams.domain);
-        return await ConstructHttpResponse(req, HttpStatusCode.OK, companies);
+        return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.OK, companies);
       }
 
       _logger.LogInformation("Get Detailed Company Info");
@@ -72,13 +81,7 @@ namespace Proff.Function
       JObject extraCompanyInfo =
         await _proffApiService.GetDetailedCompanyInfoCopy(inputParams.country, inputParams.organisationNumber);
       await _proffActivityService.UpdateRequestCountAsync(inputParams.domain);
-      return await ConstructHttpResponse(req, HttpStatusCode.OK, extraCompanyInfo);
-    }
-
-    private async Task<bool> EntityHasActiveSubscription(string domain)
-    {
-      var entity = await _azureConfigurationService.RetrieveEntityAsync(domain, domain);
-      return entity != null && entity.GetBoolean("active_subscription") == true;
+      return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.OK, extraCompanyInfo);
     }
 
     private async Task<List<CompanyData>> GetCompanyData(string query, string country)
@@ -87,35 +90,6 @@ namespace Proff.Function
       CompanyDataService companyDataService = new();
       var companyDataList = companyDataService.ConvertJArrayToCompanyDataList(companies);
       return companyDataList;
-    }
-
-    private async Task<HttpResponseData> ConstructHttpResponse(HttpRequestData req, HttpStatusCode statusCode,
-      JObject extraCompanyInfo)
-    {
-      _response = req.CreateResponse(statusCode);
-      string jsonString = JsonConvert.SerializeObject(extraCompanyInfo);
-      _response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-      await _response.WriteStringAsync(jsonString);
-      return _response;
-    }
-
-    private async Task<HttpResponseData> ConstructHttpResponse(HttpRequestData req, HttpStatusCode statusCode,
-      string message)
-    {
-      _response = req.CreateResponse(statusCode);
-      _response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-      await _response.WriteStringAsync(message);
-      return _response;
-    }
-
-    private async Task<HttpResponseData> ConstructHttpResponse(HttpRequestData req, HttpStatusCode statusCode,
-      List<CompanyData> companyData)
-    {
-      _response = req.CreateResponse(statusCode);
-      string jsonString = JsonConvert.SerializeObject(companyData);
-      _response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-      await _response.WriteStringAsync(jsonString);
-      return _response;
     }
   }
 }

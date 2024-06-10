@@ -27,7 +27,7 @@
       </div>
 
       <div class="container">
-        <p>LØNNSOMHET</p>
+        <p><strong>LØNNSOMHET</strong></p>
         <div class="inner-container">
           <canvas id="gauge-2"></canvas>
           <div>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="container">
-        <p>SOLIDITET</p>
+        <p><strong>SOLIDITET</strong></p>
         <div class="inner-container">
           <canvas id="gauge-3"></canvas>
           <div>
@@ -47,33 +47,33 @@
           </div>
         </div>
       </div>
-    <!--<script src="GaugeLibrary/dist/gauge.min.js"></script>--> 
+  <script src="GaugeLibrary/dist/gauge.min.js"></script>
 
-    <script src="/WebResources/os_gauge.min.js"></script>
+      <!--<script src="/WebResources/os_gauge.min.js"></script>--> 
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var opts = {
-          angle: 0.005, // The span of the gauge arc
-          lineWidth: 0.4, // The line thickness
-          radiusScale: 1, // Relative radius
+          angle: 0.005,
+          lineWidth: 0.4,
+          radiusScale: 1,
           pointer: {
-            length: 0.5, // // Relative to gauge radius
-            strokeWidth: 0.1, // The thickness
-            color: "#000000", // Fill color
+            length: 0.5,
+            strokeWidth: 0.1,
+            color: "#000000",
           },
-          limitMax: false, // If false, max value increases automatically if value > maxValue
-          limitMin: false, // If true, the min value of the gauge will be fixed
+          limitMax: false,
+          limitMin: false,
           staticZones: [
-            { strokeStyle: "#e7372a", min: 0, max: 20 }, // Red
-            { strokeStyle: "#fbb72a", min: 20, max: 40 }, // Orange
-            { strokeStyle: "#aed39a", min: 40, max: 60 }, // light Green
-            { strokeStyle: "#4bae49", min: 60, max: 80 }, // Green
-            { strokeStyle: "#1a8c37", min: 80, max: 100 }, // Dark Green
+            { strokeStyle: "#e7372a", min: 0, max: 20 },
+            { strokeStyle: "#fbb72a", min: 20, max: 40 },
+            { strokeStyle: "#aed39a", min: 40, max: 60 },
+            { strokeStyle: "#4bae49", min: 60, max: 80 },
+            { strokeStyle: "#1a8c37", min: 80, max: 100 },
           ],
 
           generateGradient: true,
-          highDpiSupport: true, // High resolution support
+          highDpiSupport: true,
         };
 
         function CreateTargetGauges(index, value) {
@@ -98,7 +98,6 @@
         likviditetElement.innerHTML = "God";
         lonnsomhetElement.innerHTML = "Dårlig";
         soliditetElement.innerHTML = "Ok";
-
 
       });
     </script>

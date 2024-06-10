@@ -1,8 +1,6 @@
 ﻿using Azure.Data.Tables;
 using Proff.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Proff.Infrastructure;
 
 namespace Proff.Services
 {
@@ -23,7 +21,7 @@ namespace Proff.Services
       if (entity != null)
       {
         var properties = entity.Properties
-            .ToDictionary(prop => prop.Key, prop => prop.Value.PropertyAsObject);
+          .ToDictionary(prop => prop.Key, prop => prop.Value.PropertyAsObject);
 
         return properties;
       }

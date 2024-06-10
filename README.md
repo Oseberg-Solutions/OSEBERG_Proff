@@ -1,32 +1,43 @@
-Løsningen er under utvikling og nyeste versjon vill alltid ligge på Suran.crm4 miljøet da det er det aktive endepunktet for React-PCF komponentet.
+Utviklingen er knyttet opp mot suran.crm4 miljøet og utvikles direkte inn i løsningen "PowerAppsTools_os".
 
-For PCF Komponentet, bruker vi React med Typscript og Fluent UI for style.
+PCF Komponentet er et Virtual Control, utviklet med React Typscript og Fluent UI.
 
-Vi bruker REST API tjenesten til Proff for å query data, men Proff tilatter ikke direkte kommunikasjon mellom nettleser og deres webtjenester, så vi opprettet en .NET Azure Function som en Proxy server som fungerer da som et mellomledd for data flyten.
+Vi benytter oss av REST tjenesten til Proff til å kommunisere.
+Proff tillatter ikke direkte kommunikasjon mellom deres servere og nettlesere, så vi har da opprettet
+en Azure function som håndtere dataflyten mellom crm og proff.
 
-Alle spørringer og responser går gjennom denne Azure Function applikasjonen. Se gjerne på flowchart visualiseringen under for en mer detaljert og visuell beskrivelse av løsningensflyten.
+Alle spørringer går gjennom Azure. Se gjerne på flowchart visualiseringen under for en mer detaljert og visuell beskrivelse av løsningensflyten.
 
-Flowchart av løsningen:
+![FlowChart](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/c1a69d16-526c-4eba-8253-249d43bead2a)
 
-![Flow](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/bfb038c7-562d-49ad-a8b7-8fbfa396c842)
+Felter vi ber om fra proff (ikke sikkert alle felt har verdi):
+Basis subscription (active subscription):
 
-Som vi ser på flowcharten, så gjør vi en ny spørring når vi først klikker på et kort for å hente ytterlig informasjon for det selskapet. Dette er for å spare API spørringer da, det er ulike endepunkter for å hente info som numberOfEmployees og NACE. Vi henter disse dataene da når brukeren først bestemmer seg for en kunde og klikker på en.
+- Name
+- ProffCompanyId
+- CompanyTypeName
+- NumberOfEmployees
+- OrganisationNumber
+- Email
+- HomePage
+- MobilePhone
+- TelephoneNumber
+- AddressLine
+- BoxAddressLine
+- PostPlace
+- ZipCode
+- VisitorAddressLine
+- VisitorBoxAddressLine
+- VisitorPostPlace
+- VisitorZipCode
 
-Felter vi henter fra proff:
+Med Premium subscription. Alt i basis +:
 
-- Navn
-- Epost
-- Webside
-- Mobil
-- Telefon
-- Adresse
-- Postboks addresse
-- By
-- Post nummer
-- Orgnr
-- Nace
-- Antall ansatte
-- Total Omsatt (Kommer...)
+- Profit
+- Revenue
+- Likviditetsgrad
+- TotalrentabilitetLoennsomhet
+- Egenkapitalandel
 
 Vi må huske å mappe disse feltene riktig når vi setter opp PCF Komponentet:
 Gå til Løsningen:
@@ -52,7 +63,52 @@ Vi mapper dette da opp ved å finne nace feltet vi lagde:
 
 ![image](https://github.com/Oseberg-Solutions/PCF-Component/assets/111337560/f06990e0-4d5f-4d39-89b4-94803324ee15)
 
-Det blir lagret hvilket domenet som gjør hvor mange kaller mot APIET:
-![Alt text](image.png)
+Azure:
 
-Per nå så lagrer vi ikke kunde for hver mnd, men dette skal vi utvide på til jeg kommer tilbake fra pappa perm.
+- Resource group: dev-crm-rg
+
+I denne ressursgruppen så er det 2 ting vi ønsker å ha kontroll på.
+
+- Function App: OSB-proff-company-lookup
+- Storage Account: proffwebstorage
+
+Function appen er en serveless tjeneste som kjører alt av logikken i backend.
+
+I proffwebstorage har vi alt av data i følgende tabeller:
+
+- Proff Configuration
+- Proff Request Activity
+- Proff Premium Cache (ikke i bruk enda...)
+- Proff Premium Request Activity (ikke i bruk enda...)
+
+I ProffConfiguration tabellen så må lage en ny entitet (rad) med følgende eksempel data:
+![AddEntity](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/5db68a84-231a-48f3-b688-a0f13b1a21a3)
+
+Partitionkey: suran.crm4.dynamics.com
+RowKey: suran.crm4.dynamics.com
+active_Subscription: true
+domain: suran.crm4.dynamics.com
+premium_subscription: false
+![Oversikt](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/32a2d9ae-bf1e-4ff2-9353-95d585920b31)
+
+
+I ProffRequestActivity tabellen holder vi oversikt over hvem som gjør hvor mange kall.
+Her skal ikke vi gjøre noe manuelt, denne tabellen blir styrt av logikken.
+
+I denne tabellen har vi:
+
+- PartitionKey
+- RowKey
+- Timestamp
+- amount_of_request
+- domain
+- last_request
+
+Merk at det blir laget en ny rad for hver mnd. Dette er for å kunne holde koll på hvem som gjør flest kall pr mnd.
+
+I RowKey så kan vi se at verdien er: domain_år+måned.
+Hvis vi tar rkf for et eksempel, lager jeg et enkelt filter som filtrerer på deres domenet så får vi dette:
+![Query](https://github.com/Oseberg-Solutions/OSEBERG_Proff/assets/111337560/b53b022a-d285-4c06-bdec-837206222014)
+
+Resultatet gir en oversikt over hvor mange kall RKF har gjort disse månedene.
+

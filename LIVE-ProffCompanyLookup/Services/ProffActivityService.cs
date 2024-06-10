@@ -7,9 +7,13 @@ public class ProffActivityService
 {
   private readonly AzureTableStorageService _storageService;
   private TableEntity? _entity;
+  private int _currentYear;
+  private int _currentMonth;
 
   public ProffActivityService(AzureTableStorageService storageService)
   {
+    _currentYear = DateTime.Today.Year;
+    _currentMonth = DateTime.Today.Month;
     _storageService = storageService;
   }
 
@@ -29,7 +33,7 @@ public class ProffActivityService
       await CreateNewEntity(rowKey, origin);
     }
   }
-  
+
   private async Task UpdateExistingEntity()
   {
     var amountOfRequests = GetAmountOfRequests();
@@ -37,6 +41,8 @@ public class ProffActivityService
 
     _entity["amount_of_request"] = amountOfRequests;
     _entity["last_request"] = DateTime.UtcNow;
+    _entity["year"] = _currentYear;
+    _entity["month"] = _currentMonth;
     await _storageService.UpsertEntityAsync(_entity);
   }
 
@@ -46,6 +52,8 @@ public class ProffActivityService
     newEntity.Add("domain", origin);
     newEntity.Add("amount_of_request", 1);
     newEntity.Add("last_request", DateTime.UtcNow);
+    newEntity.Add("year", _currentYear);
+    newEntity.Add("month", _currentMonth);
     await _storageService.UpsertEntityAsync(newEntity);
   }
 

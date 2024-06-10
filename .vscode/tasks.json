@@ -12,7 +12,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/ProffCompanyLookupService"
+				"cwd": "${workspaceFolder}/LIVE-ProffCompanyLookup"
 			}
 		},
 		{
@@ -31,7 +31,7 @@
 			},
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/ProffCompanyLookupService"
+				"cwd": "${workspaceFolder}/LIVE-ProffCompanyLookup"
 			}
 		},
 		{
@@ -47,7 +47,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/ProffCompanyLookupService"
+				"cwd": "${workspaceFolder}/LIVE-ProffCompanyLookup"
 			}
 		},
 		{
@@ -64,14 +64,14 @@
 			"dependsOn": "clean release (functions)",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/ProffCompanyLookupService"
+				"cwd": "${workspaceFolder}/LIVE-ProffCompanyLookup"
 			}
 		},
 		{
 			"type": "func",
 			"dependsOn": "build (functions)",
 			"options": {
-				"cwd": "${workspaceFolder}/ProffCompanyLookupService/bin/Debug/net6.0"
+				"cwd": "${workspaceFolder}/LIVE-ProffCompanyLookup/bin/Debug/net8.0"
 			},
 			"command": "host start",
 			"isBackground": true,

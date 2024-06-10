@@ -36,7 +36,7 @@ namespace Proff.ExternalServices
       return CreateJArrayFromApiResponse(apiResponse);
     }
 
-    public async Task<JObject> GetDetailedCompanyInfoCopy(string country, string organisationNumber)
+    public async Task<JObject> GetDetailedCompanyInfoCopy(string? country, string? organisationNumber)
     {
       string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/register/{country}/{organisationNumber}";
       HttpResponseMessage response = await FetchProffDataAsync(proffCompanyListingUrl);
@@ -73,16 +73,26 @@ namespace Proff.ExternalServices
       var jsonObject = new JObject
       {
         ["Nace"] = apiResponse["naceCategories"]?[0]?.ToString(),
+<<<<<<< HEAD
         ["NumberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
         ["VisitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
         ["VisitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
         ["VisitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
         ["VisitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
+=======
+        ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
+        ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
+        ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
+        ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
+        ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
+        ["homePage"] = apiResponse["homePage"]?.ToString()
+>>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
       };
 
       // Premium fields (if applicable)
       if (EntityPremiumLicenseIsActive())
       {
+<<<<<<< HEAD
         var analysesArray = apiResponse["analyses"] as JArray;
         if (analysesArray != null && analysesArray.Count > 0)
         {
@@ -97,6 +107,16 @@ namespace Proff.ExternalServices
 
         jsonObject["Profit"] = apiResponse["profit"]?.ToString();
         jsonObject["Revenue"] = apiResponse["revenue"]?.ToString();
+=======
+        jsonObject["likviditetsgrad"] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString();
+        jsonObject["totalrentabilitetLoennsomhet"] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString();
+        jsonObject["egenkapitalandel"] =
+          apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
+        jsonObject["profit"] = apiResponse["profit"]?.ToString();
+        jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
+>>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
       }
 
       return jsonObject;
@@ -104,6 +124,7 @@ namespace Proff.ExternalServices
 
     private bool EntityPremiumLicenseIsActive()
     {
+<<<<<<< HEAD
       return _azureProffConfigurationTableService.EntityHasPremiumLicense();
     }
 
@@ -142,6 +163,9 @@ namespace Proff.ExternalServices
       }
 
       return jsonObject;
+=======
+      return _azureProffConfigurationTableService.DoesEntityHavePremiumLicense();
+>>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
     }
 
     private static JArray CreateJArrayFromApiResponse(JObject apiResponse)
