@@ -3,6 +3,7 @@
     "storage1": {
       "type": "storage",
       "connectionId": "AzureWebJobsStorage"
+<<<<<<< HEAD
     },
     "secrets1": {
       "type": "secrets"
@@ -11,6 +12,8 @@
       "type": "appInsights",
       "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
       "dynamicId": null
+=======
+>>>>>>> 9233d8f1701f3ef774ca6918b4192a8c6c909599
     }
   }
 }

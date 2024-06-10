@@ -1,6 +1,6 @@
 ﻿<?xml version="1.4" encoding="utf-8"?>
 <manifest>
-  <control namespace="CompanyLookup" constructor="VirtualControl" version="1.3.0" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual">
+  <control namespace="CompanyLookup" constructor="VirtualControl" version="1.4.0" display-name-key="VirtualControl" description-key="VirtualControl description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="name" display-name-key="Name" description-key="Name" of-type="SingleLine.Text" usage="bound" required="false" />
@@ -25,8 +25,13 @@
     <property name="os_nace" display-name-key="Nace" description-key="Nace" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="numberofemployees" display-name-key="Antall Ansatte" description-key="Antall Ansatte" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_profit" display-name-key="Profit" description-key="Profit" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="revenue" display-name-key="Driftsinntekter" description-key="Driftsinntekter" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="sic" display-name-key="Bransjekode" description-key="Bransjekode" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="os_driftsinntekter" display-name-key="Driftsinntekter" description-key="Driftsinntekter" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="os_sic" display-name-key="Bransjekode" description-key="Bransjekode" of-type="SingleLine.Text" usage="bound" required="false" />
+
+    <property name="os_likviditetsgrad" display-name-key="Likviditetsgrad" description-key="Likviditetsgrad" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="os_totalrentabilitetlnnsomhet" display-name-key="TotalrentabilitetLoennsomhet" description-key="TotalrentabilitetLoennsomhet" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="os_egenkapitalandel" display-name-key="Egenkapitalandel" description-key="Egenkapitalandel" of-type="SingleLine.Text" usage="bound" required="false" />
+
 
     <resources>
       <code path="index.ts" order="1" />

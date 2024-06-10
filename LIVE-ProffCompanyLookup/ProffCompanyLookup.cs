@@ -38,7 +38,10 @@ namespace Proff.Function
       [HttpTrigger(AuthorizationLevel.Function, "get", "post")]
       HttpRequestData req)
     {
+<<<<<<< HEAD
       _logger.LogInformation("Starting...");
+=======
+>>>>>>> 9233d8f1701f3ef774ca6918b4192a8c6c909599
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
       InputParams inputParams = new(req);
 

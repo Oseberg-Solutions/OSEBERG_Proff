@@ -15,12 +15,10 @@ export class VirtualControl
   private _addressLine: string | undefined;
   private _boxAddressLine: string | undefined;
   private _country: string | undefined;
-
   private _visitorAddressLine: string | undefined;
   private _vistiorPostPlace: string | undefined;
   private _visitorZipCode: string | undefined;
   private _visitorCountry: string | undefined;
-
   private _postPlace: string | undefined;
   private _zipCode: string | undefined;
   private _nace: string | undefined;
@@ -28,13 +26,15 @@ export class VirtualControl
   private _profit: string | undefined;
   private _revenue: string | undefined;
   private _sic: string | undefined;
+  private _likviditetsgrad: string | undefined;
+  private _totalrentabilitetLoennsomhet: string | undefined;
+  private _egenkapitalandel: string | undefined;
 
   private context: ComponentFramework.Context<IInputs>;
   private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
+  private saveClicked: boolean = false;
 
   private notifyOutputChanged: () => void;
-
-  private saveClicked: boolean = false;
 
   constructor() {}
 
@@ -79,6 +79,11 @@ export class VirtualControl
     this._profit = item.Profit || undefined;
     this._revenue = item.Revenue || undefined;
     this._sic = item.Sic || undefined;
+    this._likviditetsgrad = item.Likviditetsgrad || undefined;
+    this._totalrentabilitetLoennsomhet =
+      item.TotalrentabilitetLoennsomhet || undefined;
+    this._egenkapitalandel = item.Egenkapitalandel || undefined;
+
     this.notifyOutputChanged();
   };
 
@@ -106,9 +111,12 @@ export class VirtualControl
       cr41c_orgnr: this._organisationNumber,
       os_nace: this._nace,
       numberofemployees: this._numberOfEmployees,
-      revenue: this._revenue,
+      os_driftsinntekter: this._revenue,
       os_profit: this._profit,
-      //sic: this._sic,
+      os_likviditetsgrad: this._likviditetsgrad,
+      os_totalrentabilitetlnnsomhet: this._totalrentabilitetLoennsomhet,
+      os_egenkapitalandel: this._egenkapitalandel,
+      os_sic: this._sic,
     };
 
     return outputs;
