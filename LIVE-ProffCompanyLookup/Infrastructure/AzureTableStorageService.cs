@@ -7,14 +7,12 @@ namespace Proff.Infrastructure
   {
     private readonly TableClient _tableClient;
     private readonly string _connectionString;
-    private readonly string AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING = "AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING";
-    private readonly string AZURE_PROFF_ACCOUNT_KEY = "AZURE_PROFF_ACCOUNT_KEY";
+
     private TableEntity? _entity;
 
     public AzureTableStorageService(string tableName)
     {
-      _connectionString = Environment.GetEnvironmentVariable(AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING);
-      var accountKey = Environment.GetEnvironmentVariable(AZURE_PROFF_ACCOUNT_KEY);
+      _connectionString = Environment.GetEnvironmentVariable("AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING");
       var serviceClient = new TableServiceClient(_connectionString);
       _tableClient = serviceClient.GetTableClient(tableName);
     }
