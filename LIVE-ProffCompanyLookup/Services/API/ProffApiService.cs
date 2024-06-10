@@ -83,6 +83,7 @@ namespace Proff.ExternalServices
         ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
         ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
         ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
+        ["homePage"] = apiResponse["homePage"]?.ToString()
       };
 
       // Premium fields (if applicable)
@@ -94,7 +95,6 @@ namespace Proff.ExternalServices
           apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString();
         jsonObject["egenkapitalandel"] =
           apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
-
         jsonObject["profit"] = apiResponse["profit"]?.ToString();
         jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
       }
@@ -104,44 +104,7 @@ namespace Proff.ExternalServices
 
     private bool EntityPremiumLicenseIsActive()
     {
-      return _azureProffConfigurationTableService.EntityHasPremiumLicense();
-    }
-
-    public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId)
-    {
-      string proffCompanyListingUrl = $"{PROFF_BASE_URL}/companies/eniropro/{country}/{proffCompanyId}";
-
-      httpClient.DefaultRequestHeaders.Authorization =
-        new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _proffApiKey);
-      HttpResponseMessage response = await httpClient.GetAsync(proffCompanyListingUrl);
-
-      if (!response.IsSuccessStatusCode)
-      {
-        string responseContent = await response.Content.ReadAsStringAsync();
-        throw new Exception($"Error calling Proff API for detailed info: {responseContent}");
-      }
-
-      string apiResponseContent = await response.Content.ReadAsStringAsync();
-
-      JObject apiResponse = JObject.Parse(apiResponseContent);
-
-      var jsonObject = new JObject()
-      {
-        ["Nace"] = apiResponse["registerListing"]["naceCategories"]?[0]?.ToString(),
-        ["numberOfEmployees"] = apiResponse["registerListing"]["numberOfEmployees"]?.ToString(),
-        ["visitorAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["addressLine"].ToString(),
-        ["visitorBoxAddressLine"] = apiResponse["registerListing"]["visitorAddress"]["boxAddressLine"].ToString(),
-        ["visitorPostPlace"] = apiResponse["registerListing"]["visitorAddress"]["postPlace"].ToString(),
-        ["visitorZipCode"] = apiResponse["registerListing"]["visitorAddress"]["zipCode"].ToString(),
-      };
-
-      if (EntityPremiumLicenseIsActive())
-      {
-        jsonObject["profit"] = apiResponse["registerListing"]["profit"]?.ToString();
-        jsonObject["revenue"] = apiResponse["registerListing"]["revenue"]?.ToString();
-      }
-
-      return jsonObject;
+      return _azureProffConfigurationTableService.DoesEntityHavePremiumLicense();
     }
 
     private static JArray CreateJArrayFromApiResponse(JObject apiResponse)

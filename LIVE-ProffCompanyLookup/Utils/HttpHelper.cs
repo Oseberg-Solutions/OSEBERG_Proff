@@ -8,8 +8,8 @@ namespace LIVE_ProffCompanyLookup.Utils
 {
   public static class HttpHelper
   {
-     public static async Task<HttpResponseData> ConstructHttpResponse(HttpResponseData? _response, HttpRequestData req, HttpStatusCode statusCode,
-  JObject extraCompanyInfo)
+    public static async Task<HttpResponseData> ConstructHttpResponse(HttpResponseData? _response, HttpRequestData req, HttpStatusCode statusCode,
+ JObject extraCompanyInfo)
     {
       _response = req.CreateResponse(statusCode);
       string jsonString = JsonConvert.SerializeObject(extraCompanyInfo);

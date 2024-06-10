@@ -27,110 +27,110 @@
   color: #4bae49;    
 }
 
-  .score {
-    font-size: 2em;
-    color: #4CAF50;
-  }
-  
-  .risk-meter {
-    height: 20px;
-    background: linear-gradient(to right, #ff0000 0%, #ffff00 50%, #00ff00 100%);
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .risk-level {
-    text-align: center;
-    padding: 5px 0;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .category {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .category-rating {
-    height: 10px;
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .rating-value {
-    height: 100%;
-    background-color: #4CAF50;
-    border-radius: 5px;
-  }
-  
-  .rating-number {
-    margin-left: 10px;
-    font-weight: bold;
-  }
+.score {
+  font-size: 2em;
+  color: #4CAF50;
+}
 
-      .gauge {
-        display: flex;
-        align-items: center;
-        position: relative;
-        height: 25px; /* Adjust as needed */
-      }
+.risk-meter {
+  height: 20px;
+  background: linear-gradient(to right, #ff0000 0%, #ffff00 50%, #00ff00 100%);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
 
-      .gauge-section {
-        flex: 1;
-        height: 10px;
-      }
+.risk-level {
+  text-align: center;
+  padding: 5px 0;
+  color: white;
+  font-weight: bold;
+}
 
-      .red {
-        background-color: #ff6666;
-      }
+.category {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-      .yellow {
-        background-color: #aed39a;
-      }
+.category-rating {
+  height: 10px;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
 
-      .light-green {
-        background-color: #4bae49;
-      }
+.rating-value {
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 5px;
+}
 
-      .green {
-        background-color: #1a8c37;
-      }
+.rating-number {
+  margin-left: 10px;
+  font-weight: bold;
+}
 
-      .orange {
-        background-color: #fbb72a;
-      }
+.gauge {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 25px; /* Adjust as needed */
+}
+
+.gauge-section {
+  flex: 1;
+  height: 10px;
+}
+
+.red {
+  background-color: #ff6666;
+}
+
+.yellow {
+  background-color: #aed39a;
+}
+
+.light-green {
+  background-color: #4bae49;
+}
+
+.green {
+  background-color: #1a8c37;
+}
+
+.orange {
+  background-color: #fbb72a;
+}
 
 .gauge {
   display: flex;
   justify-content: center;
-  position: relative; /* Set the gauge to relative to position the circle indicator absolutely inside it */
-  height: 25px; /* Height of the gauge sections */
+  position: relative;
+  height: 25px;
 }
 
 .gauge-circle {
-  width: 20px; /* Diameter of the circle indicator */
-  height: 20px; /* Diameter of the circle indicator */
-  border-radius: 50%; /* Make it round */
-  background-color: #fff; /* Color of the indicator */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
   border: 3px solid #ff6666;
   position: absolute;
   top: 50%;
-  left: 50%; /* Start in the middle */
-  transform: translateY(-50%); /* Adjust vertically */
-  z-index: 1; /* Below the text */
+  left: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
 .gauge-section {
   flex: 1;
   display: flex;
-  align-items: center; /* Center the text vertically */
-  justify-content: center; /* Center the text horizontally */
-  position: relative; /* Needed to position the inner-text */
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .gauge-fill {
@@ -143,17 +143,17 @@
 
 .gauge-cover {
   background: #fff;
-  width: 20%; /* size of the center, to create the donut hole */
-  height: 20%; /* size of the center, to create the donut hole */
+  width: 20%;
+  height: 20%;
   border-radius: 50%;
   position: absolute;
-  top: 5px; /* offset from the parent */
-  left: 5px; /* offset from the parent */
+  top: 5px;
+  left: 5px;
 }
 .inner-text {
   display: flex;
   position: absolute;
-  z-index: 2; /* Higher z-index to be on top of the circle */
+  z-index: 2;
   justify-content: center;
   padding-top: max(50px, 10%);
 }
@@ -163,7 +163,8 @@
 <body>
 
 <div id="rating-container" class="rating-container">
-  <div id="score" class="score">A++</div>
+  <div id="score" class="score">A++
+  </div>
   <div class="ratingScore">
     <div id="scoreText" class="scoreText">Score: </div>
     <div id="scorePoint" class="scorePoint">99</div>

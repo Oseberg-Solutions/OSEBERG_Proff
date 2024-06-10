@@ -33,7 +33,7 @@ namespace Proff.Infrastructure
       return entity != null && entity.GetBoolean("active_subscription") == true;
     }
 
-    public bool EntityHasPremiumLicense()
+    public bool DoesEntityHavePremiumLicense()
     {
       return _entity.GetBoolean("premium_subscription") == true;
     }
