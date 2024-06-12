@@ -99,10 +99,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   }, [debouncedSearchValue]);
 
   useEffect(() => {
-    console.log("Data updated:", data);
-  }, [data]);
-
-  useEffect(() => {
     const performConfirm = async () => {
       if (
         selectedItem &&
@@ -110,16 +106,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         selectedItem.OrganisationNumber
       ) {
         if (selectedItem.OrganisationNumber) {
-          console.log("PerformConfirm - handleSearch");
           await handleSearch(
             "",
             selectedItem.OrganisationNumber,
             selectedItem.ProffCompanyId
           );
         }
-
-        console.log("On Card Click-SelectedItem!", selectedItem);
-        console.log("On Card Click-Data!", data);
 
         onCardClick(selectedItem);
         setResultsVisible(false);
@@ -156,6 +148,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
         if (clickedObject) {
           mergeData(clickedObject, result);
+          setSearchValue("");
         }
       } else {
         console.error("Failed to fetch data from Azure Function");
@@ -166,9 +159,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   };
 
   const mergeData = (clickedObject: CompanyData, result: any) => {
-    console.log("Result: ", result);
-    console.log("ClickedObject: ", clickedObject);
-
     clickedObject.VisitorAddressLine == null
       ? (clickedObject.VisitorAddressLine = result.visitorAddressLine)
       : "";
@@ -198,6 +188,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     clickedObject.Nace == null ? (clickedObject.Nace = result.Nace) : "";
 
     clickedObject.Profit == null ? (clickedObject.Profit = result.profit) : "";
+
     clickedObject.Revenue == null
       ? (clickedObject.Revenue = result.revenue)
       : "";
@@ -225,22 +216,18 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
   const handleCardClick = (item: CompanyData) => {
     if (isAccountNameFilled && isOrgNumberFilled) {
-      console.log("01-handleCardClick-item: ", item);
       setShowConfirmationDialog(true);
       setCachedItem(item);
     } else {
-      console.log("02-handleCardClick-item: ", item);
       setSelectedItem(item);
     }
   };
 
   const handleConfirm = async () => {
-    console.log("01-HandleConfirm-CachedItem: ", cachedItem);
     if (cachedItem) setSelectedItem(cachedItem);
     setShowConfirmationDialog(false);
 
     if (selectedItem) {
-      console.log("02-HandleConfirm-SelectedItem:", selectedItem);
       if (selectedItem.OrganisationNumber) {
         await handleSearch(
           "",
@@ -249,7 +236,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         );
       }
 
-      console.log("Before passing data to Index: ", selectedItem);
       onCardClick(selectedItem);
       setResultsVisible(false);
       setCachedItem(null);

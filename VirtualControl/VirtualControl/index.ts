@@ -112,6 +112,7 @@ export class VirtualControl
       os_nace: this._nace,
       numberofemployees: this._numberOfEmployees,
       os_driftsinntekter: this._revenue,
+      revenue: this._revenue,
       os_profit: this._profit,
       os_likviditetsgrad: this._likviditetsgrad,
       os_totalrentabilitetlnnsomhet: this._totalrentabilitetLoennsomhet,

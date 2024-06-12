@@ -28,6 +28,7 @@
     <property name="os_driftsinntekter" display-name-key="Driftsinntekter" description-key="Driftsinntekter" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_sic" display-name-key="Bransjekode" description-key="Bransjekode" of-type="SingleLine.Text" usage="bound" required="false" />
 
+    <property name="revenue" display-name-key="Egenkapitalandel" description-key="Egenkapitalandel" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_likviditetsgrad" display-name-key="Likviditetsgrad" description-key="Likviditetsgrad" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_totalrentabilitetlnnsomhet" display-name-key="TotalrentabilitetLoennsomhet" description-key="TotalrentabilitetLoennsomhet" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_egenkapitalandel" display-name-key="Egenkapitalandel" description-key="Egenkapitalandel" of-type="SingleLine.Text" usage="bound" required="false" />
