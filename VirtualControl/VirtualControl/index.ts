@@ -99,11 +99,12 @@ export class VirtualControl
       websiteurl: this._homePage,
       mobilePhone: this._mobilePhone,
       telephone1: this._telephoneNumber,
+      boxAddressLine: this._boxAddressLine,
       address1_country: this._country,
       address1_line1: this._addressLine,
-      boxAddressLine: this._boxAddressLine,
       address1_city: this._postPlace,
       address1_postalcode: this._zipCode,
+
       address2_line1: this._visitorAddressLine,
       address2_postalcode: this._visitorZipCode,
       address2_city: this._vistiorPostPlace,
