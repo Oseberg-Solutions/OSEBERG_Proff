@@ -50,8 +50,22 @@
   <script src="GaugeLibrary/dist/gauge.min.js"></script>
 
       <!--<script src="/WebResources/os_gauge.min.js"></script>--> 
-
     <script>
+      function QueryData(orgNr) {
+              Xrm.WebApi.retrieveRecord("company", orgNr, "?$select=rating,ratingScore").then(
+                function (result) {
+                  var data = result.rating;
+                  var ratingScore = result.ratingScore;
+                  document.getElementById("score").innerHTML = data;
+                  document.getElementById("scorePoint").innerHTML = ratingScore;
+                  moveCircle(ratingScore);
+                },
+                function (error) {
+                  console.error("Error retrieving data:", error);
+                }
+              );
+            }
+
       document.addEventListener("DOMContentLoaded", function () {
         var opts = {
           angle: 0.005,
@@ -86,19 +100,53 @@
           gauge.set(value);
         }
 
+        var clientUrl = parent.Xrm.Page.context.getClientUrl();
+        var entityId = parent.Xrm.Page.data.entity.getId(); 
+        var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_totalrentabilitetlnnsomhet,os_likviditetsgrad,os_egenkapitalandel,cr41c_orgnr`;
+        console.log("KeyNumbers: ", query); 
 
-        var likviditetElement = document.getElementById("likviditet");
-        var lonnsomhetElement = document.getElementById("lonnsomhet");
-        var soliditetElement = document.getElementById("soliditet");
+        fetch(query, {
+            method: "GET",
+            headers: {
+                "OData-MaxVersion": "4.0",
+                "OData-Version": "4.0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Prefer": "odata.include-annotations=\"*\""
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+          var likviditetElement = document.getElementById("likviditet");
+          var lonnsomhetElement = document.getElementById("lonnsomhet");
+          var soliditetElement = document.getElementById("soliditet");
+          var orgNr = data["cr41c_orgnr"];
+          var likviditet = data["os_likviditetsgrad"];
+          var lonnsomhet = data["os_totalrentabilitetlnnsomhet"];
+          var soliditet = data["os_egenkapitalandel"];
 
-        CreateTargetGauges("1", 89);
-        CreateTargetGauges("2", 23);
-        CreateTargetGauges("3", 48);
+          CreateTargetGauges("1", likviditet);
+          CreateTargetGauges("2", lonnsomhet);
+          CreateTargetGauges("3", soliditet);
 
-        likviditetElement.innerHTML = "God";
-        lonnsomhetElement.innerHTML = "Dårlig";
-        soliditetElement.innerHTML = "Ok";
+          
+          likviditetElement.innerHTML = "God";
+          lonnsomhetElement.innerHTML = "Dårlig";
+          soliditetElement.innerHTML = "Ok";
 
+          // Meget God
+          // God
+          // Tilfredsst
+          // Svak
+          // Ikke tilfredsst.
+
+          // QueryData(orgNr);
+        })
+        .catch(error => console.error("Error making API call:", error));
       });
     </script>
   </body>
