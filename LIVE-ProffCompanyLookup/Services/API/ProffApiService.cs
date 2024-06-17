@@ -73,38 +73,28 @@ namespace Proff.ExternalServices
       var jsonObject = new JObject
       {
         ["Nace"] = apiResponse["naceCategories"]?[0]?.ToString(),
-<<<<<<< HEAD
         ["NumberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
         ["VisitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
         ["VisitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
         ["VisitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
         ["VisitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
-=======
         ["numberOfEmployees"] = apiResponse["numberOfEmployees"]?.ToString(),
         ["visitorAddressLine"] = apiResponse["visitorAddress"]?["addressLine"]?.ToString(),
         ["visitorBoxAddressLine"] = apiResponse["visitorAddress"]?["boxAddressLine"]?.ToString(),
         ["visitorPostPlace"] = apiResponse["visitorAddress"]?["postPlace"]?.ToString(),
         ["visitorZipCode"] = apiResponse["visitorAddress"]?["zipCode"]?.ToString(),
-<<<<<<< HEAD
         ["homePage"] = apiResponse["homePage"]?.ToString(),
         ["profit"] = apiResponse["profit"]?.ToString(),
         ["likviditetsgrad"] = apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString(),
         ["totalrentabilitetLoennsomhet"] = apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString(),
         ["egenkapitalandel"] = apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString(),
-        ["revenue"] = apiResponse["revenue"]?.ToString()
-=======
+        ["revenue"] = apiResponse["revenue"]?.ToString(),
         ["homePage"] = apiResponse["homePage"]?.ToString()
->>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
->>>>>>> 1fb9a9d10ca2c8a382ff1caa305ce6937eeda12a
       };
 
       // Premium fields (if applicable)
       if (EntityPremiumLicenseIsActive())
       {
-<<<<<<< HEAD
-        // Add Premium rating to the request here...
-=======
-<<<<<<< HEAD
         var analysesArray = apiResponse["analyses"] as JArray;
         if (analysesArray != null && analysesArray.Count > 0)
         {
@@ -119,7 +109,6 @@ namespace Proff.ExternalServices
 
         jsonObject["Profit"] = apiResponse["profit"]?.ToString();
         jsonObject["Revenue"] = apiResponse["revenue"]?.ToString();
-=======
         jsonObject["likviditetsgrad"] =
           apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString();
         jsonObject["totalrentabilitetLoennsomhet"] =
@@ -128,8 +117,6 @@ namespace Proff.ExternalServices
           apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
         jsonObject["profit"] = apiResponse["profit"]?.ToString();
         jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
->>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
->>>>>>> 1fb9a9d10ca2c8a382ff1caa305ce6937eeda12a
       }
 
       return jsonObject;
@@ -137,8 +124,8 @@ namespace Proff.ExternalServices
 
     private bool EntityPremiumLicenseIsActive()
     {
-<<<<<<< HEAD
-      return _azureProffConfigurationTableService.EntityHasPremiumLicense();
+      //return _azureProffConfigurationTableService.EntityHasPremiumLicense();
+      return false;
     }
 
     public async Task<JObject> GetDetailedCompanyInfo(string country, string proffCompanyId)
@@ -176,9 +163,6 @@ namespace Proff.ExternalServices
       }
 
       return jsonObject;
-=======
-      return _azureProffConfigurationTableService.DoesEntityHavePremiumLicense();
->>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
     }
 
     private static JArray CreateJArrayFromApiResponse(JObject apiResponse)
