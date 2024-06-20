@@ -6,23 +6,20 @@ namespace Proff.Services
 {
   public class ProffPremiumCacheService
   {
-    /*
-    private readonly AzureTableStorageService _tableService;
+    private readonly AzureTableStorageService _storageService;
 
     public ProffPremiumCacheService(AzureTableStorageService tableService)
     {
-      _tableService = tableService;
+      _storageService = tableService;
     }
 
     public async Task<Dictionary<string, object>> GetPremiumInfoAsync(string orgNr, string countryCode)
     {
-      DynamicTableEntity entity = await _tableService.RetrieveEntityAsync(countryCode, orgNr);
+      TableEntity entity = await _storageService.RetrieveEntityAsync(countryCode, orgNr);
 
       if (entity != null)
       {
-        var properties = entity.Properties
-          .ToDictionary(prop => prop.Key, prop => prop.Value.PropertyAsObject);
-
+        var properties = entity.ToDictionary();
         return properties;
       }
       return null;
@@ -30,16 +27,16 @@ namespace Proff.Services
 
     public async Task CreateOrUpdatePremiumInfoAsync(string orgNr, string countryCode, CreditRating creditRating)
     {
-      DynamicTableEntity entity = new(countryCode, orgNr);
+      TableEntity newEntitty = new TableEntity(countryCode, orgNr);
 
-      entity.Properties.Add("economy", new EntityProperty(creditRating.Economy));
-      entity.Properties.Add("leadOwnership", new EntityProperty(creditRating.LeadOwnership));
-      entity.Properties.Add("organisationNumber", new EntityProperty(creditRating.OrganisationNumber.ToString()));
-      entity.Properties.Add("rating", new EntityProperty(creditRating.Rating));
-      entity.Properties.Add("ratingScore", new EntityProperty(creditRating.RatingScore));
 
-      await _tableService.InsertOrMergeEntityAsync(entity);
+      newEntitty.Add("economy", creditRating.Economy);
+      newEntitty.Add("leadOwnership", creditRating.LeadOwnership);
+      newEntitty.Add("organisationNumber", creditRating.OrganisationNumber.ToString());
+      newEntitty.Add("rating", creditRating.Rating);
+      newEntitty.Add("ratingScore", creditRating.RatingScore);
+
+      await _storageService.UpsertEntityAsync(newEntitty);
     }
-    */
   }
 }
