@@ -1,6 +1,7 @@
 ﻿using Azure.Data.Tables;
 using Proff.Models;
 using Proff.Infrastructure;
+using Microsoft.AspNetCore.Routing;
 
 namespace Proff.Services
 {
@@ -39,6 +40,44 @@ namespace Proff.Services
       await _storageService.UpsertEntityAsync(newEntitty);
     }
 
-    // TODO: Setup a clear table method. Every 3 months, clear the table.
+    // TODO: We have to test these 3 methods below. ClearOldTableEntries, GetOdlestEntityAsync, DeleteAllEntitiesAsync
+    //We need a method to clear the table of old entries after 90 days.
+    /*
+    public async Task ClearOldTableEntriesAsync()
+    {
+      var oldestEntity = await GetOldestEntityAsync();
+      System.Console.WriteLine("Oldest entity: " + oldestEntity.RowKey);
+      if (oldestEntity != null)
+      {
+        DateTimeOffset oldestTimestamp = oldestEntity.Timestamp.GetValueOrDefault();
+        if (DateTimeOffset.UtcNow - oldestTimestamp > TimeSpan.FromDays(90))
+        {
+          await DeleteAllEntitiesAsync();
+        }
+      }
+    }
+
+    private async Task<TableEntity> GetOldestEntityAsync()
+    {
+      var queryResult = _storageService.GetTableClient().QueryAsync<TableEntity>();
+      await foreach (var entity in queryResult)
+      {
+        return entity;  // Return the first (oldest) entity found
+      }
+      return null;
+    }
+
+    private async Task DeleteAllEntitiesAsync()
+    {
+      var queryResult = _storageService.GetTableClient().QueryAsync<TableEntity>(filter: null);
+      var deleteTasks = new List<Task>();
+      await foreach (var entity in queryResult)
+      {
+        deleteTasks.Add(_storageService.GetTableClient().DeleteEntityAsync(entity.PartitionKey, entity.RowKey));
+      }
+      await Task.WhenAll(deleteTasks);  // Wait for all delete operations to complete
+    }
+    */
+
   }
 }

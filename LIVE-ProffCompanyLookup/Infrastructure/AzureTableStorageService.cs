@@ -42,5 +42,10 @@ namespace Proff.Infrastructure
       ArgumentNullException.ThrowIfNull(entity);
       await _tableClient.UpsertEntityAsync(entity);
     }
+
+    public TableClient GetTableClient()
+    {
+      return _tableClient;
+    }
   }
 }
