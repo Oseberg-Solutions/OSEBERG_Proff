@@ -48,12 +48,14 @@ public class ProffActivityService
 
   private async Task CreateNewEntity(string rowKey, string origin)
   {
-    var newEntity = new TableEntity("domain", rowKey);
-    newEntity.Add("domain", origin);
-    newEntity.Add("amount_of_request", 1);
-    newEntity.Add("last_request", DateTime.UtcNow);
-    newEntity.Add("year", _currentYear);
-    newEntity.Add("month", _currentMonth);
+    var newEntity = new TableEntity("domain", rowKey)
+    {
+        { "domain", origin },
+        { "amount_of_request", 1 },
+        { "last_request", DateTime.UtcNow },
+        { "year", _currentYear },
+        { "month", _currentMonth }
+    };
     await _storageService.UpsertEntityAsync(newEntity);
   }
 

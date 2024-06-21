@@ -31,15 +31,21 @@ namespace Proff.Infrastructure
       return entity != null && entity.GetBoolean("active_subscription") == true;
     }
 
-    public bool DoesEntityHavePremiumLicense()
+    public async Task<bool> DoesEntityHavePremiumLicenseAsync(string? domain)
     {
-      return _entity.GetBoolean("premium_subscription") == true;
+      var entity = await RetrieveEntityAsync(domain, domain);
+      return entity != null && entity.GetBoolean("premium_subscription") == true;
     }
 
     public async Task UpsertEntityAsync(TableEntity entity)
     {
       ArgumentNullException.ThrowIfNull(entity);
       await _tableClient.UpsertEntityAsync(entity);
+    }
+
+    public TableClient GetTableClient()
+    {
+      return _tableClient;
     }
   }
 }

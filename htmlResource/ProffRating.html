@@ -231,7 +231,7 @@ function QueryData(orgNr)
     return response.json();
   })
   .then(data => {
-    console.log("data: ", data);
+    //console.log("data: ", data);
     document.getElementById("score").innerHTML = data.rating;
     document.getElementById("scorePoint").innerHTML = data.ratingScore;
     moveCircle(data.ratingScore)
@@ -243,9 +243,7 @@ function QueryData(orgNr)
 
 document.addEventListener('DOMContentLoaded', function() {
     var clientUrl = parent.Xrm.Page.context.getClientUrl();
-    console.log("ClientUrl: ", clientUrl);
     var entityId = parent.Xrm.Page.data.entity.getId(); 
-    console.log("entityId: ", entityId);
 
     var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_proff_rating,os_proff_ratingscore,cr41c_orgnr`;
 

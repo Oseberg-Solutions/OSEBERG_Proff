@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .gauge {
+        width: 100%;
+      }
+      .inner-container {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gauge">
+      <div class="container">
+        <p>LIKVIDITET</p> 
+        <div class="inner-container">
+          <canvas id="gauge-1"></canvas>
+          <div>
+            <p id="likviditet" style="font-weight: bold"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p>LØNNSOMHET</p>
+        <div class="inner-container">
+          <canvas id="gauge-2"></canvas>
+          <div>
+            <p id="lonnsomhet" style="font-weight: bold"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p>SOLIDITET</p>
+        <div class="inner-container">
+          <canvas id="gauge-3"></canvas>
+          <div>
+            <p id="soliditet" style="font-weight: bold"></p>
+          </div>
+        </div>
+      </div>
+    <!-- <script src="GaugeLibrary/dist/gauge.min.js"></script>-->
+    <script src="/WebResources/os_gauge.min.js"></script>
+    
+    <script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+
+        function getLønnsomhetNormalizedValue(lonnsomhetElement, value) {
+          var normalizedValue;
+          if (value < 1) {
+            lonnsomhetElement.innerHTML = "Ikke tilfredsst.";
+            normalizedValue = 1;
+          } else if (value < 5.9) {
+            lonnsomhetElement.innerHTML = "Svak";
+            normalizedValue = 21;
+          } else if (value < 9.9) {
+            lonnsomhetElement.innerHTML = "Tilfredsst.";
+            normalizedValue = 45;
+          } else if (value < 15) {
+            lonnsomhetElement.innerHTML = "God";
+            normalizedValue = 65;
+          } else {
+            lonnsomhetElement.innerHTML = "Meget god";
+            normalizedValue = 96;
+          }
+          return normalizedValue;
+        }
+
+        function getSoliditetNormalizedValue(soliditetElement, value) {
+          var normalizedValue;
+          if (value < 3) {
+            soliditetElement.innerHTML = "Ikke tilfredsst.";
+            normalizedValue = 1
+          } else if (value < 9) {
+            soliditetElement.innerHTML = "Svak";
+            normalizedValue = 21
+          } else if (value < 17) {
+            soliditetElement.innerHTML = "Tilfredsst.";
+            normalizedValue = 45;
+          } else if (value < 40){
+            soliditetElement.innerHTML = "God";
+            normalizedValue = 65
+          } else {
+            soliditetElement.innerHTML = "Meget god";
+            normalizedValue = 96
+          }
+          return normalizedValue;
+        }
+
+        function getLikviditetNormalizedValue(htmlElement, value) {
+          var normalizedValue;
+
+          if(value <= 0.5) {
+            htmlElement.innerHTML = "Ikke tilfredsst";
+            normalizedValue = 0.5;
+          }
+          else if(value <= 0.99) {
+            htmlElement.innerHTML = "Svak";
+            normalizedValue = 21;
+          }
+          else if(value <= 1.49) {
+            htmlElement.innerHTML = "Tilfredsst";
+            normalizedValue = 45;
+          }
+          else if(value <= 2) {
+            htmlElement.innerHTML = "God";
+            normalizedValue = 65;
+          }
+          else {
+            htmlElement.innerHTML = "Meget god";
+            normalizedValue = 96;
+          }
+          return normalizedValue;
+        }
+
+        var likviditetElement = document.getElementById("likviditet");
+        var lonnsomhetElement = document.getElementById("lonnsomhet");
+        var soliditetElement = document.getElementById("soliditet");
+
+        var opts = {
+          angle: 0.005,
+          lineWidth: 0.4,
+          radiusScale: 1,
+          pointer: {
+            length: 0.5,
+            strokeWidth: 0.1,
+            color: "#000000",
+          },
+          limitMax: false,
+          limitMin: false,
+          staticZones: [
+            { strokeStyle: "#e7372a", min: 0, max: 20 },
+            { strokeStyle: "#fbb72a", min: 20, max: 40 },
+            { strokeStyle: "#aed39a", min: 40, max: 60 },
+            { strokeStyle: "#4bae49", min: 60, max: 80 },
+            { strokeStyle: "#1a8c37", min: 80, max: 100 },
+          ],
+
+          generateGradient: true,
+          highDpiSupport: true
+        };
+
+        function CreateTargetGauges(htmlElement, index, value) {
+          console.log("Create Gauge: ", index, value);
+          var elementId = `gauge-${index}`;
+          var target = document.getElementById(elementId);
+          var gauge = new Gauge(target).setOptions(opts);
+          
+          gauge.setMinValue(0);
+          gauge.maxValue = 100;
+          gauge.animationSpeed = 32;
+
+          if (index == 1) {
+            console.log("Likviditet Value: ", value);
+            var normalizedValue= getLikviditetNormalizedValue(htmlElement, value);
+            console.log("Likviditet NormalizedValue: ", normalizedValue);
+            gauge.set(normalizedValue);
+          }
+
+          if (index == 2) {
+            console.log("Lønnsomhet Value: ", value);
+            var normalizedValue = getLønnsomhetNormalizedValue(htmlElement, value);
+            console.log("Lønnsomhet NormalizedValue: ", normalizedValue);
+            gauge.set(normalizedValue);
+          }
+
+          if (index == 3) {
+            console.log("Soliditet Value: ", value);
+            var normalizedValue = getSoliditetNormalizedValue(htmlElement, value);
+            console.log("Soliditet NormalizedValue: ", normalizedValue);
+            gauge.set(normalizedValue);
+          }
+        }
+
+
+        var clientUrl = parent.Xrm.Page.context.getClientUrl();
+        var entityId = parent.Xrm.Page.data.entity.getId(); 
+        var query = `${clientUrl}/api/data/v9.0/accounts(${entityId.slice(1, -1)})?$select=os_totalrentabilitetlnnsomhet,os_likviditetsgrad,os_egenkapitalandel,cr41c_orgnr`;
+
+        fetch(query, {
+            method: "GET",
+            headers: {
+                "OData-MaxVersion": "4.0",
+                "OData-Version": "4.0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Prefer": "odata.include-annotations=\"*\""
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+          console.log("Keynumbers data: ", data);
+          var orgNr = data["cr41c_orgnr"];
+          var likviditet = data["os_likviditetsgrad"];
+          var lonnsomhet = data["os_totalrentabilitetlnnsomhet"];
+          var soliditet = data["os_egenkapitalandel"];
+          
+          console.log(soliditet, lonnsomhet, likviditet);
+          
+          CreateTargetGauges(likviditetElement, "1", likviditet);
+          CreateTargetGauges(lonnsomhetElement, "2", lonnsomhet);
+          CreateTargetGauges(soliditetElement, "3", soliditet);
+        })
+        .catch(error => console.error("Error making API call:", error));
+      });
+    </script>
+  </body>
+</html>

@@ -13,6 +13,7 @@ namespace Proff.ExternalServices
     private readonly string _base_url = "https://ppc.proff.no";
     private readonly string _ProffPremiumApiToken;
     private readonly string PROFF_PREMIUM_API_TOKEN = "PROFF_PREMIUM_API_TOKEN";
+    private const bool _isDebug = false;
 
     public ProffPremiumApiService()
     {
@@ -22,19 +23,20 @@ namespace Proff.ExternalServices
 
     public async Task<(CreditRating, HttpStatusCode)> GetCreditScore(string organisationNumber)
     {
-      HttpStatusCode _statusCode = HttpStatusCode.OK;
-      CreditRating testRating = new()
+      if (_isDebug)
       {
-        Economy = 1,
-        LeadOwnership = 2,
-        OrganisationNumber = 123456789,
-        Rating = "C++",
-        RatingScore = 34
-      };
+        HttpStatusCode _statusCode = HttpStatusCode.OK;
+        CreditRating testRating = new()
+        {
+          Economy = 1,
+          LeadOwnership = 2,
+          OrganisationNumber = 123456789,
+          Rating = "C++",
+          RatingScore = 34
+        };
 
-      return (testRating, _statusCode);
-      /* TESTING ABOVE */
-
+        return (testRating, _statusCode);
+      }
 
       _httpClient.DefaultRequestHeaders.Authorization =
         new System.Net.Http.Headers.AuthenticationHeaderValue("Token", _ProffPremiumApiToken);

@@ -14,11 +14,11 @@ namespace Proff.Function
 {
   public class ProffCompanyLookup
   {
-    private readonly ILogger<ProffCompanyLookup> _logger;
     private const string AzureRequestTableActivityName = "ProffRequestActivity";
     private const string AzureConfigurationTableName = "ProffConfiguration";
     private const string HttpMessageMissingRequiredParameters = "Missing required parameters";
     private const string HttpMessageNoActiveSubscription = "No active subscription found";
+    private readonly ILogger<ProffCompanyLookup> _logger;
     private static HttpResponseData? _response;
     private AzureTableStorageService _azureRequestActivityService;
     private AzureTableStorageService _azureConfigurationService;
@@ -39,22 +39,9 @@ namespace Proff.Function
       [HttpTrigger(AuthorizationLevel.Function, "get")]
       HttpRequestData req, FunctionContext executionContext)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      _logger.LogInformation("Starting...");
-=======
->>>>>>> 9233d8f1701f3ef774ca6918b4192a8c6c909599
-      string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
       InputParams inputParams = new(req);
 
-      _logger.LogInformation(message: JsonConvert.SerializeObject(inputParams));
-
-      if (!await EntityHasActiveSubscription(inputParams.domain))
-=======
-      InputParams inputParams = new InputParams(req);
-
       if (!await _azureConfigurationService.EntityHasActiveSubscription(inputParams.domain))
->>>>>>> a87e16a1e1ebee2c924c00e0814e625526ff97c4
       {
         return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest,
           HttpMessageNoActiveSubscription);
@@ -68,15 +55,10 @@ namespace Proff.Function
             HttpMessageMissingRequiredParameters);
         }
 
-
-        _logger.LogInformation("Get CompanyData...");
-
         var companies = await GetCompanyData(inputParams.query, inputParams.country);
         await _proffActivityService.UpdateRequestCountAsync(inputParams.domain);
         return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.OK, companies);
       }
-
-      _logger.LogInformation("Get Detailed Company Info");
 
       JObject extraCompanyInfo =
         await _proffApiService.GetDetailedCompanyInfoCopy(inputParams.country, inputParams.organisationNumber);
