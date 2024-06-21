@@ -74,16 +74,15 @@ export class VirtualControl
     this._vistiorPostPlace = item.VisitorPostPlace || undefined;
     this._visitorZipCode = item.VisitorZipCode || undefined;
     this._visitorCountry = item.Country || undefined;
-    this._nace = item.Nace || undefined;
     this._numberOfEmployees = item.NumberOfEmployees || undefined;
     this._profit = item.Profit || undefined;
     this._revenue = item.Revenue || undefined;
-    this._sic = item.Sic || undefined;
+    this._nace = item.Nace || undefined;
+    this._sic = item.Nace || undefined;
     this._likviditetsgrad = item.Likviditetsgrad || undefined;
     this._totalrentabilitetLoennsomhet =
       item.TotalrentabilitetLoennsomhet || undefined;
     this._egenkapitalandel = item.Egenkapitalandel || undefined;
-
     this.notifyOutputChanged();
   };
 
@@ -110,7 +109,6 @@ export class VirtualControl
       address2_city: this._vistiorPostPlace,
       address2_country: this._visitorCountry,
       cr41c_orgnr: this._organisationNumber,
-      os_nace: this._nace,
       numberofemployees: this._numberOfEmployees,
       os_driftsinntekter: this._revenue,
       revenue: this._revenue,
@@ -118,7 +116,11 @@ export class VirtualControl
       os_likviditetsgrad: this._likviditetsgrad,
       os_totalrentabilitetlnnsomhet: this._totalrentabilitetLoennsomhet,
       os_egenkapitalandel: this._egenkapitalandel,
-      os_sic: this._sic,
+
+      // os_nace for Account table
+      os_nace: this._nace,
+      // os_nace for Lead table
+      sic: this._nace,
     };
 
     return outputs;

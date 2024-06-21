@@ -26,7 +26,7 @@
     <property name="numberofemployees" display-name-key="Antall Ansatte" description-key="Antall Ansatte" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_profit" display-name-key="Profit" description-key="Profit" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_driftsinntekter" display-name-key="Driftsinntekter" description-key="Driftsinntekter" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="os_sic" display-name-key="Bransjekode" description-key="Bransjekode" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="sic" display-name-key="Bransjekode" description-key="Bransjekode" of-type="SingleLine.Text" usage="bound" required="false" />
 
     <property name="revenue" display-name-key="Egenkapitalandel" description-key="Egenkapitalandel" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="os_likviditetsgrad" display-name-key="Likviditetsgrad" description-key="Likviditetsgrad" of-type="SingleLine.Text" usage="bound" required="false" />

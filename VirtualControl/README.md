@@ -16,6 +16,8 @@ npm start watch
 Install:
 Using Pac version 1.23.3
 
+# Often i have to do this part, or i get weird errors that doesnt tell u have to reauth.
+
 pac auth create --environment https://suran.crm4.dynamics.com/
 
 1. cd VirtualControl
