@@ -14,29 +14,20 @@ namespace Proff.Function;
 
 public class ProffPremiumLookup
 {
-  private const string AzureRequestTableActivityName = "ProffRequestActivity";
   private const string AzureConfigurationTableName = "ProffConfiguration";
   private const string HttpMessageMissingRequiredParameters = "Missing required parameters";
   private const string HttpMessageNoActivePremiumSubscription = "No active premium subscription found";
-
-  private readonly static string _proffPremiumRequestActivity = "ProffPremiumRequestActivity";
-  private readonly static string _proffPremiumCache = "ProffPremiumCache";
-  private static ProffPremiumCacheService _proffPremiumCacheService;
-  private static ProffPremiumActivityService _proffPremiumActivityService;
+  private readonly static string _proffPremiumRequestActivityTableName = "ProffPremiumRequestActivity";
+  private readonly static string _proffPremiumCacheTableName = "ProffPremiumCache";
   private readonly ILogger _logger;
   private static HttpResponseData? _response;
-  private AzureTableStorageService _azureRequestActivityService;
   private AzureTableStorageService _azureConfigurationService;
-  private ProffPremiumActivityService _proffActivityService;
   private ProffPremiumApiService _proffPremiumApiService;
 
   public ProffPremiumLookup(ILoggerFactory loggerFactory)
   {
     _logger = loggerFactory.CreateLogger<ProffPremiumLookup>();
-    _azureRequestActivityService = new AzureTableStorageService(AzureRequestTableActivityName);
     _azureConfigurationService = new AzureTableStorageService(AzureConfigurationTableName);
-    _proffActivityService = new ProffPremiumActivityService(_azureRequestActivityService);
-    //_proffApiService = new ProffPremiumApiService(_azureConfigurationService);
     _proffPremiumApiService = new ProffPremiumApiService();
   }
 
@@ -55,7 +46,7 @@ public class ProffPremiumLookup
       return await HttpHelper.ConstructHttpResponse(_response, req, HttpStatusCode.BadRequest, HttpMessageNoActivePremiumSubscription);
     }
 
-    _proffPremiumCacheService = InitializePremiumCacheService(_proffPremiumCache);
+    ProffPremiumCacheService _proffPremiumCacheService = InitializePremiumCacheService(_proffPremiumCacheTableName);
     var existingData = await _proffPremiumCacheService.GetPremiumInfoAsync(inputParams.organisationNumber, inputParams.country);
 
     if (existingData != null)
@@ -65,6 +56,8 @@ public class ProffPremiumLookup
     else
     {
       var (creditRating, statusCode) = await _proffPremiumApiService.GetCreditScore(inputParams.organisationNumber);
+      var proffPremiumActivityService = InitializePremiumActivityService(_proffPremiumRequestActivityTableName);
+      await proffPremiumActivityService.UpdateRequestCountAsync(inputParams.organisationNumber);
       return await HttpHelper.ConstructHttpResponse(_response, req, statusCode, JObject.FromObject(creditRating));
     }
   }

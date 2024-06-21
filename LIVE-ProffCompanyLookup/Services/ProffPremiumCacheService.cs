@@ -38,5 +38,7 @@ namespace Proff.Services
 
       await _storageService.UpsertEntityAsync(newEntitty);
     }
+
+    // TODO: Setup a clear table method. Every 3 months, clear the table.
   }
 }
