@@ -27,14 +27,14 @@ namespace Proff.Services
 
     public async Task CreateOrUpdatePremiumInfoAsync(string orgNr, string countryCode, CreditRating creditRating)
     {
-      TableEntity newEntitty = new TableEntity(countryCode, orgNr);
-
-
-      newEntitty.Add("economy", creditRating.Economy);
-      newEntitty.Add("leadOwnership", creditRating.LeadOwnership);
-      newEntitty.Add("organisationNumber", creditRating.OrganisationNumber.ToString());
-      newEntitty.Add("rating", creditRating.Rating);
-      newEntitty.Add("ratingScore", creditRating.RatingScore);
+      TableEntity newEntitty = new(countryCode, orgNr)
+      {
+          { "economy", creditRating.Economy },
+          { "leadOwnership", creditRating.LeadOwnership },
+          { "organisationNumber", creditRating.OrganisationNumber.ToString() },
+          { "rating", creditRating.Rating },
+          { "ratingScore", creditRating.RatingScore }
+      };
 
       await _storageService.UpsertEntityAsync(newEntitty);
     }
