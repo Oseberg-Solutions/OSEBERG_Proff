@@ -35,6 +35,7 @@ en Azure function som håndtere dataflyten mellom crm og proff.
 Felter vi ber om fra proff (ikke sikkert alle felt har verdi):
 Basis subscription (active subscription):
 
+- organisationNumber
 - Nace
 - NumberOfEmployees
 - VisitorAddressLine
@@ -58,7 +59,6 @@ Med Premium subscription. Alt i basis +:
 
 - economy
 - leadOwnership
-- organisationNumber
 - rating
 - ratingScore
 
