@@ -163,11 +163,11 @@
 <body>
 
 <div id="rating-container" class="rating-container">
-  <div id="score" class="score">A++
+  <div id="score" class="score">
   </div>
   <div class="ratingScore">
     <div id="scoreText" class="scoreText">Score: </div>
-    <div id="scorePoint" class="scorePoint">99</div>
+    <div id="scorePoint" class="scorePoint"></div>
     <div id="scoreMaxPoint" class="scoreMaxPoint">/100</div>
   </div>
 </div>
@@ -215,9 +215,9 @@ function updateCircleBorderColor(circle, leftPosition) {
 function QueryData(orgNr)
 {
   var domain = window.location.host
-  var azureQuery = "https://company-lookup.azurewebsites.net/api/ProffPremiumCredit"
-  var AZURE_FUNCTION_API_KEY  = "zZSTDpXMqXTVRPIb7XL1lqb-ssnihlDbujQMBpr3RA42AzFuE86izg=="
-  var query = `${azureQuery}?code=${AZURE_FUNCTION_API_KEY}&domain=${domain}&orgNr=${orgNr}`
+  var azureQuery = "https://osb-proff-company-lookup.azurewebsites.net/api/ProffPremiumLookup"
+  var AZURE_FUNCTION_API_KEY = "R3YRNDhn1S0fIolg_ZSFXU5XnvXzzy3CYib4ncq9GvydAzFuV76Adg=="
+  var query = `${azureQuery}?code=${AZURE_FUNCTION_API_KEY}&domain=${domain}&organisationNumber=${orgNr}&country=NO`
   fetch(query, {
     method: "GET",
     headers: {
@@ -231,7 +231,7 @@ function QueryData(orgNr)
     return response.json();
   })
   .then(data => {
-    //console.log("data: ", data);
+    console.log("data: ", data);
     document.getElementById("score").innerHTML = data.rating;
     document.getElementById("scorePoint").innerHTML = data.ratingScore;
     moveCircle(data.ratingScore)
