@@ -1,0 +1,1082 @@
+﻿{
+  "companies": [
+    {
+      "advertType": null,
+      "businessUnitId": "912463737",
+      "companyId": "IF399IX03DC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E94912232",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Oseberg Solutions AS, avd Oslo",
+      "organisationNumber": "981586581",
+      "sOrganisationNumber": null,
+      "rank": 223.71621704101562,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "4368",
+        "name": "IT-konsulenter og rådgivning",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/4368",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=4368&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/4368/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IF399IX03DC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "4368",
+          "companyId": "IF399IX03DC",
+          "description": null,
+          "name": "IT-konsulenter og rådgivning",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "855",
+          "companyId": "IF399IX00NR",
+          "description": null,
+          "name": "Konsulenter",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Oslo",
+        "municipality": "Oslo",
+        "coordinates": [
+          {
+            "XCoordinate": 10.7269151,
+            "YCoordinate": 59.9139647,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "47908080",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Kronprinsens gate 17",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "0251"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Kronprinsens gate 17",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "0251"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": "981612124",
+      "companyId": "IG8FCRG03DC",
+      "customerId": "0000000000",
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": null,
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Oseberg Solutions AS Avd Tønsberg",
+      "organisationNumber": "981586581",
+      "sOrganisationNumber": null,
+      "rank": 202.58944702148438,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "4368",
+        "name": "IT-konsulenter og rådgivning",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/4368",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=4368&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/4368/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IG8FCRG03DC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "4368",
+          "companyId": "IG8FCRG03DC",
+          "description": null,
+          "name": "IT-konsulenter og rådgivning",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "855",
+          "companyId": "IG8FCRG00NR",
+          "description": null,
+          "name": "Konsulenter",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Vestfold",
+        "municipality": "Tønsberg",
+        "coordinates": null
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Grev Wedels gate 12",
+        "boxAddressLine": null,
+        "postPlace": "Tønsberg",
+        "zipCode": "3111"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Grev Wedels gate 12",
+        "boxAddressLine": null,
+        "postPlace": "Tønsberg",
+        "zipCode": "3111"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IG8ET1X03DC",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E84261801",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Oseberg Solutions AS",
+      "organisationNumber": "981586581",
+      "sOrganisationNumber": null,
+      "rank": 191.5012969970703,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "4368",
+        "name": "IT-konsulenter og rådgivning",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/4368",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=4368&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/4368/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IG8ET1X03DC",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "4368",
+          "companyId": "IG8ET1X03DC",
+          "description": null,
+          "name": "IT-konsulenter og rådgivning",
+          "salesRank": null,
+          "style": null
+        },
+        {
+          "code": "855",
+          "companyId": "IG8ET1X00NR",
+          "description": null,
+          "name": "Konsulenter",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Vestfold",
+        "municipality": "Tønsberg",
+        "coordinates": [
+          {
+            "XCoordinate": 10.40860838600008,
+            "YCoordinate": 59.27103545152888,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "47908080",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Grev Wedels gate 12",
+        "boxAddressLine": null,
+        "postPlace": "Tønsberg",
+        "zipCode": "3111"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Grev Wedels gate 12",
+        "boxAddressLine": null,
+        "postPlace": "Tønsberg",
+        "zipCode": "3111"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IF3TLJ7043Z",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E105318488",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Iceberg Turquoise Solutions Denis Kaynar",
+      "organisationNumber": "913412419",
+      "sOrganisationNumber": null,
+      "rank": 32.01304244995117,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "5327",
+        "name": "Bedriftsrådgivning",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/5327",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=5327&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/5327/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IF3TLJ7043Z",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "5327",
+          "companyId": "IF3TLJ7043Z",
+          "description": null,
+          "name": "Bedriftsrådgivning",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Akershus",
+        "municipality": "Bærum",
+        "coordinates": [
+          {
+            "XCoordinate": 10.5462813,
+            "YCoordinate": 59.9117752,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Durudveien 14 E",
+        "boxAddressLine": null,
+        "postPlace": "Haslum",
+        "zipCode": "1344"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Durudveien 14 E",
+        "boxAddressLine": null,
+        "postPlace": "Haslum",
+        "zipCode": "1344"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IFDZCZN043Z",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E170077261",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Ekeberg Solutions AS",
+      "organisationNumber": "930477443",
+      "sOrganisationNumber": null,
+      "rank": 30.97076416015625,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "5327",
+        "name": "Bedriftsrådgivning",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/5327",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=5327&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/5327/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IFDZCZN043Z",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "5327",
+          "companyId": "IFDZCZN043Z",
+          "description": null,
+          "name": "Bedriftsrådgivning",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Oslo",
+        "municipality": "Oslo",
+        "coordinates": [
+          {
+            "XCoordinate": 10.7769143,
+            "YCoordinate": 59.8994053,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Eikeveien 1",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "1181"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Eikeveien 1",
+        "boxAddressLine": null,
+        "postPlace": "Oslo",
+        "zipCode": "1181"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IFFBWXO01DI",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E172989369",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Fredrikstad Marketing Solutions Solberg",
+      "organisationNumber": "932742780",
+      "sOrganisationNumber": null,
+      "rank": 28.50806427001953,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "1782",
+        "name": "Reklamebyråer",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/1782",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=1782&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/1782/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IFFBWXO01DI",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "1782",
+          "companyId": "IFFBWXO01DI",
+          "description": null,
+          "name": "Reklamebyråer",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Østfold",
+        "municipality": "Fredrikstad",
+        "coordinates": [
+          {
+            "XCoordinate": 10.9718907,
+            "YCoordinate": 59.3024371,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "95439057",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Ringstadåsen 12",
+        "boxAddressLine": null,
+        "postPlace": "Rolvsøy",
+        "zipCode": "1667"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Ringstadåsen 12",
+        "boxAddressLine": null,
+        "postPlace": "Rolvsøy",
+        "zipCode": "1667"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IEUU1E807RK",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E85771150",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Solberg Solutions AS",
+      "organisationNumber": "898316432",
+      "sOrganisationNumber": null,
+      "rank": 28.50806427001953,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "10064",
+        "name": "Reiselivstjenester",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/10064",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=10064&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/10064/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IEUU1E807RK",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "10064",
+          "companyId": "IEUU1E807RK",
+          "description": null,
+          "name": "Reiselivstjenester",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Akershus",
+        "municipality": "Lørenskog",
+        "coordinates": [
+          {
+            "XCoordinate": 10.9370281,
+            "YCoordinate": 59.9173959,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Falkeveien 15 C",
+        "boxAddressLine": null,
+        "postPlace": "Rasta",
+        "zipCode": "1476"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Falkeveien 15 C",
+        "boxAddressLine": null,
+        "postPlace": "Rasta",
+        "zipCode": "1476"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IG96YIY08NB",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E85793514",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Geir Arne Solberg Solutions",
+      "organisationNumber": "982900042",
+      "sOrganisationNumber": null,
+      "rank": 28.50806427001953,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "11207",
+        "name": "Rengjøring",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/11207",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=11207&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/11207/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IG96YIY08NB",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "11207",
+          "companyId": "IG96YIY08NB",
+          "description": null,
+          "name": "Rengjøring",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Vestlandet",
+        "county": "Vestland",
+        "municipality": "Askøy",
+        "coordinates": [
+          {
+            "XCoordinate": 5.188271,
+            "YCoordinate": 60.4217749,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": {
+        "faxNumber": null,
+        "mobilePhone": null,
+        "mobilePhone2": null,
+        "telephoneNumber": "40833777",
+        "telephoneNumber2": null
+      },
+      "postalAddress": {
+        "addressLine": "Krokåsvegen 92",
+        "boxAddressLine": null,
+        "postPlace": "Kleppestø",
+        "zipCode": "5308"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Krokåsvegen 92",
+        "boxAddressLine": null,
+        "postPlace": "Kleppestø",
+        "zipCode": "5308"
+      }
+    },
+    {
+      "advertType": null,
+      "businessUnitId": null,
+      "companyId": "IGF7OVI10L8",
+      "customerId": null,
+      "description": null,
+      "email": null,
+      "homePage": null,
+      "lineId": null,
+      "listingId": "E86283860",
+      "listingType": null,
+      "marketingProtection": false,
+      "name": "Mccall Solutions Jørn Mccall Ekeberg",
+      "organisationNumber": "993011886",
+      "sOrganisationNumber": null,
+      "rank": 28.334680557250977,
+      "salesRank": null,
+      "currentIndustry": {
+        "categoryType": null,
+        "description": null,
+        "industryCode": "47420",
+        "name": "Treningssentre og andre sportsaktiviteter",
+        "numberOfCompanies": null,
+        "details": {
+          "href": "https://api.proff.no/industries/eniropro/NO/47420",
+          "rel": "details"
+        },
+        "companies": {
+          "href": "https://api.proff.no/companies/eniropro/NO?industryCode=47420&sort=salesRank",
+          "rel": "related"
+        },
+        "facts": {
+          "href": "https://api.proff.no/industries/eniropro/NO/47420/facts",
+          "rel": "details"
+        },
+        "children": [],
+        "parents": []
+      },
+      "link": {
+        "href": "https://api.proff.no/companies/eniropro/NO/IGF7OVI10L8",
+        "rel": "details"
+      },
+      "industries": [
+        {
+          "code": "47420",
+          "companyId": "IGF7OVI10L8",
+          "description": null,
+          "name": "Treningssentre og andre sportsaktiviteter",
+          "salesRank": null,
+          "style": null
+        }
+      ],
+      "location": {
+        "countryPart": "Østlandet",
+        "county": "Buskerud",
+        "municipality": "Hol",
+        "coordinates": [
+          {
+            "XCoordinate": 8.2189232,
+            "YCoordinate": 60.5247165,
+            "coordinateSystem": "WGS84"
+          }
+        ]
+      },
+      "mainImage": null,
+      "phoneNumbers": null,
+      "postalAddress": {
+        "addressLine": "Gamle Skurdalsvegen 76",
+        "boxAddressLine": null,
+        "postPlace": "Geilo",
+        "zipCode": "3580"
+      },
+      "products": [],
+      "referenceTexts": null,
+      "searchAdImages": null,
+      "visitorAddress": {
+        "addressLine": "Gamle Skurdalsvegen 76",
+        "boxAddressLine": null,
+        "postPlace": "Geilo",
+        "zipCode": "3580"
+      }
+    }
+  ],
+  "correctedQuery": null,
+  "numberOfHits": 9,
+  "filterGroups": [
+    {
+      "displayName": "Bransjer",
+      "filterType": "navindustrynames",
+      "name": "industrynavigator",
+      "filters": [
+        {
+          "displayName": "IT-konsulenter og rådgivning",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aIT-konsulenter+og+rådgivning",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Konsulenter",
+          "hits": 3,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aKonsulenter",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bedriftsrådgivning",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aBedriftsrådgivning",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Reiselivstjenester",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aReiselivstjenester",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Reklamebyråer",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aReklamebyråer",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rengjøring",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aRengjøring",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Treningssentre og andre sportsaktiviteter",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=name%3aTreningssentre+og+andre+sportsaktiviteter",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Kommune",
+      "filterType": "municipality",
+      "name": "municipalitynavigator",
+      "filters": [
+        {
+          "displayName": "Oslo",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aOslo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tønsberg",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aTønsberg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Askøy",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aAskøy",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Bærum",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aBærum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Fredrikstad",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aFredrikstad",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Hol",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aHol",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Lørenskog",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=municipality%3aLørenskog",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Fylke",
+      "filterType": "county",
+      "name": "countynavigator",
+      "filters": [
+        {
+          "displayName": "Akershus",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=county%3aAkershus",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Buskerud",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=county%3aBuskerud",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Oslo",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=county%3aOslo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Vestfold",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=county%3aVestfold",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Vestland",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=county%3aVestland",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Østfold",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=county%3aØstfold",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Poststed",
+      "filterType": "postplace",
+      "name": "postplacenavigator",
+      "filters": [
+        {
+          "displayName": "Oslo",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aOslo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Tønsberg",
+          "hits": 2,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aTønsberg",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Geilo",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aGeilo",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Haslum",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aHaslum",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Kleppestø",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aKleppestø",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rasta",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aRasta",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Rolvsøy",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=postplace%3aRolvsøy",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "Landsdel",
+      "filterType": "countrypart",
+      "name": "countrypartnavigator",
+      "filters": [
+        {
+          "displayName": "Vestlandet",
+          "hits": 1,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=countrypart%3aVestlandet",
+            "rel": "subset"
+          }
+        },
+        {
+          "displayName": "Østlandet",
+          "hits": 8,
+          "link": {
+            "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&filter=countrypart%3aØstlandet",
+            "rel": "subset"
+          }
+        }
+      ],
+      "removed": null
+    },
+    {
+      "displayName": "samplerFilter",
+      "filterType": "specialNeeds",
+      "name": null,
+      "filters": [],
+      "removed": null
+    }
+  ],
+  "pagination": {
+    "CurrentPage": 1,
+    "NumberOfAvailablePages": 1,
+    "PageSize": 10,
+    "NearbyPages": [
+      {
+        "pageNumber": 1,
+        "href": "https://api.proff.no/companies/eniropro/NO?name=Oseberg+%25Solutions&includeRegisterListing=false&pageSize=10&pageNumber=1",
+        "rel": "related"
+      }
+    ],
+    "Next": null,
+    "Previous": null,
+    "Sorting": null
+  }
+}
