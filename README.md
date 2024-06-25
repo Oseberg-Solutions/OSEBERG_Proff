@@ -8,7 +8,7 @@ Frontend: En PCF komponent laget med React (TypeSript) og Fluent UI.
 Noe ressurser som kan brukes:
 
 Scott Durow: https://www.youtube.com/watch?v=MYVmXdANC08&t
-https://learn.microsoft.com/en-us/power-apps/developer/component-framework/import-custom-controls
+Microsoft: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/import-custom-controls
 
 Bruker Power Platform CLI (pac) for å deploye komponenter.
 Backend: En Azure Function som integrerer med Proff API, håndterer caching og lagrer data.

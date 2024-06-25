@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "PROFF_STORAGE_ACCOUNT_URI": "/subscriptions/d9fe2984-1e44-4c7e-ac8c-d435c8281b3a/resourceGroups/dev-crm-rg/providers/Microsoft.Storage/storageAccounts/proffwebstorage",
+    "PROFF_API_KEY": "PmWrTlGZhtzEh0xAWQP8cvFBX",
+    "PROFF_PREMIUM_API_TOKEN": "9TJebNh1rLqNtmEMJ5KzBME16",
+    "AZURE_PROFF_WEBSTORAGE_CONNECTIONSTRING": "DefaultEndpointsProtocol=https;AccountName=proffwebstorage;AccountKey=LOMG727/G2kA7AbOFIMfEg7aiF+xYiDGVcL44yUb92F3FcZ2vpdEp5AprrTck6UA9VxU8NVR8GFv+ASto5GNzQ==;EndpointSuffix=core.windows.net"
+  }
+}
