@@ -92,33 +92,6 @@ namespace Proff.ExternalServices
         ["homePage"] = apiResponse["homePage"]?.ToString()
       };
 
-      // Premium fields (if applicable)
-      if (EntityPremiumLicenseIsActive())
-      {
-        var analysesArray = apiResponse["analyses"] as JArray;
-        if (analysesArray != null && analysesArray.Count > 0)
-        {
-          var companyFigures = analysesArray[0]?["companyFigures"];
-          if (companyFigures != null)
-          {
-            jsonObject["Likviditetsgrad"] = companyFigures["likviditetsgrad"]?.ToString();
-            jsonObject["TotalrentabilitetLoennsomhet"] = companyFigures["totalrentabilitetLoennsomhet"]?.ToString();
-            jsonObject["Egenkapitalandel"] = companyFigures["egenkapitalandel"]?.ToString();
-          }
-        }
-
-        jsonObject["Profit"] = apiResponse["profit"]?.ToString();
-        jsonObject["Revenue"] = apiResponse["revenue"]?.ToString();
-        jsonObject["likviditetsgrad"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["likviditetsgrad"]?.ToString();
-        jsonObject["totalrentabilitetLoennsomhet"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["totalrentabilitetLoennsomhet"]?.ToString();
-        jsonObject["egenkapitalandel"] =
-          apiResponse["analyses"]?[0]?["companyFigures"]?["egenkapitalandel"]?.ToString();
-        jsonObject["profit"] = apiResponse["profit"]?.ToString();
-        jsonObject["revenue"] = apiResponse["revenue"]?.ToString();
-      }
-
       return jsonObject;
     }
 
